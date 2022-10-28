@@ -1,0 +1,23 @@
+{
+  "name": "converttext",
+  "version": "1.0.0",
+  "description": "Convert all units in a string to specified units or SI units if unspecified",
+  "main": "index.js",
+  "scripts": {
+    "test": "hi"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ItsXrgon/ConvertText.git"
+  },
+  "keywords": [
+    "Unit",
+    "Conversion"
+  ],
+  "author": "ItsXrgon",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/itsXrgon/ConvertText/issues"
+  },
+  "homepage": "https://github.com/itsXrgon/ConvertText#readme"
+}
