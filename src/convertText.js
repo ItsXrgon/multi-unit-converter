@@ -1,3 +1,5 @@
+import units from "./units.json"
+
 class convertText {
     time = "s" // Seconds
     length = "m" // Meter
@@ -11,80 +13,7 @@ class convertText {
     electricCurrent = "A" // Ampere
     currency = "USD" // Dollars
 
-    timeUnits = {
-        ns: ["nanoseconds", "nanosecond", "ns"],
-        ms: ["miliseconds", "milisecond", "ms"],
-        s: ["seconds", "second", "s"],
-        min: ["minutes", "minute", "min"],
-        h: ["hours", "hour", "h"],
-        day: ["days", "day", "d"],
-    };
-
-    lengthUnits = {
-        mm: ["milimeters", "milimeter", "mm"],
-        cm: ["centimeters", "centimeter","cm"],
-        in: ["inches", "inch", "in"],
-        ft: ["feet", "foot", "ft"],
-        yd: ["yards", "yard", "yd"],
-        m: ["meters", "meter", "m"],
-        km: ["kilometers", "kilometer","km"],
-        mi: ["miles", "mile", "mi"],
-    };
-
-    massUnits = {
-        mg: ["miligrams", "miligram","mg"],
-        g: ["grams", "gram", "g"],
-        oz: ["ounces", "ounce", "ozs", "oz"],
-        lb: ["pounds", "pound", "lbs", "lb"],
-        kg: ["kilograms", "kilogram", "kg"],
-        ton: ["tonnes"], // Imperial
-        tonnes: ["ton"], // Metric
-    };
-
-    liquidVolumeUnits = {
-        g: ["milliliters", "milliliter", "ml"],
-        m3: ["meters cubed", "meter cubed", "m3"],
-        l: ["liters", "liter","l"],
-        qt: ["quarts", "quart", "qt"],
-        fl_oz: ["fluid ounces", "fluid ounce", "fl ozs", "fl oz"],
-        c: ["cups", "cup"],
-        gal: ["gallons", "gallon", "gal"],
-    };
-
-    temperatureUnits = {
-        K: ["kelvins", "kelvin", "k"],
-        C: ["celsius", "c"],
-        F: ["fahrenheit", "f"],
-    }
-
-    electricCurrentUnits = {
-        mA: ["milliamperes", "milliampere", "ma"],
-        A: ["amperes", "ampere", "a"],
-        kA: ["kiloamperes", "kiloampere", "ka"],
-    }
-
-    currencyUnits = {
-        USD: ["usd", "$"],
-        Euro: ["euro","€"],
-        GBP: ["gbp","£"],
-        JPY: ["JPY","¥"],
-        AED: ["AED"], // UAE dirham
-        CNY: ["CNY"], // Renminbi (china)
-        AUD: ["AUD"],
-        CAD: ["CAD"],
-        CHF: ["CHF"],
-        HKD: ["HKD"],
-        SGD: ["SGD"],
-        SEK: ["SEK"],
-        KRW: ["KRW"],
-        NOK: ["NOK"],
-        NZD: ["NZD"],
-        INR: ["INR"],
-        MXN: ["MXN"],
-        TWD: ["TWD"],
-        ZAR: ["ZAR"],
-        EGP: ["egp",],
-    }
+    ({timeUnits, lengthUnits, massUnits, temperatureUnits, electricCurrentUnits, currencyUnits} = units);
 
     constructor(){
         // SI Units already the base value
@@ -169,10 +98,11 @@ class convertText {
 
     convertText(text) {
         let words = text.split(' ')
+        
     }
 
     static convertText(text) {
-
-    } 
-
+        let words = text.split(' ')
+    }
+    
 }
