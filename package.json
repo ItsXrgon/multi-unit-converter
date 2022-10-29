@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "Convert all units in a string to specified units or SI units if unspecified",
   "main": "src/index.js",
-  "scripts": {
-    "test": "hi"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ItsXrgon/ConvertText.git"
