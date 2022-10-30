@@ -1,5 +1,5 @@
 {
-  "name": "converttext",
+  "name": "js-unit-converter",
   "version": "1.0.0",
   "description": "Convert all units in a string to specified units or SI units if unspecified",
   "main": "src/index.js",
@@ -19,7 +19,10 @@
   "author": "ItsXrgon",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/itsXrgon/ConvertText/issues"
+    "url": "https://github.com/itsXrgon/convert-units/issues"
   },
-  "homepage": "https://github.com/itsXrgon/ConvertText#readme"
+  "homepage": "https://github.com/itsXrgon/convert-units#readme",
+  "dependencies": {
+    "js-unit-converter": "1.0.0"
+  }
 }
