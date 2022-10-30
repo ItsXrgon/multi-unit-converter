@@ -106,3 +106,5 @@ class convertText {
     }
     
 }
+
+export default convertText
