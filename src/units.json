@@ -72,5 +72,10 @@
         "TWD": ["TWD"],
         "ZAR": ["ZAR"],
         "EGP": ["egp"]
+    },
+
+    "spoonUnits" : {
+        "tsp": ["tsp", "teaspoons", "teaspoon", "tea spoon"],
+        "tbsp": ["tbsp", "tablespoons", "tablespoons", "table spoon"]
     }
 }

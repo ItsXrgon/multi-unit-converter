@@ -12,9 +12,11 @@ class convertText {
     temperature = "K" // Kelvin
     electricCurrent = "A" // Ampere
     currency = "USD" // Dollars
+    spoon = "tbsp"
 
-    ({timeUnits, lengthUnits, massUnits, temperatureUnits, electricCurrentUnits, currencyUnits} = units);
+    ({timeUnits, lengthUnits, massUnits, temperatureUnits, electricCurrentUnits, currencyUnits, spoonUnits} = units);
 
+    
     constructor(){
         // SI Units already the base value
     }
@@ -28,6 +30,7 @@ class convertText {
         } else {       
             this.time = time
         }
+        return 1
     }
 
     setUnitLength(length) {
@@ -85,7 +88,7 @@ class convertText {
         }
     }
 
-    setCurrency(currency) {
+    setUnitCurrency(currency) {
         const allUnits = [].concat(...Object.values(currencyUnits))
         if(typeof currency != string){
             throw 'Unit should be a string!';
@@ -96,13 +99,30 @@ class convertText {
         }
     }
 
-    convertText(text) {
-        let words = text.split(' ')
-        
+    setUnitSpoon(spoon) {
+        const allUnits = [].concat(...Object.values(spoonUnits))
+        if(typeof spoon != string){
+            throw 'Unit should be a string!';
+        } else if(!allUnits.includes(spoon.lower())){
+            throw 'Input is not a spoon unit!';
+        } else{       
+            this.spoon = spoon
+        }
     }
 
-    static convertText(text) {
-        let words = text.split(' ')
+    convertText(text) {
+        if(typeof text != string){
+            throw 'Text should be a string!';
+        } else {
+
+            const re = new RegExp(`/(\s+)|(\d+)\/(\d+)|(\d*)([.,])(\d+)|(\d+)|(km|cm|mm|m|ft|in|pi|po|'|")/gi`);
+
+            let words = re.exec(text) 
+            for(let i=0; i<words.length-2;i++) {
+                console.log(words[i])
+            } 
+        }
+        
     }
     
 }
