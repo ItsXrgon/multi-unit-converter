@@ -12,14 +12,17 @@ class convertText {
     temperature = "K" // Kelvin
     electricCurrent = "A" // Ampere
     currency = "USD" // Dollars
-    spoon = "tbsp"
+    spoon = "tbsp" // Tablespoon
 
-    ({timeUnits, lengthUnits, massUnits, temperatureUnits, electricCurrentUnits, currencyUnits, spoonUnits} = units);
-
+    // JSON of lists of units function is compatible with
+    ({timeUnits, lengthUnits, massUnits, temperatureUnits, electricCurrentUnits, spoonUnits, currencyUnits} = units);
     
     constructor(){
         // SI Units already the base value
     }
+
+    // Functions to change the units convertText(text) changes the units to
+    // Units should be a string and included in the available list of units 
 
     setUnitTime(time) {
         const allUnits = [].concat(...Object.values(timeUnits))
@@ -30,7 +33,6 @@ class convertText {
         } else {       
             this.time = time
         }
-        return 1
     }
 
     setUnitLength(length) {
@@ -88,17 +90,6 @@ class convertText {
         }
     }
 
-    setUnitCurrency(currency) {
-        const allUnits = [].concat(...Object.values(currencyUnits))
-        if(typeof currency != string){
-            throw 'Unit should be a string!';
-        } else if(!allUnits.includes(currency.lower())){
-            throw 'Input is not a currency unit!';
-        } else{       
-            this.currency = currency
-        }
-    }
-
     setUnitSpoon(spoon) {
         const allUnits = [].concat(...Object.values(spoonUnits))
         if(typeof spoon != string){
@@ -110,14 +101,37 @@ class convertText {
         }
     }
 
+    setUnitCurrency(currency) {
+        const allUnits = [].concat(...Object.values(currencyUnits))
+        if(typeof currency != string){
+            throw 'Unit should be a string!';
+        } else if(!allUnits.includes(currency.lower())){
+            throw 'Input is not a currency unit!';
+        } else{       
+            this.currency = currency
+        }
+    }
+
     convertText(text) {
         if(typeof text != string){
             throw 'Text should be a string!';
         } else {
 
-            const re = new RegExp(`/(\s+)|(\d+)\/(\d+)|(\d*)([.,])(\d+)|(\d+)|(km|cm|mm|m|ft|in|pi|po|'|")/gi`);
+            const re = new RegExp(
+                `/(\s+)|(\d+)\/(\d+)|(\d*)([.,])(\d+)|(\d+)
+                |(${Object.values(timeUnits).flat().join('|')}
+                |${Object.values(lengthUnits).flat().join('|')}
+                |${Object.values(massUnits).flat().join('|')}
+                |${Object.values(timeUnits).flat().join('|')}
+                |${Object.values(temperatureUnits).flat().join('|')}
+                |${Object.values(electricCurrentUnits).flat().join('|')}
+                |${Object.values(currencyUnits).flat().join('|')}
+                |${Object.values(spoonUnits).flat().join('|')}
+                |pi|'|")/gi`
+                // todo: add speed of waves Hz & kHz
+            );  // regex to detect numbers followed by units
 
-            let words = re.exec(text) 
+            let words = re.exec(text)
             for(let i=0; i<words.length-2;i++) {
                 console.log(words[i])
             } 

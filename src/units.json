@@ -1,6 +1,5 @@
 {
     "timeUnits" : {
-        "ns": ["nanoseconds", "nanosecond", "ns"],
         "ms": ["miliseconds", "milisecond", "ms"],
         "s": ["seconds", "second", "s"],
         "min": ["minutes", "minute", "min"],
@@ -25,8 +24,8 @@
         "oz": ["ounces", "ounce", "ozs", "oz"],
         "lb": ["pounds", "pound", "lbs", "lb"],
         "kg": ["kilograms", "kilogram", "kg"],
-        "ton": ["tonnes"], 
-        "tonnes": ["ton"]
+        "ton": ["tonnes", "tn"], 
+        "tonnes": ["ton", "t"]
     },
 
     "liquidVolumeUnits" : {
@@ -51,6 +50,11 @@
         "kA": ["kiloamperes", "kiloampere", "ka"]
     },
 
+    "spoonUnits" : {
+        "tsp": ["teaspoons", "teaspoon", "tea spoon", "tsp"],
+        "tbsp": ["tablespoons", "tablespoons", "table spoon", "tbsp"]
+    },
+
     "currencyUnits" : {
         "USD": ["usd", "$"],
         "Euro": ["euro","€"],
@@ -72,10 +76,6 @@
         "TWD": ["TWD"],
         "ZAR": ["ZAR"],
         "EGP": ["egp"]
-    },
-
-    "spoonUnits" : {
-        "tsp": ["tsp", "teaspoons", "teaspoon", "tea spoon"],
-        "tbsp": ["tbsp", "tablespoons", "tablespoons", "table spoon"]
     }
+    
 }
