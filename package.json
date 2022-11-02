@@ -16,6 +16,9 @@
     "conversions",
     "conversion"
   ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "author": "ItsXrgon",
   "license": "MIT",
   "bugs": {
