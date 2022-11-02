@@ -1,9 +1,10 @@
 import units from "./units.json"
+import convertUnits from './convertUnits'
 
 class convertText {
     time = "s" // Seconds
     length = "m" // Meter
-    mass = "kg" // Kilogram
+    weight = "kg" // Kilogram
     area = `${length}2` // Meter Squared
     volume = `${length}3` // Meter Cubed 
     liquidVolume = `${length}3` // Meter Cubed 
@@ -15,7 +16,7 @@ class convertText {
     spoon = "tbsp" // Tablespoon
 
     // JSON of lists of units function is compatible with
-    ({timeUnits, lengthUnits, massUnits, temperatureUnits, electricCurrentUnits, spoonUnits, currencyUnits} = units);
+    ({timeUnits, lengthUnits, weightUnits, temperatureUnits, electricCurrentUnits, spoonUnits, currencyUnits} = units);
     
     constructor(){
         // SI Units already the base value
@@ -46,11 +47,11 @@ class convertText {
         }
     }
 
-    setUnitMass(mass) {
-        const allUnits = [].concat(...Object.values(massUnits))
-        if(typeof mass != string){
+    setUnitWeight(weight) {
+        const allUnits = [].concat(...Object.values(weightUnits))
+        if(typeof weight != string){
             throw 'Unit should be a string!';
-        } else if(!allUnits.includes(mass.lower())){
+        } else if(!allUnits.includes(weight.lower())){
             throw 'Input is not a mass unit!';
         } else {       
             this.mass = mass
@@ -58,7 +59,7 @@ class convertText {
     }
 
     setUnitLiquidVolume(liquidVolume) {
-        const allUnits = [].concat(...Object.values(liquidVolume))
+        const allUnits = [].concat(...Object.values(liquidVolumeUnits))
         if(typeof liquidVolume != string){
             throw 'Unit should be a string!';
         } else if(!allUnits.includes(liquidVolume.lower())){
@@ -121,8 +122,8 @@ class convertText {
                 `/(\s+)|(\d+)\/(\d+)|(\d*)([.,])(\d+)|(\d+)
                 |(${Object.values(timeUnits).flat().join('|')}
                 |${Object.values(lengthUnits).flat().join('|')}
-                |${Object.values(massUnits).flat().join('|')}
-                |${Object.values(timeUnits).flat().join('|')}
+                |${Object.values(weightUnits).flat().join('|')}
+                |${Object.values(liquidVolumeUnits).flat().join('|')}
                 |${Object.values(temperatureUnits).flat().join('|')}
                 |${Object.values(electricCurrentUnits).flat().join('|')}
                 |${Object.values(currencyUnits).flat().join('|')}
@@ -133,7 +134,7 @@ class convertText {
 
             let words = re.exec(text)
             for(let i=0; i<words.length-2;i++) {
-                console.log(words[i])
+                console.log(convertUnits.convertLength(2, 'm', 'cm'))
             } 
         }
         
