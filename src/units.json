@@ -18,19 +18,21 @@
         "mi": ["miles", "mile", "mi"]
     },
 
-    "massUnits" : {
+    "weightUnits" : {
         "mg": ["miligrams", "miligram","mg"],
         "g": ["grams", "gram", "g"],
         "oz": ["ounces", "ounce", "ozs", "oz"],
         "lb": ["pounds", "pound", "lbs", "lb"],
         "kg": ["kilograms", "kilogram", "kg"],
-        "ton": ["tonnes", "tn"], 
-        "tonnes": ["ton", "t"]
+        "ton": ["tonnes", "tonne", "tn"], 
+        "tonnes": ["tons", "ton", "t"]
     },
 
     "liquidVolumeUnits" : {
-        "g": ["milliliters", "milliliter", "ml"],
+        "mm3": ["milimeters cubed", "milimeter cubed", "mm3"],
+        "cm3": ["centimeters cubed", "centimeter cubed", "cm3"],
         "m3": ["meters cubed", "meter cubed", "m3"],
+        "ml": ["milliliters", "milliliter", "ml"],
         "l": ["liters", "liter","l"],
         "qt": ["quarts", "quart", "qt"],
         "fl_oz": ["fluid ounces", "fluid ounce", "fl ozs", "fl oz"],
