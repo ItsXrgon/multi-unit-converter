@@ -1,0 +1,24 @@
+name: "publish"
+
+on:
+    push:
+        branches:
+          - master
+
+jobs:
+    release:
+        name: "js-unit-converter"
+        runs-on: ubuntu-latest
+        steps:
+          - name: checkout
+            uses: actions/checkout@v3
+          - name: node
+            uses: actions/setup-node@v3
+            with:
+              node-version: 18.9
+              register-url: https://registery.npmjs.org
+          - name: publish
+            run: npm publish -access public
+            working directory: "js-unit-converter"
+            env:
+              NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
