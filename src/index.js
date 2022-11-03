@@ -1,3 +1,6 @@
 import convertText from './convertText'
 
-export default convertText;
+let x = convertText()
+console.log(x.length)
+
+module.exports = {convertText}

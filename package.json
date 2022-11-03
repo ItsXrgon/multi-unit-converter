@@ -19,6 +19,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
+  "type": "module",
   "author": "ItsXrgon",
   "license": "MIT",
   "bugs": {
