@@ -16,7 +16,16 @@ class convertText {
     spoon = "tbsp" // Tablespoon
 
     // JSON of lists of units function is compatible with
-    ({timeUnits, lengthUnits, weightUnits, temperatureUnits, electricCurrentUnits, spoonUnits, currencyUnits} = units);
+    ({
+        timeUnits, 
+        lengthUnits, 
+        weightUnits, 
+        liquidVolumeUnits, 
+        temperatureUnits, 
+        electricCurrentUnits, 
+        spoonUnits, 
+        currencyUnits
+    } = units);
     
     constructor(){
         // SI Units already the base value
