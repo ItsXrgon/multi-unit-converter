@@ -19,6 +19,6 @@ jobs:
               register-url: https://registery.npmjs.org
           - name: publish
             run: npm publish -access public
-            working directory: "js-unit-converter"
+            working-directory: "js-unit-converter"
             env:
               NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
