@@ -1,14 +1,17 @@
 {
-  "name": "js-unit-converter",
-  "version": "1.1.0",
+  "name": "@itsxrgon/js-unit-converter",
+  "version": "1.2.0",
   "description": "Convert all units in a string to specified units or SI units if unspecified",
   "main": "src/index.cjs",
   "module": "src/index.cjs",
   "type": "module",
+  "files": [
+    "src/*"
+  ],
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ItsXrgon/ConvertText.git"
+    "url": "https://github.com/ItsXrgon/ConvertText.git"
   },
   "keywords": [
     "units",
@@ -29,9 +32,5 @@
   "homepage": "https://github.com/itsXrgon/convert-units#readme",
   "dependencies": {
     "js-unit-converter": "1.0.0"
-  },
-  "directories": {
-    "test": "test"
-  },
-  "devDependencies": {}
+  }
 }
