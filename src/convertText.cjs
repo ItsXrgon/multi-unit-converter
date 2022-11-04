@@ -1,5 +1,4 @@
-import units from "./units.json"
-import convertUnits from './convertUnits'
+import units from "./units.json" assert { type: "json" };
 
 class convertText {
     time = "s" // Seconds
@@ -151,4 +150,5 @@ class convertText {
     
 }
 
+module.exports = {convertText}
 export default convertText
