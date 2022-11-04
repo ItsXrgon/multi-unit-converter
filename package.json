@@ -24,9 +24,9 @@
   "author": "ItsXrgon",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/itsXrgon/convert-units/issues"
+    "url": "https://github.com/itsXrgon/js-unit-converter/issues"
   },
-  "homepage": "https://github.com/itsXrgon/convert-units#readme",
+  "homepage": "https://github.com/itsXrgon/js-unit-converter#readme",
   "dependencies": {
     "js-unit-converter": "1.0.0"
   }
