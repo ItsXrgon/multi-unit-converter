@@ -8,7 +8,7 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/ItsXrgon/ConvertText.git"
+    "url": "git+https://github.com/ItsXrgon/ConvertText.git"
   },
   "keywords": [
     "units",
@@ -29,5 +29,9 @@
   "homepage": "https://github.com/itsXrgon/convert-units#readme",
   "dependencies": {
     "js-unit-converter": "1.0.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {}
 }
