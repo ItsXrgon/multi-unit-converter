@@ -1,5 +1,4 @@
 class convertUnits {
-
     // Functions to convert units and return their value + new unit
     // Switch cases sorted according to how probable it is to swap from certains units to other unit
 
@@ -14,7 +13,7 @@ class convertUnits {
                     case("ms"):
                         return value*1000 + "ms";
                     case("day"):
-                        return value/86400 + "days";
+                        return value/86400 + "day(s)";
                 }
             case("min"): 
                 switch(unitOutput) {
@@ -25,7 +24,7 @@ class convertUnits {
                     case("ms"):
                         return value*60000 + "ms";
                     case("day"):
-                        return value/1440 + "days";
+                        return value/1440 + "day(s)";
                 }
             case("h"): 
                 switch(unitOutput) {
@@ -36,7 +35,7 @@ class convertUnits {
                     case("ms"):
                         return value*3600000 + "ms";
                     case("day"):
-                        return value/86400 + "days";
+                        return value/86400 + "day(s)";
                 }
             case("ms"): 
                 switch(unitOutput) {
@@ -47,7 +46,7 @@ class convertUnits {
                     case("h"):
                         return value/3600000 + "h";
                     case("day"):
-                        return value/43200000 + "days";
+                        return value/43200000 + "day(s)";
                 }
             case("day"): 
                 switch(unitOutput) {
