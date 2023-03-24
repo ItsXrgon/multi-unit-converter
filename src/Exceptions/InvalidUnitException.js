@@ -1,6 +1,8 @@
 class InvalidUnitException extends Error {
-    InvalidUnitException(message) {
+    constructor(message) {
         super(message);
-        this.name = this.constuctor.name;
+        this.name = 'InvalidUnitException';
     }
 }
+
+module.exports = {InvalidUnitException}
