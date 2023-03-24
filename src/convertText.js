@@ -113,21 +113,22 @@ class convertText {
         }
     }
 
-    convertUnitToSelected(value, unit) {
+    convertUnitsToSelected(value, unit) {
+        console.log(value + ' unit ' + unit)
         switch(unit) {
-            case(this.timeUnits.includes(unit)): // Case time units
+            case(this.timeUnits.includes(unit)): // case time units
                 return converUnits.convertTime(value, unit, this.time); 
-            case(this.lengthUnits.includes(unit)): // Case length units
+            case(this.lengthUnits.includes(unit)): // case length units
                 return converUnits.convertLength(value, unit, this.time);
-            case(this.weightUnits.includes(unit)): // Case weight units
+            case(this.weightUnits.includes(unit)): // case weight units
                 return converUnits.convertWeight(value, unit, this.time);
-            case(this.liquidVolumeUnits.includes(unit)): // Case liquid volume units
+            case(this.liquidVolumeUnits.includes(unit)): // case liquid volume units
                 return converUnits.convertLiquidVolume(value, unit, this.time);
-            case(this.temperatureUnits.includes(unit)): // Case temperature units
+            case(this.temperatureUnits.includes(unit)): // case temperature units
                 return converUnits.convertTempertaure(value, unit, this.time);
-            case(this.electricCurrentUnits.includes(unit)): // Case electric current units
+            case(this.electricCurrentUnits.includes(unit)): // case electric current units
                 return converUnits.convertElectricCurrent(value, unit, this.time);
-            case(this.spoonUnits.includes(unit)): // Case spoon units
+            case(this.spoonUnits.includes(unit)): // case spoon units
                 return converUnits.convertSpoon(value, unit, this.time);
             case(this.currencyUnits.includes(unit)): // TO BE IMPLEMENTED
                 return converUnits.convertSpoon(value, unit, this.time);
@@ -137,27 +138,45 @@ class convertText {
     convertText(text) {
         if(typeof text != 'string'){
             throw 'Text should be a string!';
-        } else {
-            let units = ""
-            units += `|${Object.values(this.timeUnits).flat().join('|')}`
-            units += `|${Object.values(this.lengthUnits).flat().join('|')}`
-            units += `|${Object.values(this.weightUnits).flat().join('|')}`
-            units += `|${Object.values(this.liquidVolumeUnits).flat().join('|')}`
-            units += `|${Object.values(this.temperatureUnits).flat().join('|')}`
-            units += `|${Object.values(this.electricCurrentUnits).flat().join('|')}`
-            units += `|${Object.values(this.currencyUnits).flat().join('|')}`
-            units += `|${Object.values(this.spoonUnits).flat().join('|')}`
-            const regex = new RegExp(`/(\d+(?:\.\d+)?)\s*(${units}|pi|'|")\b/gi`);
-            // regex to detect numbers followed by units
-            console.log(regex);
-            for(let i=0; i<3;i++) {
-                //console.log(words[i])
-                console.log(regex.exec(text))
-            } 
         }
-        
+        let regExUnits = ""
+        regExUnits += `|${Object.values(this.timeUnits).flat().join('|')}`
+        regExUnits += `|${Object.values(this.lengthUnits).flat().join('|')}`
+        regExUnits += `|${Object.values(this.weightUnits).flat().join('|')}`
+        regExUnits += `|${Object.values(this.liquidVolumeUnits).flat().join('|')}`
+        regExUnits += `|${Object.values(this.temperatureUnits).flat().join('|')}`
+        regExUnits += `|${Object.values(this.electricCurrentUnits).flat().join('|')}`
+        regExUnits += `|${Object.values(this.currencyUnits).flat().join('|')}`
+        regExUnits += `|${Object.values(this.spoonUnits).flat().join('|')}`
+        const regex = new RegExp(`/\/\d*\.?\d*\s*(${regExUnits}|pi|'|")\b/g`);
+        // regex to detect numbers followed by units
+        // find all the units in the text using the regex pattern
+        const units = text.match(regex);
+        console.log(units)
+        // if no units are found, return the original text
+        if (!units) {
+            return text;
+        }
+
+        // loop through each unit found and convert it to its equivalent unit value 
+        units.forEach((unit) => {
+            // extract the numeric value and unit without the plural suffix
+            const [value, ...unitParts] = unit.replace(/\//, "").split(/s+/);
+            const unitWithoutPlural = unitParts.join("");
+
+            // convert the value to a float
+            const floatValue = parseFloat(value);
+
+            // convert the unit to its equivalent SI value using the conversion factor dictionary
+            const newValue = convertUnitsToSelected(floatValue, unit);
+
+            // replace the original unit with the SI unit in the text
+            text = text.replace(new RegExp(`/${value}s?${unitWithoutPlural}`, "g"), newValue.toString());
+        });
+
+        return text;
+
     }
-    
 }
 
 module.exports = convertText;
