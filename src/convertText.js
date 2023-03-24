@@ -1,4 +1,5 @@
 const units = require("./units.json");
+const InvalidUnitException = require('./Exceptions/InvalidUnitException');
 
 class convertText {
     time = "s" // Seconds
@@ -36,7 +37,7 @@ class convertText {
         if(typeof time != 'string'){
             throw 'Unit should be a string!';
         } else if(!allUnits.includes(time.toLowerCase())){
-            throw new InvalidArgumentException(`Input ${time} is not a time unit!`);
+            throw new InvalidUnitException(`Input ${time} is not a time unit!`);
         } else {       
             this.time = time
         }
@@ -47,7 +48,7 @@ class convertText {
         if(typeof length != 'string'){
             throw 'Unit should be a string!';
         } else if(!allUnits.includes(length.toLowerCase())){
-            throw new InvalidArgumentException(`Input ${length} is not a length unit!`);
+            throw new InvalidUnitException(`Input ${length} is not a length unit!`);
         } else {            
             this.length = length
         }
@@ -58,7 +59,7 @@ class convertText {
         if(typeof weight != 'string'){
             throw 'Unit should be a string!';
         } else if(!allUnits.includes(weight.toLowerCase())){
-            throw new InvalidArgumentException(`Input ${weight} is not a mass unit!`);
+            throw new InvalidUnitException(`Input ${weight} is not a mass unit!`);
         } else {       
             this.mass = mass
         }
@@ -69,7 +70,7 @@ class convertText {
         if(typeof liquidVolume != 'string'){
             throw 'Unit should be a string!';
         } else if(!allUnits.includes(liquidVolume.toLowerCase())){
-            throw new InvalidArgumentException(`Input ${liquidVolume} is not a liquid volume unit!`);
+            throw new InvalidUnitException(`Input ${liquidVolume} is not a liquid volume unit!`);
         } else {       
             this.mass = mass
         }
@@ -80,7 +81,7 @@ class convertText {
         if(typeof temperature  != 'string'){
             throw 'Unit should be a string!';
         } else if(!allUnits.includes(temperature.toLowerCase())){
-            throw new InvalidArgumentException(`Input ${temperature} is not a temperature unit!`);
+            throw new InvalidUnitException(`Input ${temperature} is not a temperature unit!`);
         } else{       
             this.temperature = temperature
         }
@@ -91,7 +92,7 @@ class convertText {
         if(typeof electricCurrent != 'string'){
             throw 'Unit should be a string!';
         } else if(!allUnits.includes(electricCurrent.toLowerCase())){
-            throw new InvalidArgumentException(`Input ${electricCurrent} is not an electric current unit!`);
+            throw new InvalidUnitException(`Input ${electricCurrent} is not an electric current unit!`);
         } else{       
             this.electricCurrent = electricCurrent
         }
@@ -102,7 +103,7 @@ class convertText {
         if(typeof spoon != 'string'){
             throw 'Unit should be a string!';
         } else if(!allUnits.includes(spoon.toLowerCase())){
-            throw new InvalidArgumentException(`Input ${spoon} is not a spoon unit!`);
+            throw new InvalidUnitException(`Input ${spoon} is not a spoon unit!`);
         } else{       
             this.spoon = spoon
         }
@@ -113,7 +114,7 @@ class convertText {
         if(typeof currency != 'string'){
             throw 'Unit should be a string!';
         } else if(!allUnits.includes(currency.toLowerCase())){
-            throw new InvalidArgumentException(`Input ${currency} is not a currency unit!`);
+            throw new InvalidUnitException(`Input ${currency} is not a currency unit!`);
         } else{       
             this.currency = currency
         }
@@ -132,10 +133,8 @@ class convertText {
             units += `|${Object.values(this.electricCurrentUnits).flat().join('|')}`
             units += `|${Object.values(this.currencyUnits).flat().join('|')}`
             units += `|${Object.values(this.spoonUnits).flat().join('|')}`
-            //const re = new RegExp(`/(\s+)|(\d+)\/(\d+)|(\d*)([.,])(\d+)|(\d+)(${units}|pi|'|")/gi`);
-            const regex = new RegExp(`/(\d+(?:\.\d+)?)\s*(mm|cm|km|in|ft|yd|m|mi)\b/gi`);
+            const regex = new RegExp(`/(\d+(?:\.\d+)?)\s*(${units}|pi|'|")\b/gi`);
             // regex to detect numbers followed by units
-            //const words = re.exec(text)
             console.log(regex);
             for(let i=0; i<3;i++) {
                 //console.log(words[i])
