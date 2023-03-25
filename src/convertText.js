@@ -17,7 +17,8 @@ class convertText {
     spoon = "tbsp" // Tablespoon
 
     // JSON of lists of units function is compatible with
-    timeUnits = [].concat(...Object.values(units.lengthUnits))
+    
+    timeUnits = [].concat(...Object.values(units.timeUnits))
     lengthUnits = [].concat(...Object.values(units.lengthUnits))
     weightUnits = [].concat(...Object.values(units.weightUnits))
     liquidVolumeUnits = [].concat(...Object.values(units.liquidVolumeUnits))
@@ -117,42 +118,94 @@ class convertText {
         unit = unit.replace(/[0-9]/g, '').trim();
         console.log(value + " " + unit)
         const cu = new convertUnits()
-        switch(unit) {
-            case(this.timeUnits.includes(unit)): // case time units
-                return cu.convertTime(value, unit, this.time); 
-            case(this.lengthUnits.includes(unit)): // case length units
-                return cu.convertLength(value, unit, this.time);
-            case(this.weightUnits.includes(unit)): // case weight units
-                return cu.convertWeight(value, unit, this.time);
-            case(this.liquidVolumeUnits.includes(unit)): // case liquid volume units
-                return cu.convertLiquidVolume(value, unit, this.time);
-            case(this.temperatureUnits.includes(unit)): // case temperature units
-                return cu.convertTempertaure(value, unit, this.time);
-            case(this.electricCurrentUnits.includes(unit)): // case electric current units
-                return cu.convertElectricCurrent(value, unit, this.time);
-            case(this.spoonUnits.includes(unit)): // case spoon units
-                return cu.convertSpoon(value, unit, this.time);
-            case(this.currencyUnits.includes(unit)): // TO BE IMPLEMENTED
-                return cu.convertSpoon(value, unit, this.time); 
+        if(this.timeUnits.includes(unit)){ // case time units
+            if(units.timeUnits.day) {unit = "day";}
+            else if(units.timeUnits.h) {unit = "h";}
+            else if(units.timeUnits.min) {unit = "min";}
+            else if(units.timeUnits.ms) {unit = "ms";}
+            else if(units.timeUnits.s) {unit = "s";}
+            
+            return cu.convertTime(value, unit, this.time); 
+        }
+        if(this.lengthUnits.includes(unit)){ // case length units
+            if(units.lengthUnits.cm.includes(unit) ){ unit = "cm";}
+            else if(units.lengthUnits.ft.includes(unit)) { unit = "ft";}
+            else if(units.lengthUnits.in.includes(unit)) { unit = "in";}
+            else if(units.lengthUnits.km.includes(unit)) { unit = "km";}
+            else if(units.lengthUnits.m.includes(unit)) { unit = "m";}
+            else if(units.lengthUnits.mi.includes(unit)) { unit = "mi";} 
+            else if(units.lengthUnits.mm.includes(unit)) { unit = "mm";}
+            else if(units.lengthUnits.yd.includes(unit)) { unit = "yd";}
+            
+            return cu.convertLength(value, unit, this.time);
+        }
+        if(this.weightUnits.includes(unit)){ // case weight units
+            if(units.weightUnits.g) {unit = "g";}
+            else if(units.weightUnits.kg.includes(unit)) {unit = "kg";}
+            else if(units.weightUnits.lb.includes(unit)) {unit = "lb"; }
+            else if(units.weightUnits.mg.includes(unit)) {unit = "mg";}
+            else if(units.weightUnits.oz.includes(unit)) {unit = "oz";}
+            else if(units.weightUnits.ton.includes(unit)) {unit = "ton";}
+            else if(units.weightUnits.tonnes.includes(unit)) {unit = "tonnes";}
+    
+            return cu.convertWeight(value, unit, this.time);
+        }
+        if(this.liquidVolumeUnits.includes(unit)){ // case liquid volume units
+            if(units.liquidVolumeUnits.c.includes(unit)) {unit = "c"; }
+            else if(units.liquidVolumeUnits.cm3.includes(unit)) {unit = "cm3";}
+            else if(units.liquidVolumeUnits.fl_oz.includes(unit)) {unit = "fl_oz";}
+            else if(units.liquidVolumeUnits.gal.includes(unit)) {unit = "gal";}
+            else if(units.liquidVolumeUnits.l.includes(unit)) {unit = "l";}
+            else if(units.liquidVolumeUnits.m3.includes(unit)) {unit = "m3"; }
+            else if(units.liquidVolumeUnits.ml.includes(unit)) {unit = "ml"; }
+            else if(units.liquidVolumeUnits.mm3.includes(unit)) {unit = "mm3"; }
+            else if(units.liquidVolumeUnits.qt.includes(unit)) {unit = "qt";}
+           
+            return cu.convertLiquidVolume(value, unit, this.time);
+        }
+        if(this.temperatureUnits.includes(unit)){ // case temperature units
+            if(units.temperatureUnits.C.includes(unit)) {unit = "C"; }
+            else if(units.temperatureUnits.K.includes(unit)) {unit = "K";}
+            else if(units.temperatureUnits.F.includes(unit)) {unit = "F"; }
+            
+            return cu.convertTempertaure(value, unit, this.time);
+        }
+        if(this.electricCurrentUnits.includes(unit)){ // case electric current units
+            if(units.electricCurrentUnits.A.includes(unit)) {unit = "A"; }
+            else if(units.electricCurrentUnits.kA.includes(unit)) {unit = "kA";} 
+            else if(units.electricCurrentUnits.mA.includes(unit)) {unit = "mA";} 
+
+            return cu.convertElectricCurrent(value, unit, this.time);
+        }
+        if(this.spoonUnits.includes(unit)){ // case spoon units
+            if(units.spoonUnits.tbsp.includes(unit)) {unit = "tbsp";} 
+            else if(units.spoonUnits.tsp.includes(unit)) {unit = "tsp";} 
+            
+            return cu.convertSpoon(value, unit, this.time);
+        }
+        if(this.currencyUnits.includes(unit)){ // TO BE IMPLEMENTED
+            return cu.convertSpoon(value, unit, this.time); 
         }
     }
-    /*
+
+    /* CODE TO GET REGEX
     let regExUnits = ""
     regExUnits += `${Object.values(this.timeUnits).flat().join('|')}`
-    regExUnits += `|${Object.values(this.lengthUnits).flat().join('|')}`
+    regExUnits + `|${Object.values(this.lengthUnits).flat().join('|')}`
     regExUnits += `|${Object.values(this.weightUnits).flat().join('|')}`
     regExUnits += `|${Object.values(this.liquidVolumeUnits).flat().join('|')}`
     regExUnits += `|${Object.values(this.temperatureUnits).flat().join('|')}`
     regExUnits += `|${Object.values(this.electricCurrentUnits).flat().join('|')}`
     regExUnits += `|${Object.values(this.currencyUnits).flat().join('|')}`
     regExUnits += `|${Object.values(this.spoonUnits).flat().join('|')}`
-    console.log(regExUnits)*/
+    console.log(regExUnits)
+    */
 
     convertText(text) {
         if(typeof text != 'string'){
             throw 'Text should be a string!';
         }
-        //const regex = new RegExp(/\\d*\.?\d*\s*(milimeters|milimeter|mm|centimeters|centimeter|cm|inches|inch|in|feet|foot|ft|yards|yard|yd|meters|meter|m|kilometers|kilometer|km|miles|mile|mi|milimeters|milimeter|mm|centimeters|centimeter|cm|inches|inch|in|feet|foot|ft|yards|yard|yd|meters|meter|m|kilometers|kilometer|km|miles|mile|mi|miligrams|miligram|mg|grams|gram|g|ounces|ounce|ozs|oz|pounds|pound|lbs|lb|kilograms|kilogram|kg|tonnes|tonne|tn|tons|ton|t|milimeters cubed|milimeter cubed|mm3|centimeters cubed|centimeter cubed|cm3|meters cubed|meter cubed|m3|milliliters|milliliter|ml|liters|liter|l|quarts|quart|qt|fluid ounces|fluid ounce|fl ozs|fl oz|cups|cup|gallons|gallon|gal|kelvins|kelvin|k|celsius|c|fahrenheit|f|milliamperes|milliampere|ma|amperes|ampere|a|kiloamperes|kiloampere|ka|usd|$|euro|€|gbp|£|JPY|¥|AED|CNY|AUD|CAD|CHF|HKD|SGD|SEK|KRW|NOK|NZD|INR|MXN|TWD|ZAR|egp|teaspoons|teaspoon|tea spoon|tsp|tablespoons|tablespoons|table spoon|tbsp|pi|'|")\\b/g);
+
         // regex to detect numbers followed by units
         // find all the units in the text using the regex pattern
         const regex = new RegExp(/(\d*\.?\d+)(?:\s*)(milimeters|milimeter|mm|centimeters|centimeter|cm|inches|inch|in|feet|foot|ft|yards|yard|yd|meters|meter|m|kilometers|kilometer|km|miles|mile|mi|milimeters|milimeter|mm|centimeters|centimeter|cm|inches|inch|in|feet|foot|ft|yards|yard|yd|meters|meter|m|kilometers|kilometer|km|miles|mile|mi|miligrams|miligram|mg|grams|gram|g|ounces|ounce|ozs|oz|pounds|pound|lbs|lb|kilograms|kilogram|kg|tonnes|tonne|tn|tons|ton|t|milimeters cubed|milimeter cubed|mm3|centimeters cubed|centimeter cubed|cm3|meters cubed|meter cubed|m3|milliliters|milliliter|ml|liters|liter|l|quarts|quart|qt|fluid ounces|fluid ounce|fl ozs|fl oz|cups|cup|gallons|gallon|gal|kelvins|kelvin|k|celsius|c|fahrenheit|f|milliamperes|milliampere|ma|amperes|ampere|a|kiloamperes|kiloampere|ka|usd|$|euro|€|gbp|£|JPY|¥|AED|CNY|AUD|CAD|CHF|HKD|SGD|SEK|KRW|NOK|NZD|INR|MXN|TWD|ZAR|egp|teaspoons|teaspoon|tea spoon|tsp|tablespoons|tablespoons|table spoon|tbsp|pi|'|")(?!\w)/g)
@@ -171,10 +224,10 @@ class convertText {
             const unitWithoutPlural = unitParts.join("");
             // convert the value to a float
             const floatValue = parseFloat(value);
-
+            
             // convert the unit to its equivalent SI value using the conversion factor dictionary
             let newValue = this.convertUnitsToSelected(floatValue, unit.toLowerCase());
-            console.log(newValue)
+            
             // replace the original unit with the SI unit in the text
             text = text.replace(new RegExp(`/${value}s?${unitWithoutPlural}`, "g"), newValue);
         });
