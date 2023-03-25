@@ -1,7 +1,7 @@
 {
     "timeUnits" : {
         "ms": ["miliseconds", "milisecond", "ms"],
-        "s": ["seconds", "second", "s"],
+        "s": ["seconds", "second", "s", "sec", "secs"],
         "min": ["minutes", "minute", "min"],
         "h": ["hours", "hour", "h"],
         "day": ["days", "day", "d"]

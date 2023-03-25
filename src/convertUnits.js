@@ -1,6 +1,9 @@
 class convertUnits {
     // Functions to convert units and return their value + new unit
     // Switch cases sorted according to how probable it is to swap from certains units to other unit
+    constructor(){
+        // SI Units already the base value
+    }
 
     convertTime(value, unitInput, unitOutput) {
         switch(unitInput) {
@@ -14,7 +17,7 @@ class convertUnits {
                         return value*1000 + " ms";
                     case("day"):
                         return value/86400 + " day(s)";
-                }
+                } break;
             case("min"): 
                 switch(unitOutput) {
                     case ("s"):
@@ -25,18 +28,18 @@ class convertUnits {
                         return value*60000 + " ms";
                     case("day"):
                         return value/1440 + " day(s)";
-                }
+                } break;
             case("h"): 
                 switch(unitOutput) {
                     case ("min"):
-                        return value/60 + " min";
+                        return value*60 + " min";
                     case("s"):
                         return value*3600 + " s";
                     case("ms"):
                         return value*3600000 + " ms";
                     case("day"):
-                        return value/86400 + " day(s)";
-                }
+                        return value/24 + " day(s)";
+                } break;
             case("ms"): 
                 switch(unitOutput) {
                     case("s"):
@@ -47,7 +50,7 @@ class convertUnits {
                         return value/3600000 + " h";
                     case("day"):
                         return value/43200000 + " day(s)";
-                }
+                } break;
             case("day"): 
                 switch(unitOutput) {
                     case("min"):
@@ -58,7 +61,7 @@ class convertUnits {
                         return value/60 + " s";
                     case("ms"):
                         return value*43200000 + " ms";
-                }
+                } break;
         }        
     }
 
@@ -86,7 +89,7 @@ class convertUnits {
                         return feet + inch;
                     case ("mm"):
                         return value*10 + " mm";
-                }
+                } break;
             case("mm"): 
                 switch(unitOutput) {
                     case ("cm"):
@@ -105,7 +108,7 @@ class convertUnits {
                         return feet + inch;
                     case ("mi"):
                         return value/1609000 + " mi";
-                }
+                } break;
             case("m"): 
                 switch(unitOutput) {
                     case ("km"):
@@ -124,7 +127,7 @@ class convertUnits {
                         return value*39.37 + " in";
                     case ("mm"):
                         return value*1000 + " mm";
-                }
+                } break;
             case("km"): 
                 switch(unitOutput) {
                     case ("mi"):
@@ -141,7 +144,7 @@ class convertUnits {
                         return value/100000 + " cm";
                     case ("mm"):
                         return value*1000000 + " mm";
-                }
+                } break;
             case("ft"): 
                 switch(unitOutput) {
                     case ("m"):
@@ -158,7 +161,7 @@ class convertUnits {
                         return value/3 + " yd";
                     case ("cm"):
                         return value*30.48 + " cm";
-                }
+                } break;
             case("in"): 
                 switch(unitOutput) {
                     case ("ft"):
@@ -175,7 +178,7 @@ class convertUnits {
                         return value/39370 + " km";
                     case ("mi"):
                         return value/63360 + " mi";
-                }
+                } break;
             case("yd"): 
                 switch(unitOutput) {
                     case ("ft"):
@@ -194,7 +197,7 @@ class convertUnits {
                         return value*91.44 + " cm";
                     case ("mm"):
                         return value*914.4 + " mm";
-                }
+                } break;
             case("mi"): 
                 switch(unitOutput) {
                     case ("km"):
@@ -213,7 +216,7 @@ class convertUnits {
                         return value*160900 + " cm";
                     case ("mm"):
                         return value*1609000 + " mm";
-                }
+                } break;
         }        
     }
 
@@ -233,7 +236,7 @@ class convertUnits {
                         return value/1000000 + " t";
                     case ("tn"):
                         return value/1016046 + " tn";
-                }
+                } break;
             case("kg"): 
                 switch(unitOutput) {
                     case("g"):
@@ -248,7 +251,7 @@ class convertUnits {
                         return value/1000 + " t";
                     case ("tn"):
                         return value/1016 + " tn";
-                }
+                } break;
             case("lb"): 
                 switch(unitOutput) {
                     case("kg"):
@@ -263,7 +266,7 @@ class convertUnits {
                         return value/2205 + " t";
                     case ("tn"):
                         return value/2000 + " tn";
-                }
+                } break;
             case("oz"): 
                 switch(unitOutput) {
                     case("kg"):
@@ -278,7 +281,7 @@ class convertUnits {
                         return value/35270 + " t";
                     case ("tn"):
                         return value/32000 + " tn";
-                }
+                } break;
             case("mg"): 
                 switch(unitOutput) {
                     case("g"):
@@ -293,7 +296,7 @@ class convertUnits {
                         return value/1000000000 + " t";
                     case ("tn"):
                         return value/907200000 + " tn";
-                }
+                } break;
             case("t"): 
                 switch(unitOutput) {
                     case("kg"):
@@ -308,7 +311,7 @@ class convertUnits {
                         return value*1000000 + " g";
                     case ("tn"):
                         return value*1.102 + " tn";
-                }
+                } break;
             case("tn"): 
                 switch(unitOutput) {
                     case("kg"):
@@ -323,7 +326,7 @@ class convertUnits {
                         return value/1.102 + " t";
                     case ("g"):
                         return value*907200 + " g";
-                }
+                } break;
         }        
     }
 
@@ -339,7 +342,7 @@ class convertUnits {
                 return value * 0.004167 + " cup(s)";
               case('gal'):
                 return value / 3785.4118 + " gal";
-            }
+            } break;
           case('l'):
             switch(unitOutput) {
               case('ml'):
@@ -350,7 +353,7 @@ class convertUnits {
                 return value * 4.167 + " cup(s)";
               case('gal'):
                 return value / 3.7854118 + " gal";
-            }
+            } break;
           case('fl oz'):
             switch(unitOutput) {
               case('ml'):
@@ -361,7 +364,7 @@ class convertUnits {
                 return value / 8 + " cup(s)";
               case('gal'):
                 return value / 128 + " gal";
-            }
+            } break;
           case('cup'):
             switch(unitOutput) {
               case('ml'):
@@ -372,7 +375,7 @@ class convertUnits {
                 return value * 8 + " fl oz";
               case('gal'):
                 return value / 16 + " gal";
-            }
+            } break;
           case('gal'):
             switch(unitOutput) {
               case('ml'):
@@ -383,7 +386,7 @@ class convertUnits {
                 return value * 128 + " fl oz";
               case('cup'):
                 return value * 16 + " cup(s)";
-            }
+            } break;
         }
     }
 
@@ -395,21 +398,21 @@ class convertUnits {
                         return value - 273.15 + " °C";
                     case("f"):
                         return (((value - 273.15) * 9/5) + 32) + " °F";
-                }
+                } break;
             case("c"): 
                 switch(unitOutput) {
                     case ("k"):
                         return value + 273.15  + " K";
                     case("f"):
                         return ((value*(9/5)) +32)  + " °F";
-                }
+                } break;
             case("f"): 
                 switch(unitOutput) {
                     case ("k"):
                         return (((value - 32) * 5/9) + 273.15) + " K";
                     case("c"):
                         return ((value - 32) * 5/9) + " °C";
-                }
+                } break;
         }        
     }
 
@@ -421,28 +424,28 @@ class convertUnits {
                         return value/1000 + " A";
                     case("ka"):
                         return value/1000000 + " kA";
-                }
+                } break;
             case("a"): 
                 switch(unitOutput) {
                     case ("ma"):
                         return value*1000  + " mA";
                     case("ka"):
                         return value/1000  + " kA";
-                }
+                } break;
             case("ka"): 
                 switch(unitOutput) {
                     case ("a"):
                         return value*1000 + " A";
                     case("ma"):
                         return value*1000000 + " mA";
-                }
+                } break;
         }        
     }
 
     convertSpoon(value, unitInput) {
         switch(unitInput) {
             case("tsp"): 
-                return (value/3) + " tbsp";
+                return (value/3) + " tbsp"; 
             case("tbsp"):
                 return (value*3)  + " tsp";
         }        
