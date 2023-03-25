@@ -1,3 +1,5 @@
 do the currency conversions
-fix the conversions
-make it so the conversion unit is the one u put in the arrays 
+fix the conversions for liquid Units
+make it efficent later after it runs 
+fix errors
+do test and documentation

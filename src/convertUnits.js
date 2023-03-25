@@ -62,7 +62,9 @@ class convertUnits {
                     case("ms"):
                         return value*43200000 + " ms";
                 } break;
-        }        
+            default:
+                return value
+        }     
     }
 
     convertLength(value, unitInput, unitOutput) {
@@ -217,6 +219,8 @@ class convertUnits {
                     case ("mm"):
                         return value*1609000 + " mm";
                 } break;
+            default:
+                return value;
         }        
     }
 
@@ -327,66 +331,90 @@ class convertUnits {
                     case ("g"):
                         return value*907200 + " g";
                 } break;
+            default:
+                return value;
         }        
     }
 
     convertLiquidVolume(value, unitInput, unitOutput) {
         switch(unitInput) {
-          case('ml'):
-            switch(unitOutput) {
-              case('l'):
-                return value / 1000 + " l";
-              case('fl oz'):
-                return value * 0.033814 + " fl oz";
-              case('cup'):
-                return value * 0.004167 + " cup(s)";
-              case('gal'):
-                return value / 3785.4118 + " gal";
-            } break;
-          case('l'):
-            switch(unitOutput) {
-              case('ml'):
-                return value * 1000 + " ml";
-              case('fl oz'):
-                return value * 33.814 + " fl oz";
-              case('cup'):
-                return value * 4.167 + " cup(s)";
-              case('gal'):
-                return value / 3.7854118 + " gal";
-            } break;
-          case('fl oz'):
-            switch(unitOutput) {
-              case('ml'):
-                return value * 29.5735 + " ml";
-              case('l'):
-                return value * 0.0295735 + " l";
-              case('cup'):
-                return value / 8 + " cup(s)";
-              case('gal'):
-                return value / 128 + " gal";
-            } break;
-          case('cup'):
-            switch(unitOutput) {
-              case('ml'):
-                return value * 236.588 + " ml";
-              case('l'):
-                return value * 0.236588 + " l";
-              case('fl oz'):
-                return value * 8 + " fl oz";
-              case('gal'):
-                return value / 16 + " gal";
-            } break;
-          case('gal'):
-            switch(unitOutput) {
-              case('ml'):
-                return value * 3785.4118 + " ml";
-              case('l'):
-                return value * 3.7854118 + " l";
-              case('fl oz'):
-                return value * 128 + " fl oz";
-              case('cup'):
-                return value * 16 + " cup(s)";
-            } break;
+            case('ml'):
+                switch(unitOutput) {
+                    case('l'):
+                        return value / 1000 + " l";
+                    case('m3'):
+                        return value / 1000 + " l";
+                    case('cm3'):
+                        return value / 1000 + " l";
+                    case('mm3'):
+                        return value / 1000 + " l";
+                    case('fl_oz'):
+                        return value * 0.033814 + " fl oz";
+                    case('c'):
+                        return value * 0.004167 + " cup(s)";
+                    case('gal'):
+                        return value / 3785.4118 + " gal";
+                } break;
+            case('l'):
+                switch(unitOutput) {
+                    case('ml'):
+                        return value * 1000 + " ml";
+                    case('m3'):
+                        return value / 1000 + " l";
+                    case('cm3'):
+                        return value / 1000 + " l";
+                    case('mm3'):
+                        return value / 1000 + " l";
+                    case('fl_oz'):
+                        return value * 33.814 + " fl oz";
+                    case('c'):
+                        return value * 4.167 + " cup(s)";
+                    case('gal'):
+                        return value / 3.7854118 + " gal";
+                    } break;
+            case('fl_oz'):
+                switch(unitOutput) {
+                    case('ml'):
+                        return value * 1000 + " ml";
+                    case('m3'):
+                        return value / 1000 + " l";
+                    case('cm3'):
+                        return value / 1000 + " l";
+                    case('mm3'):
+                        return value / 1000 + " l";  
+                    case('ml'):
+                        return value * 29.5735 + " ml";
+                    case('l'):
+                        return value * 0.0295735 + " l";
+                    case('c'):
+                        return value / 8 + " cup(s)";
+                    case('gal'):
+                        return value / 128 + " gal";
+                } break;
+            case('c'):
+                switch(unitOutput) {
+                    case('ml'):
+                        return value * 236.588 + " ml";
+                    case('l'):
+                        return value * 0.236588 + " l";
+                    case('fl_oz'):
+                        return value * 8 + " fl oz";
+                    case('gal'):
+                        return value / 16 + " gal";
+                } break;
+            case('gal'):
+                switch(unitOutput) {
+                    case('ml'):
+                        return value * 3785.4118 + " ml";
+                    case('l'):
+                        return value * 3.7854118 + " l";
+                    case('fl_oz'):
+                        return value * 128 + " fl oz";
+                    case('c'):
+                        return value * 16 + " cup(s)";
+                } break;
+            default:
+                return value;
         }
     }
 
@@ -413,6 +441,8 @@ class convertUnits {
                     case("c"):
                         return ((value - 32) * 5/9) + " °C";
                 } break;
+            default:
+                return value;
         }        
     }
 
@@ -439,6 +469,8 @@ class convertUnits {
                     case("ma"):
                         return value*1000000 + " mA";
                 } break;
+            default:
+                return value;
         }        
     }
 
@@ -448,6 +480,8 @@ class convertUnits {
                 return (value/3) + " tbsp"; 
             case("tbsp"):
                 return (value*3)  + " tsp";
+            default:
+                return value;
         }        
     }
 }

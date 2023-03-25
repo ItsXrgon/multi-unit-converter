@@ -116,9 +116,10 @@ class convertText {
 
     convertUnitsToSelected(value, unit) {
         unit = unit.replace(/[0-9]/g, '').trim();
-        console.log(value + " " + unit)
+        //console.log(value + " " + unit)
         const cu = new convertUnits()
         if(this.timeUnits.includes(unit)){ // case time units
+            if(unit == this.time) {return}
             if(units.timeUnits.day) {unit = "day";}
             else if(units.timeUnits.h) {unit = "h";}
             else if(units.timeUnits.min) {unit = "min";}
@@ -128,7 +129,8 @@ class convertText {
             return cu.convertTime(value, unit, this.time); 
         }
         if(this.lengthUnits.includes(unit)){ // case length units
-            if(units.lengthUnits.cm.includes(unit) ){ unit = "cm";}
+            if(unit == this.length) {return}
+            if(units.lengthUnits.cm.includes(unit)) { unit = "cm";}
             else if(units.lengthUnits.ft.includes(unit)) { unit = "ft";}
             else if(units.lengthUnits.in.includes(unit)) { unit = "in";}
             else if(units.lengthUnits.km.includes(unit)) { unit = "km";}
@@ -137,9 +139,10 @@ class convertText {
             else if(units.lengthUnits.mm.includes(unit)) { unit = "mm";}
             else if(units.lengthUnits.yd.includes(unit)) { unit = "yd";}
             
-            return cu.convertLength(value, unit, this.time);
+            return cu.convertLength(value, unit, this.length);
         }
         if(this.weightUnits.includes(unit)){ // case weight units
+            if(unit == this.weight) {return}
             if(units.weightUnits.g) {unit = "g";}
             else if(units.weightUnits.kg.includes(unit)) {unit = "kg";}
             else if(units.weightUnits.lb.includes(unit)) {unit = "lb"; }
@@ -148,9 +151,10 @@ class convertText {
             else if(units.weightUnits.ton.includes(unit)) {unit = "ton";}
             else if(units.weightUnits.tonnes.includes(unit)) {unit = "tonnes";}
     
-            return cu.convertWeight(value, unit, this.time);
+            return cu.convertWeight(value, unit, this.weight);
         }
         if(this.liquidVolumeUnits.includes(unit)){ // case liquid volume units
+            if(unit == this.liquidVolume) {return}
             if(units.liquidVolumeUnits.c.includes(unit)) {unit = "c"; }
             else if(units.liquidVolumeUnits.cm3.includes(unit)) {unit = "cm3";}
             else if(units.liquidVolumeUnits.fl_oz.includes(unit)) {unit = "fl_oz";}
@@ -161,31 +165,48 @@ class convertText {
             else if(units.liquidVolumeUnits.mm3.includes(unit)) {unit = "mm3"; }
             else if(units.liquidVolumeUnits.qt.includes(unit)) {unit = "qt";}
            
-            return cu.convertLiquidVolume(value, unit, this.time);
+            return cu.convertLiquidVolume(value, unit, this.liquidVolume);
         }
         if(this.temperatureUnits.includes(unit)){ // case temperature units
+            if(unit == this.temperature) {return}
             if(units.temperatureUnits.C.includes(unit)) {unit = "C"; }
             else if(units.temperatureUnits.K.includes(unit)) {unit = "K";}
             else if(units.temperatureUnits.F.includes(unit)) {unit = "F"; }
             
-            return cu.convertTempertaure(value, unit, this.time);
+            return cu.convertTempertaure(value, unit, this.temperature);
         }
         if(this.electricCurrentUnits.includes(unit)){ // case electric current units
+            if(unit == this.electricCurrent) {return}
             if(units.electricCurrentUnits.A.includes(unit)) {unit = "A"; }
             else if(units.electricCurrentUnits.kA.includes(unit)) {unit = "kA";} 
             else if(units.electricCurrentUnits.mA.includes(unit)) {unit = "mA";} 
 
-            return cu.convertElectricCurrent(value, unit, this.time);
+            return cu.convertElectricCurrent(value, unit, this.electricCurrent);
         }
         if(this.spoonUnits.includes(unit)){ // case spoon units
+            if(unit == this.spoon) {return}
             if(units.spoonUnits.tbsp.includes(unit)) {unit = "tbsp";} 
             else if(units.spoonUnits.tsp.includes(unit)) {unit = "tsp";} 
             
-            return cu.convertSpoon(value, unit, this.time);
+            return cu.convertSpoon(value, unit, this.spoon);
         }
         if(this.currencyUnits.includes(unit)){ // TO BE IMPLEMENTED
-            return cu.convertSpoon(value, unit, this.time); 
+            if(unit == this.currency) {return}
+            return cu.convertSpoon(value, unit, this.currency); 
         }
+    }
+
+
+    roundNumbers(value) {
+        const regex = /(\d+\.\d{4,})/g;
+        const matches = String(value).match(regex);
+        if (matches) {
+            matches.forEach(num => {
+                const rounded = parseFloat(num).toFixed(3);
+                value = value.replace(num, rounded);
+            });
+        }
+        return value;
     }
 
     /* CODE TO GET REGEX
@@ -219,19 +240,18 @@ class convertText {
         // loop through each unit found and convert it to its equivalent unit value 
         units.forEach((unit) => {
             // extract the numeric value and unit without the plural suffix
-            const [value, ...unitParts] = unit.replace(/\//, "").split(/s+/);
-            
-            const unitWithoutPlural = unitParts.join("");
-            // convert the value to a float
-            const floatValue = parseFloat(value);
-            
+            const value = unit.replace(/\D/g, '');
+
             // convert the unit to its equivalent SI value using the conversion factor dictionary
-            let newValue = this.convertUnitsToSelected(floatValue, unit.toLowerCase());
+            let newValue =  this.convertUnitsToSelected(value, unit.toLowerCase());
             
+            newValue = this.roundNumbers(newValue);
+            console.log(newValue + " / " + unit)
             // replace the original unit with the SI unit in the text
-            text = text.replace(new RegExp(`/${value}s?${unitWithoutPlural}`, "g"), newValue);
+            text = text.replace(unit, newValue);
         });
         return text;
+        
     }
 }
 
