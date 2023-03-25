@@ -1,2 +1,3 @@
 do the currency conversions
-fix the regex
+fix the conversions
+make it so the conversion unit is the one u put in the arrays 
