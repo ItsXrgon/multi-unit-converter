@@ -10,8 +10,8 @@
     "lengthUnits" : {
         "mm": ["milimeters", "milimeter", "mm"],
         "cm": ["centimeters", "centimeter","cm"],
-        "in": ["inches", "inch", "in"],
-        "ft": ["feet", "foot", "ft"],
+        "in": ["inches", "inch", "in", "\""],
+        "ft": ["feet", "foot", "ft", "'"],
         "yd": ["yards", "yard", "yd"],
         "m": ["meters", "meter", "m"],
         "km": ["kilometers", "kilometer","km"],
@@ -29,21 +29,20 @@
     },
 
     "liquidVolumeUnits" : {
-        "mm3": ["milimeters cubed", "milimeter cubed", "mm3"],
-        "cm3": ["centimeters cubed", "centimeter cubed", "cm3"],
-        "m3": ["meters cubed", "meter cubed", "m3"],
+        "mm3": ["milimeters cubed", "milimeter cubed", "mm3", "mm³"],
+        "cm3": ["centimeters cubed", "centimeter cubed", "cm3", "cm³"],
+        "m3": ["meters cubed", "meter cubed", "m3", "m³"],
         "ml": ["milliliters", "milliliter", "ml"],
         "l": ["liters", "liter","l"],
-        "qt": ["quarts", "quart", "qt"],
         "fl_oz": ["fluid ounces", "fluid ounce", "fl ozs", "fl oz"],
-        "c": ["cups", "cup"],
+        "cup": ["cups", "cup"],
         "gal": ["gallons", "gallon", "gal"]
     },
 
     "temperatureUnits" : {
         "K": ["kelvins", "kelvin", "k"],
-        "C": ["celsius", "c"],
-        "F": ["fahrenheit", "f"]
+        "C": ["celsius", "c", "°c"],
+        "F": ["fahrenheit", "f", "°f"]
     },
 
     "electricCurrentUnits" : {

@@ -169,7 +169,7 @@ class convertUnits {
                     case ("ft"):
                         return value/12 + " ft";
                     case("m"):
-                        return value/39.37 + " in";
+                        return value/39.37 + " m";
                     case("cm"):
                         return value*2.54 + " ms";
                     case ("mm"):
@@ -343,14 +343,14 @@ class convertUnits {
                     case('l'):
                         return value / 1000 + " l";
                     case('m3'):
-                        return value / 1000 + " l";
+                        return value / 1000000 + " m³";
                     case('cm3'):
-                        return value / 1000 + " l";
+                        return value + " cm³";
                     case('mm3'):
-                        return value / 1000 + " l";
+                        return value * 1000 + " mm³";
                     case('fl_oz'):
                         return value * 0.033814 + " fl oz";
-                    case('c'):
+                    case('cup'):
                         return value * 0.004167 + " cup(s)";
                     case('gal'):
                         return value / 3785.4118 + " gal";
@@ -360,59 +360,81 @@ class convertUnits {
                     case('ml'):
                         return value * 1000 + " ml";
                     case('m3'):
-                        return value / 1000 + " l";
+                        return value / 1000 + " m³";
                     case('cm3'):
-                        return value / 1000 + " l";
+                        return value * 1000 + " cm³";
                     case('mm3'):
-                        return value / 1000 + " l";
+                         return value * 1000000 + " mm³";
                     case('fl_oz'):
-                        return value * 33.814 + " fl oz";
-                    case('c'):
+                         return value * 33.814 + " fl oz";
+                    case('cup'):
                         return value * 4.167 + " cup(s)";
                     case('gal'):
-                        return value / 3.7854118 + " gal";
-                    } break;
-            case('fl_oz'):
+                         return value / 3.7854 + " gal";
+                } break;
+            case('m3'):
                 switch(unitOutput) {
-                    case('ml'):
-                        return value * 1000 + " ml";
-                    case('m3'):
-                        return value / 1000 + " l";
+                    case('l'):
+                        return value * 1000 + " l";
                     case('cm3'):
-                        return value / 1000 + " l";
+                        return value * 1000000 + " cm³";
                     case('mm3'):
-                        return value / 1000 + " l";  
-                    case('ml'):
-                        return value * 29.5735 + " ml";
-                    case('l'):
-                        return value * 0.0295735 + " l";
-                    case('c'):
-                        return value / 8 + " cup(s)";
-                    case('gal'):
-                        return value / 128 + " gal";
-                } break;
-            case('c'):
-                switch(unitOutput) {
-                    case('ml'):
-                        return value * 236.588 + " ml";
-                    case('l'):
-                        return value * 0.236588 + " l";
+                         return value * 1000000000 + " mm³";
                     case('fl_oz'):
-                        return value * 8 + " fl oz";
+                         return value * 33814 + " fl oz";
+                    case('cup'):
+                        return value * 416.7 + " cup(s)";
                     case('gal'):
-                        return value / 16 + " gal";
+                        return value * 264.17 + " gal";
                 } break;
-            case('gal'):
+            case('cm3'):
                 switch(unitOutput) {
-                    case('ml'):
-                        return value * 3785.4118 + " ml";
                     case('l'):
-                        return value * 3.7854118 + " l";
+                        return value / 1000 + " l";
+                    case('m3'):
+                        return value / 1000000 + " m³";
+                    case('mm3'):
+                         return value * 1000 + " mm³";
                     case('fl_oz'):
+                         return value * 0.033814 + " fl oz";
+                    case('cup'):
+                         return value * 0.004167 + " cup(s)";
+                    case('gal'):
+                        return value / 3785.4118 + " gal";
+                } break;
+            case('mm3'):
+                switch(unitOutput) {
+                    case('l'):
+                        return value / 1000000 + " l";
+                    case('m3'):
+                        return value / 1000000000 + " m³";
+                    case('cm3'):
+                        return value / 1000 + " cm³";
+                    case('fl_oz'):
+                        return value * 0.000033814 + " fl oz";
+                    case('cup'):
+                        return value * 0.000004167 + " cup(s)";
+                    case('gal'):
+                        return value / 3785411784 + " gal";
+                } break;
+            case ('gal'):
+                switch (unitOutput) {
+                    case ('ml'):
+                        return value * 3785.41 + " ml";
+                    case ('l'):
+                        return value * 3.78541 + " l";
+                    case ('m3'):
+                        return value / 264.17 + " m³";
+                    case ('cm3'):
+                        return value * 3785.41 + " cm³";
+                    case ('mm3'):
+                        return value * 3785410 + " mm³";
+                    case ('fl_oz'):
                         return value * 128 + " fl oz";
-                    case('c'):
+                    case ('cup'):
                         return value * 16 + " cup(s)";
-                } break;
+                }
+                break;
             default:
                 return value;
         }
@@ -432,14 +454,14 @@ class convertUnits {
                     case ("k"):
                         return value + 273.15  + " K";
                     case("f"):
-                        return ((value*(9/5)) +32)  + " °F";
+                        return ((value*(9/5)) +32)  + "°F";
                 } break;
             case("f"): 
                 switch(unitOutput) {
                     case ("k"):
                         return (((value - 32) * 5/9) + 273.15) + " K";
                     case("c"):
-                        return ((value - 32) * 5/9) + " °C";
+                        return ((value - 32) * 5/9) + "°C";
                 } break;
             default:
                 return value;
