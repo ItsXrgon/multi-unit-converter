@@ -8,7 +8,9 @@
   "files": [
     "src/*"
   ],
-  "scripts": {},
+  "scripts": {
+    "test": "jest"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ItsXrgon/js-unit-converter.git"
@@ -29,5 +31,8 @@
   "homepage": "https://github.com/itsXrgon/js-unit-converter#readme",
   "dependencies": {
     "js-unit-converter": "1.1.0"
+  },
+  "devDependencies": {
+    "jest": "29.5.0"
   }
 }
