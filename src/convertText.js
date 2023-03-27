@@ -13,7 +13,6 @@ class convertText {
     acceleration = `${this.length}/${this.time}2` // Meter Per Second Squared
     temperature = "k" // Kelvin
     electricCurrent = "a" // Ampere
-    currency = "usd" // Dollars
     spoon = "tbsp" // Tablespoon
 
     // JSON of lists of units function is compatible with
@@ -25,7 +24,6 @@ class convertText {
     temperatureUnits = [].concat(...Object.values(units.temperatureUnits))
     electricCurrentUnits = [].concat(...Object.values(units.electricCurrentUnits))
     spoonUnits = [].concat(...Object.values(units.spoonUnits))
-    currencyUnits = [].concat(...Object.values(units.currencyUnits))
 
     constructor(){
         // SI Units already the base value
@@ -138,21 +136,6 @@ class convertText {
             this.spoon = this.#resolveAliasesSpoon(spoon.toLowerCase());
         }
     }
-    
-    /**
-    * Sets the currency convertText() should convert to
-    *
-    * @param {string} currency The currency
-    */
-    setUnitCurrency(currency) {
-        if(typeof currency != 'string'){
-            throw 'Unit should be a string!';
-        } else if(!this.currencyUnits.includes(currency.toLowerCase())){
-            throw new InvalidUnitException(`Input ${currency} is not a currency unit!`);
-        } else{       
-            this.currency = currency
-        }
-    }
 
     #resolveAliasesTime(unit) {
         if(units.timeUnits.day.includes(unit)) {unit = "day";}
@@ -218,9 +201,15 @@ class convertText {
         return unit;
     }
 
+    /**
+    * Converts the values
+    *@param {number} value The value of the input
+    * @param {string} unit The unit of the input
+    */
     #convertUnitsToSelected(value, unit) {
         const numberAndUnit = unit; 
         unit = unit.replace(/[0-9\.°']/g, '').trim();
+
 
         const cu = new convertUnits()
         if(this.timeUnits.includes(unit)){ // case time units
@@ -272,10 +261,6 @@ class convertText {
             if(unit == this.spoon) {return numberAndUnit}
             return cu.convertSpoon(value, unit, this.spoon);
         }
-        if(this.currencyUnits.includes(unit)){ // TO BE IMPLEMENTED
-            if(unit == this.currency) {return numberAndUnit}
-            return cu.convertCurrency(value, this.currency, unit); 
-        }
     }
 
 
@@ -317,7 +302,7 @@ class convertText {
 
         // regex to detect numbers followed by units
         // find all the units in the text using the regex pattern
-        const regex = new RegExp(/(\d*\.?\d+)(?:\s*)(milimeters|milimeter|mm|centimeters|centimeter|cm|inches|inch|in|feet|foot|ft|yards|yard|yd|meters|meter|m|kilometers|kilometer|km|miles|mile|mi|milimeters|milimeter|mm|centimeters|centimeter|cm|inches|inch|in|feet|foot|ft|yards|yard|yd|meters|meter|m|kilometers|kilometer|km|miles|mile|mi|miligrams|miligram|mg|grams|gram|g|ounces|ounce|ozs|oz|pounds|pound|lbs|lb|kilograms|kilogram|kg|tonnes|tonne|tn|tons|ton|t|milimeters cubed|milimeter cubed|mm3|centimeters cubed|centimeter cubed|cm3|meters cubed|meter cubed|m3|milliliters|milliliter|ml|liters|liter|l|quarts|quart|qt|fluid ounces|fluid ounce|fl ozs|fl oz|cups|cup|gallons|gallon|gal|kelvins|kelvin|k|celsius|c|fahrenheit|f|milliamperes|milliampere|ma|amperes|ampere|a|kiloamperes|kiloampere|ka|usd|$|euro|€|gbp|£|JPY|¥|AED|CNY|AUD|CAD|CHF|HKD|SGD|SEK|KRW|NOK|NZD|INR|MXN|TWD|ZAR|egp|teaspoons|teaspoon|tea spoon|tsp|tablespoons|tablespoons|table spoon|tbsp|pi|°C|°F|°K|C|F|K|(\d*)(?:'(\d+)(?:\"|in|inch|inches)?|ft|foot|feet))(?!\w)/g)
+        const regex = new RegExp(/(\d*\.?\d+)(?:\s*)(milimeters|milimeter|mm|centimeters|centimeter|cm|inches|inch|in|feet|foot|ft|yards|yard|yd|meters|meter|m|kilometers|kilometer|km|miles|mile|mi|milimeters|milimeter|mm|centimeters|centimeter|cm|inches|inch|in|feet|foot|ft|yards|yard|yd|meters|meter|m|kilometers|kilometer|km|miles|mile|mi|miligrams|miligram|mg|grams|gram|g|ounces|ounce|ozs|oz|pounds|pound|lbs|lb|kilograms|kilogram|kg|tonnes|tonne|tn|tons|ton|t|milimeters cubed|milimeter cubed|mm3|centimeters cubed|centimeter cubed|cm3|meters cubed|meter cubed|m3|milliliters|milliliter|ml|liters|liter|l|quarts|quart|qt|fluid ounces|fluid ounce|fl ozs|fl oz|cups|cup|gallons|gallon|gal|kelvins|kelvin|k|celsius|c|fahrenheit|f|milliamperes|milliampere|ma|amperes|ampere|a|kiloamperes|kiloampere|ka|teaspoons|teaspoon|tea spoon|tsp|tablespoons|tablespoons|table spoon|tbsp|pi|°C|°F|°K|C|F|K|(\d*)(?:'(\d+)(?:\"|in|inch|inches)?|ft|foot|feet))(?!\w)/g)
         const units = text.match(regex);
 
         // if no units are found, return the original text
@@ -326,6 +311,8 @@ class convertText {
         } 
 
         // loop through each unit found and convert it to its equivalent unit value 
+        let start = 0;
+        let index = 0;
         units.forEach((unit) => {
             // extract the numeric value and unit without the plural suffix
             let value = parseFloat(unit);
@@ -333,11 +320,12 @@ class convertText {
                 const measurements = unit.split("'")
                 value = parseFloat(measurements[0])*12 + parseFloat(measurements[1]);
             } 
-            console.log(unit)
+
             // convert the unit to its equivalent SI value using the conversion factor dictionary
             let newValue =  this.#convertUnitsToSelected(value, unit.toLowerCase());
             
             newValue = this.#roundNumbers(newValue);
+
             // replace the original unit with the SI unit in the text
             text = text.replace(unit, newValue);
         });

@@ -3,7 +3,7 @@ const convertText = require('../src/convertText.js');
 describe('js-unit-converter', () => {
     
     // Test case for a long string with unit
-    test('converts multiple values and units in string', () => {
+    test('converts multiple values and units in a short string', () => {
         cu = new convertText();
         const input = 'I have a 6ft tall friend who weighs 175lbs. Yesterday, we hiked for 5 miles and climbed 1000ft. Today, the temperature is 72°F. I am 5\'11\" and my weight is 160lbs. We drank 2 gallons of water and 1.5 liters of soda. I also took 2 teaspoons of sugar in my coffee this morning. The length of the room is 12 feet and the width is 10 feet. The height of the ceiling is 2.5 meters. The weight of the watermelon is 5 kilograms.';
         const expectedOutput = 'I have a 1.829 m tall friend who weighs 79.365 kg. Yesterday, we hiked for 8045 m and climbed 304.785 m. Today, the temperature is 295.372 K. I am 1.803 m and my weight is 72.562 kg. We drank 0.008 m³ of water and 0.002 m³ of soda. I also took 0.667 tbsp of sugar in my coffee this morning. The length of the room is 3.657 m and the width is 3.048 m. The height of the ceiling is 2.5 meters. The weight of the watermelon is 5 kilograms.';
@@ -11,6 +11,14 @@ describe('js-unit-converter', () => {
         expect(cu.convertText(input)).toBe(expectedOutput);
     });
 
+    test('converts multiple values and units in a long string', () => {
+        cu = new convertText();
+        const input = 'I have a 7ft long sofa that weighs 200lbs. Yesterday, I ran for 10 kilometers and climbed 500 meters. Today, the temperature is 20°C. I am 6 feet tall and my weight is 170lbs. I drank 1 gallon of water and 500 milliliters of juice. I also took 3 tablespoons of sugar in my tea this morning. The length of the kitchen is 15 feet and the width is 8 feet. The height of the ceiling is 3 meters. The weight of the water bottle is 1 kilogram. I have a 60-inch TV that weighs 50 pounds. The length of the garden hose is 50 feet and the width is 0.5 inches. The speed of the car is 60 miles per hour (mph), and it is traveling for 3 hours. The distance it covers is 180 miles';
+        const expectedOutput = 'I have a 2.133 m long sofa that weighs 90.703 kg. Yesterday, I ran for 10000 m and climbed 500 meters. Today, the temperature is 293.15 K. I am 1.829 m tall and my weight is 77.098 kg. I drank 0.004 m³ of water and 0.001 m³ of juice. I also took 3 tablespoons of sugar in my tea this morning. The length of the kitchen is 4.572 m and the width is 2.438 m. The height of the ceiling is 3 meters. The weight of the water bottle is 1 kilogram. I have a 60-inch TV that weighs 22.676 kg. The length of the garden hose is 15.239 m and the width is 0.013 m. The speed of the car is 96540 m per hour (mph), and it is traveling for 3 hours. The distance it covers is 289620 m';
+  
+        expect(cu.convertText(input)).toBe(expectedOutput);
+    });
+    
     // Test case for a string with a single value and unit
     test('converts single value and unit in string', () => {
         cu = new convertText();

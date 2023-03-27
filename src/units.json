@@ -54,28 +54,5 @@
     "spoonUnits" : {
         "tsp": ["teaspoons", "teaspoon", "tea spoon", "tsp"],
         "tbsp": ["tablespoons", "tablespoons", "table spoon", "tbsp"]
-    },
-
-    "currencyUnits" : {
-        "USD": ["USD", "$"],
-        "Euro": ["Euro","€"],
-        "GBP": ["GBP","£"],
-        "JPY": ["JPY","¥"],
-        "AED": ["AED"], 
-        "CNY": ["CNY"], 
-        "AUD": ["AUD"],
-        "CAD": ["CAD"],
-        "CHF": ["CHF"],
-        "HKD": ["HKD"],
-        "SGD": ["SGD"],
-        "SEK": ["SEK"],
-        "KRW": ["KRW"],
-        "NOK": ["NOK"],
-        "NZD": ["NZD"],
-        "INR": ["INR"],
-        "MXN": ["MXN"],
-        "TWD": ["TWD"],
-        "ZAR": ["ZAR"],
-        "EGP": ["egp"]
     }
 }

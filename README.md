@@ -4,7 +4,7 @@ This is a JS library that converts all units and values in a given text to user 
 ## Installation
 You can install this library using npm:
 
-```npm install js-unit-converter```
+```npm install multi-unit-converter```
 
 ## Usage
 To use this library, first import it into your project using require or import then initiliase it:
@@ -71,8 +71,6 @@ setUnitTemperature(temperature) // Sets the specified unit of temperature (SI un
 setUnitElectricCurrent(electricCurrent) // Sets the specified unit of electric current (SI unit if unspecified) 
 
 setUnitSpoon(spoon) // Sets the specified unit of spoon (SI unit if unspecified) 
-
-setUnitCurrency(currency) // Sets the specified currency (USD if unspecified) 
 ```
 
 ## Current list of available units and their aliases:
@@ -133,29 +131,6 @@ setUnitCurrency(currency) // Sets the specified currency (USD if unspecified)
     "spoonUnits" : {
         "tsp": ["teaspoons", "teaspoon", "tea spoon", "tsp"],
         "tbsp": ["tablespoons", "tablespoons", "table spoon", "tbsp"]
-    },
-
-    "currencyUnits" : {
-        "USD": ["usd", "$"],
-        "Euro": ["euro","€"],
-        "GBP": ["gbp","£"],
-        "JPY": ["JPY","¥"],
-        "AED": ["AED"], 
-        "CNY": ["CNY"], 
-        "AUD": ["AUD"],
-        "CAD": ["CAD"],
-        "CHF": ["CHF"],
-        "HKD": ["HKD"],
-        "SGD": ["SGD"],
-        "SEK": ["SEK"],
-        "KRW": ["KRW"],
-        "NOK": ["NOK"],
-        "NZD": ["NZD"],
-        "INR": ["INR"],
-        "MXN": ["MXN"],
-        "TWD": ["TWD"],
-        "ZAR": ["ZAR"],
-        "EGP": ["egp"]
     }
 }
 ```

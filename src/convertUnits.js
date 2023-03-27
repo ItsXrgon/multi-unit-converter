@@ -561,30 +561,6 @@ class convertUnits {
                 return value;
         }        
     }
-
-    /**
-    * Sets the currency convertText() should convert to
-    *
-    * @param {number} amount The currency value
-    * @param {string} fromCurrency The currency to convert from
-    * @param {string} toCurrency The currency to convert to
-    * @returns {string}
-    */
-    convertCurrency(amount, fromCurrency, toCurrency) {
-        const exchangeRateAPI = `https://api.exchangeratesapi.io/latest?base=${fromCurrency}`;
-      
-        fetch(exchangeRateAPI)
-            .then(response => response.json())
-            .then(data => {
-                const exchangeRate = data.rates[toCurrency];
-                const convertedAmount = amount * exchangeRate;
-      
-                return convertedAmount + " " + toCurrency.toUpperCase;
-          })
-          .catch(error => {
-            return amount + " " + fromCurrency.toUpperCase;
-        });
-      }
 }
 
 
