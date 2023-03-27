@@ -8,8 +8,8 @@
     },
 
     "lengthUnits" : {
-        "mm": ["milimeters", "milimeter", "mm"],
-        "cm": ["centimeters", "centimeter","cm"],
+        "mm": ["milimeters", "milimeter", "mm", "mms"],
+        "cm": ["centimeters", "centimeter","cm", "cms"],
         "in": ["inches", "inch", "in", "\""],
         "ft": ["feet", "foot", "ft", "'"],
         "yd": ["yards", "yard", "yd"],

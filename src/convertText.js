@@ -34,76 +34,116 @@ class convertText {
     // Functions to change the units convertText(text) changes the units to
     // Units should be a string and included in the available list of units 
 
+    /**
+    * Sets the unit of time that convertText() should convert to
+    *
+    * @param {string} time  The unit of time
+    */
     setUnitTime(time) {
         if(typeof time != 'string'){
             throw 'Unit should be a string!';
         } else if(!this.timeUnits.includes(time.toLowerCase())){
             throw new InvalidUnitException(`Input ${time} is not a time unit!`);
         } else {       
-            this.time = this.resolveAliasesTemperature(time.toLowerCase());
+            this.time = this.#resolveAliasesTemperature(time.toLowerCase());
         }
     }
 
+    /**
+    * Sets the unit of length that convertText() should convert to
+    *
+    * @param {string} length  The unit of length
+    */
     setUnitLength(length) {
         if(typeof length != 'string'){
             throw 'Unit should be a string!';
         } else if(!this.lengthUnits.includes(length.toLowerCase())){
             throw new InvalidUnitException(`Input ${length} is not a length unit!`);
         } else {            
-            this.length = this.resolveAliasesLength(length.toLowerCase());
+            this.length = this.#resolveAliasesLength(length.toLowerCase());
         }
     }
 
+    /**
+    * Sets the unit of weight that convertText() should convert to
+    *
+    * @param {string} weight  The unit of weight
+    */
     setUnitWeight(weight) {
         if(typeof weight != 'string'){
             throw 'Unit should be a string!';
         } else if(!this.weightUnits.includes(weight.toLowerCase())){
             throw new InvalidUnitException(`Input ${weight} is not a mass unit!`);
         } else {       
-            this.mass = this.resolveAliasesWeight(weight.toLowerCase());
+            this.mass = this.#resolveAliasesWeight(weight.toLowerCase());
         }
     }
 
+    /**
+    * Sets the unit of liquid volume that convertText() should convert to
+    *
+    * @param {string} liquidVolume The unit of liquid volume
+    */
     setUnitLiquidVolume(liquidVolume) {
         if(typeof liquidVolume != 'string'){
             throw 'Unit should be a string!';
         } else if(!this.liquidVolumeUnits.includes(liquidVolume.toLowerCase())){
             throw new InvalidUnitException(`Input ${liquidVolume} is not a liquid volume unit!`);
         } else {       
-            this.mass = this.resolveAliasesLiquidVolume(liquidVolume.toLowerCase());
+            this.mass = this.#resolveAliasesLiquidVolume(liquidVolume.toLowerCase());
         }
     }
 
+    /**
+    * Sets the unit of temperature volume that convertText() should convert to
+    *
+    * @param {string} temperature The unit of temperature
+    */
     setUnitTemperature(temperature) {
         if(typeof temperature  != 'string'){
             throw 'Unit should be a string!';
         } else if(!this.temperatureUnits.includes(temperature.toLowerCase())){
             throw new InvalidUnitException(`Input ${temperature} is not a temperature unit!`);
         } else{       
-            this.temperature = this.resolveAliasesTemperature(temperature.toLowerCase());
+            this.temperature = this.#resolveAliasesTemperature(temperature.toLowerCase());
         }
     }
 
+    /**
+    * Sets the unit of electric current volume that convertText() should convert to
+    *
+    * @param {string} electricCurrent The unit of electric current
+    */
     setUnitElectricCurrent(electricCurrent) {
         if(typeof electricCurrent != 'string'){
             throw 'Unit should be a string!';
         } else if(!this.electricCurrentUnits.includes(electricCurrent.toLowerCase())){
             throw new InvalidUnitException(`Input ${electricCurrent} is not an electric current unit!`);
         } else{       
-            this.electricCurrent = this.resolveAliasesElectricCurrent(electricCurrent.toLowerCase());
+            this.electricCurrent = this.#resolveAliasesElectricCurrent(electricCurrent.toLowerCase());
         }
     }
 
+    /**
+    * Sets the unit of spoon volume that convertText() should convert to
+    *
+    * @param {string} spoon The unit of spoon
+    */
     setUnitSpoon(spoon) {
         if(typeof spoon != 'string'){
             throw 'Unit should be a string!';
         } else if(!this.spoonUnits.includes(spoon.toLowerCase())){
             throw new InvalidUnitException(`Input ${spoon} is not a spoon unit!`);
         } else{       
-            this.spoon = this.resolveAliasesSpoon(spoon.toLowerCase());
+            this.spoon = this.#resolveAliasesSpoon(spoon.toLowerCase());
         }
     }
-
+    
+    /**
+    * Sets the currency convertText() should convert to
+    *
+    * @param {string} currency The currency
+    */
     setUnitCurrency(currency) {
         if(typeof currency != 'string'){
             throw 'Unit should be a string!';
@@ -114,7 +154,7 @@ class convertText {
         }
     }
 
-    resolveAliasesTime(unit) {
+    #resolveAliasesTime(unit) {
         if(units.timeUnits.day.includes(unit)) {unit = "day";}
         else if(units.timeUnits.h.includes(unit)) {unit = "h";}
         else if(units.timeUnits.min.includes(unit)) {unit = "min";}
@@ -123,7 +163,7 @@ class convertText {
         return unit;
     }
 
-    resolveAliasesLength(unit) {
+    #resolveAliasesLength(unit) {
         if(units.lengthUnits.cm.includes(unit)) { unit = "cm";}
         else if(units.lengthUnits.ft.includes(unit)) { unit = "ft";}
         else if(units.lengthUnits.in.includes(unit)) { unit = "in";}
@@ -135,7 +175,7 @@ class convertText {
         return unit;
     }
 
-    resolveAliasesWeight(unit) {
+    #resolveAliasesWeight(unit) {
         if(units.weightUnits.g.includes(unit)) {unit = "g";}
         else if(units.weightUnits.kg.includes(unit)) {unit = "kg";}
         else if(units.weightUnits.lb.includes(unit)) {unit = "lb";}
@@ -146,7 +186,7 @@ class convertText {
         return unit;
     }
 
-    resolveAliasesLiquidVolume(unit) {
+    #resolveAliasesLiquidVolume(unit) {
         if(units.liquidVolumeUnits.cup.includes(unit)) {unit = "cup";}
         else if(units.liquidVolumeUnits.cm3.includes(unit)) {unit = "cm3";}
         else if(units.liquidVolumeUnits.fl_oz.includes(unit)) {unit = "fl_oz";}
@@ -158,76 +198,76 @@ class convertText {
         return unit;
     }
 
-    resolveAliasesTemperature(unit) {
+    #resolveAliasesTemperature(unit) {
         if(units.temperatureUnits.C.includes(unit)) {unit = "c"; }
         else if(units.temperatureUnits.K.includes(unit)) {unit = "k";}
         else if(units.temperatureUnits.F.includes(unit)) {unit = "f"; }
         return unit;
     }
 
-    resolveAliasesElectricCurrent(unit) {
+    #resolveAliasesElectricCurrent(unit) {
         if(units.electricCurrentUnits.A.includes(unit)) {unit = "A"; }
         else if(units.electricCurrentUnits.kA.includes(unit)) {unit = "kA";} 
         else if(units.electricCurrentUnits.mA.includes(unit)) {unit = "mA";} 
         return unit;
     }
 
-    resolveAliasesSpoon(unit) {
+    #resolveAliasesSpoon(unit) {
         if(units.spoonUnits.tbsp.includes(unit)) {unit = "tbsp";} 
         else if(units.spoonUnits.tsp.includes(unit)) {unit = "tsp";} 
         return unit;
     }
 
-    convertUnitsToSelected(value, unit) {
+    #convertUnitsToSelected(value, unit) {
         const numberAndUnit = unit; 
         unit = unit.replace(/[0-9\.°']/g, '').trim();
 
         const cu = new convertUnits()
         if(this.timeUnits.includes(unit)){ // case time units
             
-            unit = this.resolveAliasesTime(unit.toLowerCase());
+            unit = this.#resolveAliasesTime(unit.toLowerCase());
 
             if(unit == this.time) {return numberAndUnit}
             return cu.convertTime(value, unit, this.time); 
         }
         if(this.lengthUnits.includes(unit)){ // case length units
 
-            unit = this.resolveAliasesLength(unit.toLowerCase());
+            unit = this.#resolveAliasesLength(unit.toLowerCase());
 
             if(unit == this.length) {return "" + numberAndUnit}           
             return cu.convertLength(value, unit, this.length);
         }
         if(this.weightUnits.includes(unit)){ // case weight units
 
-            unit = this.resolveAliasesWeight(unit.toLowerCase());
+            unit = this.#resolveAliasesWeight(unit.toLowerCase());
     
             if(unit == this.weight) {return "" + numberAndUnit}
             return cu.convertWeight(value, unit, this.weight);
         }
         if(this.liquidVolumeUnits.includes(unit)){ // case liquid volume units
 
-            unit = this.resolveAliasesLiquidVolume(unit.toLowerCase());
+            unit = this.#resolveAliasesLiquidVolume(unit.toLowerCase());
            
             if(unit == this.liquidVolume) {return value}
             return cu.convertLiquidVolume(value, unit, this.liquidVolume);
         }
         if(this.temperatureUnits.includes(unit)){ // case temperature units
  
-            unit = this.resolveAliasesTemperature(unit.toLowerCase());
+            unit = this.#resolveAliasesTemperature(unit.toLowerCase());
             
             if(unit == this.temperature) {return numberAndUnit}
             return cu.convertTempertaure(value, unit, this.temperature);
         }
         if(this.electricCurrentUnits.includes(unit)){ // case electric current units
             
-            unit = this.resolveAliasesElectricCurrent(unit.toLowerCase());
+            unit = this.#resolveAliasesElectricCurrent(unit.toLowerCase());
 
             if(unit == this.electricCurrent) {return numberAndUnit}
             return cu.convertElectricCurrent(value, unit, this.electricCurrent);
         }
         if(this.spoonUnits.includes(unit)){ // case spoon units
            
-            unit = this.resolveAliasesSpoon(unit.toLowerCase());
+            unit = this.#resolveAliasesSpoon(unit.toLowerCase());
             
             if(unit == this.spoon) {return numberAndUnit}
             return cu.convertSpoon(value, unit, this.spoon);
@@ -239,7 +279,7 @@ class convertText {
     }
 
 
-    roundNumbers(value) {
+    #roundNumbers(value) {
         const regex = /(\d+\.\d{4,})/g;
         const matches = String(value).match(regex);
         if (matches) {
@@ -264,6 +304,12 @@ class convertText {
     console.log(regExUnits)
     */
 
+    /**
+    * Converts text to specified units
+    *
+    * @param {string} text  The text to convert
+    * @returns {string} Text with converted values and units
+    */
     convertText(text) {
         if(typeof text != 'string'){
             throw 'Text should be a string!';
@@ -289,9 +335,9 @@ class convertText {
             } 
             console.log(unit)
             // convert the unit to its equivalent SI value using the conversion factor dictionary
-            let newValue =  this.convertUnitsToSelected(value, unit.toLowerCase());
+            let newValue =  this.#convertUnitsToSelected(value, unit.toLowerCase());
             
-            newValue = this.roundNumbers(newValue);
+            newValue = this.#roundNumbers(newValue);
             // replace the original unit with the SI unit in the text
             text = text.replace(unit, newValue);
         });
