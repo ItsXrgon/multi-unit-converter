@@ -1,8 +1,8 @@
-import units from './units.json' assert { type: "json" };;
-import convertUnits from './convertUnits.js';
-import InvalidUnitException from './Exceptions/InvalidUnitException.js';
+const units = require("./units.json");
+const convertUnits = require("./convertUnits.js");
+const InvalidUnitException = require('./Exceptions/InvalidUnitException').InvalidUnitException;
 
-class convertText {
+class MultiUnitConverter {
     time = "s" // Seconds
     length = "m" // Meter
     weight = "kg" // Kilogram
@@ -334,4 +334,4 @@ class convertText {
     }
 }
 
-export default convertText
+module.exports = MultiUnitConverter;

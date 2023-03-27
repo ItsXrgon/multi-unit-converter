@@ -1,3 +1,3 @@
-import MultiUnitConverter from'./convertText.js';
+const MultiUnitConverter = require('./MultiUnitConverter');
 
-export default MultiUnitConverter
+module.exports = MultiUnitConverter;

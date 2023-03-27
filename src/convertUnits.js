@@ -563,5 +563,4 @@ class convertUnits {
     }
 }
 
-
-export default convertUnits;
+module.exports = convertUnits

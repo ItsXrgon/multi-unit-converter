@@ -4,7 +4,7 @@
   "description": "Convert all units in a string to specified units or SI units if unspecified",
   "main": "src/index.cjs",
   "module": "src/index.cjs",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "test": "jest"
   },
