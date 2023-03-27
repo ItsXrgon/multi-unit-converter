@@ -4,7 +4,7 @@ This is a JS library that converts all units and values in a given text to user 
 ## Installation
 You can install this library using npm:
 
-```npm install js-unit-converter```
+```npm install multi-unit-converter```
 
 ## Usage
 To use this library, first import it into your project using require or import then initiliase it:
