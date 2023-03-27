@@ -1,4 +1,4 @@
-# SI-Unit-Converter
+# JS-Unit-Converter
 This is a JS library that converts all units and values in a given text to user specified units or ti their SI equivalents if specified.
 
 ## Installation
