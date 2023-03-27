@@ -1,5 +1,5 @@
 {
-  "name": "js-unit-converter",
+  "name": "multi-unit-converter",
   "version": "1.0.0",
   "description": "Convert all units in a string to specified units or SI units if unspecified",
   "main": "src/index.cjs",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ItsXrgon/js-unit-converter.git"
+    "url": "https://github.com/ItsXrgon/multi-unit-converter.git"
   },
   "keywords": [
     "units",
@@ -26,11 +26,11 @@
   "author": "ItsXrgon",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/itsXrgon/js-unit-converter/issues"
+    "url": "https://github.com/itsXrgon/multi-unit-converter/issues"
   },
-  "homepage": "https://github.com/itsXrgon/js-unit-converter#readme",
+  "homepage": "https://github.com/itsXrgon/multi-unit-converter#readme",
   "dependencies": {
-    "js-unit-converter": "1.1.0"
+    "multi-unit-converter": "1.0.0"
   },
   "devDependencies": {
     "jest": "29.5.0"

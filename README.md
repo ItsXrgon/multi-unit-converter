@@ -1,4 +1,4 @@
-# JS-Unit-Converter
+# multi-unit-converter
 This is a JS library that converts all units and values in a given text to user specified units or to their SI equivalents if specified.
 
 ## Installation
@@ -10,24 +10,24 @@ You can install this library using npm:
 To use this library, first import it into your project using require or import then initiliase it:
 
 ```js
-const jsUnitConverter = require('js-unit-converter');
-const cu = new jsUnitConverter();
+const multiUnitConverter = require('multi-unit-converter');
+const muc = new multiUnitConverter();
 ```
 
 You can then use the convertText(text) command to convert a text string to its SI equivalent:
 
 ```js
 const inputText = 'The car traveled 50 miles and used 5 gallons of gas.';
-const outputText = cu.convertText(inputText);
+const outputText = muc.convertText(inputText);
 console.log(outputText); // Output: 'The car traveled 80.47 km and used 18.93 l of gas.'
 ```
 In this example, we pass the input text string 'The car traveled 50 miles and used 5 gallons of gas.' to the convertText() command, and store the output in the outputText variable. We then log the output using console.log(), which should return the string 'The car traveled 80.47 kilometers and used 18.93 liters of gas.'.
 
 
 ```js
-cu.setUnitLength("m"); // Now the unit of the length we convert to is meter (m) not kilemeter (km)
+muc.setUnitLength("m"); // Now the unit of the length we convert to is meter (m) not kilemeter (km)
 const inputText = 'The car traveled 50 miles and used 5 gallons of gas.';
-const outputText = cu.convertText(inputText);
+const outputText = muc.convertText(inputText);
 console.log(outputText); // Output: 'The car traveled 80470 m and used 18.93 l of gas.
 ```
 
@@ -38,18 +38,18 @@ In this example, we copy the same process as example 1 but this time we switches
 This library works for the most common spelling of units, for example
 
 ```js
-cu.setUnitLength("m");
-cu.setUnitLength("meter");
-cu.setUnitLength("meters");
+muc.setUnitLength("m");
+muc.setUnitLength("meter");
+muc.setUnitLength("meters");
 ```
 
 All 3 function calls would all set the length unit value to 'm' as it is the abbreviation of the other 2.
 
 ```js
-text = cu.convertText("5 cm");
-text = cu.convertText("5 cms");
-text = cu.convertText("5 centimeters");
-text = cu.convertText("5 centimeter");
+text = muc.convertText("5 cm");
+text = muc.convertText("5 cms");
+text = muc.convertText("5 centimeters");
+text = muc.convertText("5 centimeter");
 ```
 
 All 4 function calls would return "0.05 m" as all 4 are acceptable spelling of centimeter, therefore detected and converted to the specified length unit (in this case its meter).
