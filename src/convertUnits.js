@@ -5,6 +5,14 @@ class convertUnits {
         // SI Units already the base value
     }
 
+    /**
+    * 
+    *
+    * @param {number} value The value
+    * @param {string} unitInput Unit from
+    * @param {string} unitOutput Unit to
+    * @returns {string}
+    */
     convertTime(value, unitInput, unitOutput) {
         switch(unitInput) {
             case("s"): 
@@ -67,6 +75,14 @@ class convertUnits {
         }     
     }
 
+    /**
+    * 
+    *
+    * @param {number} value The value
+    * @param {string} unitInput Unit from
+    * @param {string} unitOutput Unit to
+    * @returns {string}
+    */
     convertLength(value, unitInput, unitOutput) {
         let feet = ""
         let inch = ""
@@ -224,6 +240,14 @@ class convertUnits {
         }        
     }
 
+    /**
+    * 
+    *
+    * @param {number} value The value
+    * @param {string} unitInput Unit from
+    * @param {string} unitOutput Unit to
+    * @returns {string}
+    */
     convertWeight(value, unitInput, unitOutput) {
         switch(unitInput) {
             case("g"): 
@@ -336,6 +360,14 @@ class convertUnits {
         }        
     }
 
+    /**
+    * 
+    *
+    * @param {number} value The value
+    * @param {string} unitInput Unit from
+    * @param {string} unitOutput Unit to
+    * @returns {string}
+    */
     convertLiquidVolume(value, unitInput, unitOutput) {
         switch(unitInput) {
             case('ml'):
@@ -439,7 +471,14 @@ class convertUnits {
                 return value;
         }
     }
-
+    /**
+    * 
+    *
+    * @param {number} value The value
+    * @param {string} unitInput Unit from
+    * @param {string} unitOutput Unit to
+    * @returns {string}
+    */
     convertTempertaure(value, unitInput, unitOutput) {
         switch(unitInput) {
             case("k"): 
@@ -467,7 +506,15 @@ class convertUnits {
                 return value;
         }        
     }
-
+    
+    /**
+    * 
+    *
+    * @param {number} value The value
+    * @param {string} unitInput Unit from
+    * @param {string} unitOutput Unit to
+    * @returns {string}
+    */
     convertElectricCurrent(value, unitInput, unitOutput) {
         switch(unitInput) {
             case("ma"): 
@@ -494,8 +541,16 @@ class convertUnits {
             default:
                 return value;
         }        
-    }
-
+    }   
+    
+     /**
+    * 
+    *
+    * @param {number} value The value
+    * @param {string} unitInput Unit from
+    * @param {string} unitOutput Unit to
+    * @returns {string}
+    */
     convertSpoon(value, unitInput) {
         switch(unitInput) {
             case("tsp"): 
@@ -506,6 +561,30 @@ class convertUnits {
                 return value;
         }        
     }
+
+    /**
+    * Sets the currency convertText() should convert to
+    *
+    * @param {number} amount The currency value
+    * @param {string} fromCurrency The currency to convert from
+    * @param {string} toCurrency The currency to convert to
+    * @returns {string}
+    */
+    convertCurrency(amount, fromCurrency, toCurrency) {
+        const exchangeRateAPI = `https://api.exchangeratesapi.io/latest?base=${fromCurrency}`;
+      
+        fetch(exchangeRateAPI)
+            .then(response => response.json())
+            .then(data => {
+                const exchangeRate = data.rates[toCurrency];
+                const convertedAmount = amount * exchangeRate;
+      
+                return convertedAmount + " " + toCurrency.toUpperCase;
+          })
+          .catch(error => {
+            return amount + " " + fromCurrency.toUpperCase;
+        });
+      }
 }
 
 

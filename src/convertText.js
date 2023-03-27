@@ -225,56 +225,56 @@ class convertText {
         const cu = new convertUnits()
         if(this.timeUnits.includes(unit)){ // case time units
             
-            unit = this.#resolveAliasesTime(unit.toLowerCase());
+            unit = this.#resolveAliasesTime(unit);
 
             if(unit == this.time) {return numberAndUnit}
             return cu.convertTime(value, unit, this.time); 
         }
         if(this.lengthUnits.includes(unit)){ // case length units
 
-            unit = this.#resolveAliasesLength(unit.toLowerCase());
+            unit = this.#resolveAliasesLength(unit);
 
             if(unit == this.length) {return "" + numberAndUnit}           
             return cu.convertLength(value, unit, this.length);
         }
         if(this.weightUnits.includes(unit)){ // case weight units
 
-            unit = this.#resolveAliasesWeight(unit.toLowerCase());
+            unit = this.#resolveAliasesWeight(unit);
     
             if(unit == this.weight) {return "" + numberAndUnit}
             return cu.convertWeight(value, unit, this.weight);
         }
         if(this.liquidVolumeUnits.includes(unit)){ // case liquid volume units
 
-            unit = this.#resolveAliasesLiquidVolume(unit.toLowerCase());
+            unit = this.#resolveAliasesLiquidVolume(unit);
            
             if(unit == this.liquidVolume) {return value}
             return cu.convertLiquidVolume(value, unit, this.liquidVolume);
         }
         if(this.temperatureUnits.includes(unit)){ // case temperature units
  
-            unit = this.#resolveAliasesTemperature(unit.toLowerCase());
+            unit = this.#resolveAliasesTemperature(unit);
             
             if(unit == this.temperature) {return numberAndUnit}
             return cu.convertTempertaure(value, unit, this.temperature);
         }
         if(this.electricCurrentUnits.includes(unit)){ // case electric current units
             
-            unit = this.#resolveAliasesElectricCurrent(unit.toLowerCase());
+            unit = this.#resolveAliasesElectricCurrent(unit);
 
             if(unit == this.electricCurrent) {return numberAndUnit}
             return cu.convertElectricCurrent(value, unit, this.electricCurrent);
         }
         if(this.spoonUnits.includes(unit)){ // case spoon units
            
-            unit = this.#resolveAliasesSpoon(unit.toLowerCase());
+            unit = this.#resolveAliasesSpoon(unit);
             
             if(unit == this.spoon) {return numberAndUnit}
             return cu.convertSpoon(value, unit, this.spoon);
         }
         if(this.currencyUnits.includes(unit)){ // TO BE IMPLEMENTED
             if(unit == this.currency) {return numberAndUnit}
-            return cu.convertSpoon(value, unit, this.currency); 
+            return cu.convertCurrency(value, this.currency, unit); 
         }
     }
 

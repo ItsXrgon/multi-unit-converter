@@ -57,9 +57,9 @@
     },
 
     "currencyUnits" : {
-        "USD": ["usd", "$"],
-        "Euro": ["euro","€"],
-        "GBP": ["gbp","£"],
+        "USD": ["USD", "$"],
+        "Euro": ["Euro","€"],
+        "GBP": ["GBP","£"],
         "JPY": ["JPY","¥"],
         "AED": ["AED"], 
         "CNY": ["CNY"], 
