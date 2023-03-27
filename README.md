@@ -1,5 +1,5 @@
 # JS-Unit-Converter
-This is a JS library that converts all units and values in a given text to user specified units or ti their SI equivalents if specified.
+This is a JS library that converts all units and values in a given text to user specified units or to their SI equivalents if specified.
 
 ## Installation
 You can install this library using npm:
@@ -52,7 +52,7 @@ text = cu.convertText("5 centimeters");
 text = cu.convertText("5 centimeter");
 ```
 
-All 3 function calls would return "0.05 m" as all 4 are acceptable spelling of centimeter, therefore detected and converted to the specified length in unit (in this case its meter).
+All 3 function calls would return "0.05 m" as all 4 are acceptable spelling of centimeter, therefore detected and converted to the specified length unit (in this case its meter).
 
 ## Functions available:
 ```js
