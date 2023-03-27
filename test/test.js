@@ -1,4 +1,4 @@
-const convertText = require('../src/convertText.js');
+import convertText from './convertText';
 
 describe('js-unit-converter', () => {
     

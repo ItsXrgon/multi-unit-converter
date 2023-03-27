@@ -5,4 +5,4 @@ class InvalidUnitException extends Error {
     }
 }
 
-module.exports = {InvalidUnitException}
+export default InvalidUnitException;

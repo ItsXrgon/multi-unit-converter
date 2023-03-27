@@ -1,7 +1,3 @@
-const convertText = require('./convertText');
+import MultiUnitConverter from'./convertText.js';
 
-
-const cu = new convertText();
-console.log(cu.convertText("30 EGP"))
-
-module.exports = {convertText}
+export default MultiUnitConverter

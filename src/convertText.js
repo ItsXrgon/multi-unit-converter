@@ -1,6 +1,6 @@
-const units = require("./units.json");
-const convertUnits = require("./convertUnits.js").convertUnits;
-const InvalidUnitException = require('./Exceptions/InvalidUnitException').InvalidUnitException;
+import units from './units.json' assert { type: "json" };;
+import convertUnits from './convertUnits.js';
+import InvalidUnitException from './Exceptions/InvalidUnitException.js';
 
 class convertText {
     time = "s" // Seconds
@@ -334,4 +334,4 @@ class convertText {
     }
 }
 
-module.exports = convertText;
+export default convertText

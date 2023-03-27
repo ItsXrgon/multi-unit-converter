@@ -1,13 +1,10 @@
 {
   "name": "multi-unit-converter",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Convert all units in a string to specified units or SI units if unspecified",
   "main": "src/index.cjs",
   "module": "src/index.cjs",
-  "type": "commonjs",
-  "files": [
-    "src/*"
-  ],
+  "type": "module",
   "scripts": {
     "test": "jest"
   },
@@ -29,12 +26,10 @@
     "url": "https://github.com/itsXrgon/multi-unit-converter/issues"
   },
   "homepage": "https://github.com/itsXrgon/multi-unit-converter#readme",
-  "dependencies": {
-    "axios": "1.3.4",
-    "cheerio": "1.0.0-rc.12",
-    "multi-unit-converter": "1.0.0"
-  },
   "devDependencies": {
     "jest": "29.5.0"
+  },
+  "dependencies": {
+    "multi-unit-converter": "*"
   }
 }
