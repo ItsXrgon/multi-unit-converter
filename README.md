@@ -25,8 +25,7 @@ In this example, we pass the input text string 'The car traveled 50 miles and us
 
 
 ```js
-const unit = "m"
-cu.setUnitLength(unit); // Now the unit of the length we convert to is meter (m) not kilemeter (km)
+cu.setUnitLength("m"); // Now the unit of the length we convert to is meter (m) not kilemeter (km)
 const inputText = 'The car traveled 50 miles and used 5 gallons of gas.';
 const outputText = cu.convertText(inputText);
 console.log(outputText); // Output: 'The car traveled 80470 m and used 18.93 l of gas.
@@ -54,11 +53,6 @@ text = cu.convertText("5 centimeter");
 ```
 
 All 3 function calls would return "0.05 m" as all 4 are acceptable spelling of centimeter, therefore detected and converted to the specified length in unit (in this case its meter).
-
-## Parameters:
-
-inputText (string): The input text string to be converted.
-unit (string): The unit you wish to set as default to convert to
 
 ## Functions available:
 ```js
