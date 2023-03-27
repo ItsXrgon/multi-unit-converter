@@ -52,7 +52,7 @@ text = cu.convertText("5 centimeters");
 text = cu.convertText("5 centimeter");
 ```
 
-All 3 function calls would return "0.05 m" as all 4 are acceptable spelling of centimeter, therefore detected and converted to the specified length unit (in this case its meter).
+All 4 function calls would return "0.05 m" as all 4 are acceptable spelling of centimeter, therefore detected and converted to the specified length unit (in this case its meter).
 
 ## Functions available:
 ```js
