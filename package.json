@@ -28,8 +28,5 @@
   "homepage": "https://github.com/itsXrgon/multi-unit-converter#readme",
   "devDependencies": {
     "jest": "29.5.0"
-  },
-  "dependencies": {
-    "multi-unit-converter": "*"
   }
 }
