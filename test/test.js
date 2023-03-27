@@ -1,3 +1,4 @@
+"use strict";
 const MultiUnitConverter = require('../src/MultiUnitConverter.js');
 
 describe('multi-unit-converter', () => {

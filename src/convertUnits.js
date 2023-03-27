@@ -1,3 +1,4 @@
+"use strict";
 class convertUnits {
     // Functions to convert units and return their value + new unit
     // Switch cases sorted according to how probable it is to swap from certains units to other unit

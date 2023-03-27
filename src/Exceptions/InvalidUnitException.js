@@ -1,3 +1,4 @@
+"use strict";
 class InvalidUnitException extends Error {
     constructor(message) {
         super(message);

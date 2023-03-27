@@ -1,9 +1,9 @@
 {
   "name": "multi-unit-converter",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Convert all units in a string to specified units or SI units if unspecified",
-  "main": "src/index.cjs",
-  "module": "src/index.cjs",
+  "main": "src/index.js",
+  "module": "src/index.js",
   "type": "commonjs",
   "scripts": {
     "test": "jest"
@@ -14,11 +14,10 @@
   },
   "keywords": [
     "units",
-    "unit",
     "measurements",
-    "measurement",
     "conversions",
-    "conversion"
+    "SI-units",
+    "SI"
   ],
   "author": "ItsXrgon",
   "license": "MIT",

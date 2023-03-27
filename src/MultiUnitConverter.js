@@ -1,3 +1,4 @@
+"use strict";
 const units = require("./units.json");
 const convertUnits = require("./convertUnits.js");
 const InvalidUnitException = require('./Exceptions/InvalidUnitException').InvalidUnitException;
@@ -311,8 +312,6 @@ class MultiUnitConverter {
         } 
 
         // loop through each unit found and convert it to its equivalent unit value 
-        let start = 0;
-        let index = 0;
         units.forEach((unit) => {
             // extract the numeric value and unit without the plural suffix
             let value = parseFloat(unit);
