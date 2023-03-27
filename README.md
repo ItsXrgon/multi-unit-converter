@@ -7,7 +7,7 @@ You can install this library using npm:
 ```npm install multi-unit-converter```
 
 ## Usage
-To use this library, first import it into your project using require or import then initiliase it:
+To use this library, first import it into your project using require then initiliase it:
 
 ```js
 const multiUnitConverter = require('multi-unit-converter');
