@@ -7,14 +7,18 @@ class MultiUnitConverter {
     time = "s" // Seconds
     length = "m" // Meter
     weight = "kg" // Kilogram
-    area = `${this.length}2` // Meter Squared
-    volume = `${this.length}3` // Meter Cubed 
-    liquidVolume = `${this.length}3` // Meter Cubed 
-    speed = `${this.length}/${this.time}` // Meter Per Second
-    acceleration = `${this.length}/${this.time}2` // Meter Per Second Squared
+    area = `m2` // Meter Squared
+    volume = `m3` // Meter Cubed 
+    liquidVolume = `m3` // Meter Cubed 
+    speed = `m/s` // Meter Per Second
+    acceleration = `m/s2` // Meter Per Second Squared
     temperature = "k" // Kelvin
     electricCurrent = "a" // Ampere
     spoon = "tbsp" // Tablespoon
+    pressure = "pa" // Pascal
+    energy = "j" // Joules
+    frequency = "hz" // Hertz
+
 
     // JSON of lists of units function is compatible with
     
@@ -25,6 +29,11 @@ class MultiUnitConverter {
     temperatureUnits = [].concat(...Object.values(units.temperatureUnits))
     electricCurrentUnits = [].concat(...Object.values(units.electricCurrentUnits))
     spoonUnits = [].concat(...Object.values(units.spoonUnits))
+    pressureUnits = [].concat(...Object.values(units.pressureUnits))
+    energyUnits = [].concat(...Object.values(units.energyUnits))
+    frequencyUnits = [].concat(...Object.values(units.frequencyUnits))
+    areaUnits = [].concat(...Object.values(units.areaUnits))
+    volumeUnits = [].concat(...Object.values(units.volumeUnits))
 
     constructor(){
         // SI Units already the base value
@@ -138,6 +147,56 @@ class MultiUnitConverter {
         }
     }
 
+    setUnitPressure(pressure) {
+        if(typeof pressure != 'string'){
+            throw 'Unit should be a string!';
+        } else if(!this.pressureUnits.includes(pressure.toLowerCase())){
+            throw new InvalidUnitException(`Input ${pressure} is not a spoon unit!`);
+        } else{       
+            this.pressure = this.#resolveAliasesPressure(pressure.toLowerCase());
+        }
+    }
+
+    setUnitEnergy(energy) {
+        if(typeof energy != 'string'){
+            throw 'Unit should be a string!';
+        } else if(!this.energyUnits.includes(energy.toLowerCase())){
+            throw new InvalidUnitException(`Input ${energy} is not a spoon unit!`);
+        } else{       
+            this.energy = this.#resolveAliasesEnergy(energy.toLowerCase());
+        }
+    }
+
+    setUnitFrequency(frequency) {
+        if(typeof frequency != 'string'){
+            throw 'Unit should be a string!';
+        } else if(!this.frequencyUnits.includes(frequency.toLowerCase())){
+            throw new InvalidUnitException(`Input ${frequency} is not a spoon unit!`);
+        } else{       
+            this.frequency = this.#resolveAliasesFrequency(frequency.toLowerCase());
+        }
+    }
+
+    setUnitArea(area) {
+        if(typeof area != 'string'){
+            throw 'Unit should be a string!';
+        } else if(!this.areaUnits.includes(area.toLowerCase())){
+            throw new InvalidUnitException(`Input ${area} is not a spoon unit!`);
+        } else{       
+            this.area = this.#resolveAliasesArea(area.toLowerCase());
+        }
+    }
+
+    setUnitVolume(volume) {
+        if(typeof volume != 'string'){
+            throw 'Unit should be a string!';
+        } else if(!this.volumeUnits.includes(volume.toLowerCase())){
+            throw new InvalidUnitException(`Input ${volume} is not a spoon unit!`);
+        } else{       
+            this.volume = this.#resolveAliasesVolume(volume.toLowerCase());
+        }
+    }
+
     #resolveAliasesTime(unit) {
         if(units.timeUnits.day.includes(unit)) {unit = "day";}
         else if(units.timeUnits.h.includes(unit)) {unit = "h";}
@@ -202,6 +261,55 @@ class MultiUnitConverter {
         return unit;
     }
 
+    #resolveAliasesPressure(unit) {
+        if(units.pressureUnits.Pa.includes(unit)) {unit = "pa"; }
+        else if(units.pressureUnits.kPa.includes(unit)) {unit = "kpa";}
+        else if(units.pressureUnits.MPa.includes(unit)) {unit = "mpa"; }
+        else if(units.pressureUnits.atm.includes(unit)) {unit = "atm"; }
+        else if(units.pressureUnits.psi.includes(unit)) {unit = "psi"; }
+        else if(units.pressureUnits.bar.includes(unit)) {unit = "bar"; }
+        return unit;
+    }
+
+    #resolveAliasesEnergy(unit) {
+        if(units.energyUnits.J.includes(unit)) {unit = "j"; }
+        else if(units.energyUnits.kJ.includes(unit)) {unit = "kj";}
+        else if(units.energyUnits.MJ.includes(unit)) {unit = "mj"; }
+        else if(units.energyUnits.kWh.includes(unit)) {unit = "kwh"; }
+        return unit;
+    }
+
+    #resolveAliasesFrequency(unit) {
+        if(units.frequencyUnits.Hz.includes(unit)) {unit = "hz"; }
+        else if(units.frequencyUnits.kHz.includes(unit)) {unit = "khz";}
+        else if(units.frequencyUnits.MHz.includes(unit)) {unit = "mhz"; }
+        else if(units.frequencyUnits.GHz.includes(unit)) {unit = "ghz"; }
+        return unit;
+    }
+
+    #resolveAliasesArea(unit) {
+        if(units.areaUnits.mm2.includes(unit)) {unit = "mm2"; }
+        else if(units.areaUnits.cm2.includes(unit)) {unit = "cm2";}
+        else if(units.areaUnits.m2.includes(unit)) {unit = "m2"; }
+        else if(units.areaUnits.km2.includes(unit)) {unit = "km2"; }
+        else if(units.areaUnits.in2.includes(unit)) {unit = "in2"; }
+        else if(units.areaUnits.ft2.includes(unit)) {unit = "ft2";}
+        else if(units.areaUnits.yd2.includes(unit)) {unit = "yd2"; }
+        else if(units.areaUnits.ac.includes(unit)) {unit = "ac"; }
+        else if(units.areaUnits.ha.includes(unit)) {unit = "ha"; }
+        return unit;
+    }
+
+    #resolveAliasesVolume(unit) {
+        if(units.volumeUnits.mm3.includes(unit)) {unit = "mm3"; }
+        else if(units.volumeUnits.cm3.includes(unit)) {unit = "cm3";}
+        else if(units.volumeUnits.m3.includes(unit)) {unit = "m3"; }
+        else if(units.volumeUnits.in3.includes(unit)) {unit = "in3"; }
+        else if(units.volumeUnits.ft3.includes(unit)) {unit = "ft3";}
+        else if(units.volumeUnits.yd3.includes(unit)) {unit = "yd3"; }
+        return unit;
+    }
+
     /**
     * Converts the values
     *@param {number} value The value of the input
@@ -262,6 +370,34 @@ class MultiUnitConverter {
             if(unit == this.spoon) {return numberAndUnit}
             return cu.convertSpoon(value, unit, this.spoon);
         }
+        if(this.energyUnits.includes(unit)){ // case energy units
+           
+            unit = this.#resolveAliasesEnergy(unit);
+            
+            if(unit == this.energy) {return numberAndUnit}
+            return cu.convertEnergy(value, unit, this.energy);
+        }
+        if(this.frequencyUnits.includes(unit)){ // case frequency units
+           
+            unit = this.#resolveAliasesFrequency(unit);
+            
+            if(unit == this.frequency) {return numberAndUnit}
+            return cu.convertFrequency(value, unit, this.frequency);
+        }
+        if(this.volumeUnits.includes(unit)){ // case volume units
+           
+            unit = this.#resolveAliasesVolume(unit);
+            
+            if(unit == this.volume) {return numberAndUnit}
+            return cu.convertVolume(value, unit, this.volume);
+        }
+        if(this.areaUnits.includes(unit)){ // case area units
+           
+            unit = this.#resolveAliasesArea(unit);
+            
+            if(unit == this.area) {return numberAndUnit}
+            return cu.convertArea(value, unit, this.area);
+        }
     }
 
 
@@ -278,7 +414,7 @@ class MultiUnitConverter {
     }
 
     /* CODE TO GET REGEX
-    let regExUnits = ""
+    let regExUnits = "/(\d*\.?\d+)(?:\s*)"
     regExUnits += `${Object.values(this.timeUnits).flat().join('|')}`
     regExUnits + `|${Object.values(this.lengthUnits).flat().join('|')}`
     regExUnits += `|${Object.values(this.weightUnits).flat().join('|')}`
@@ -287,6 +423,12 @@ class MultiUnitConverter {
     regExUnits += `|${Object.values(this.electricCurrentUnits).flat().join('|')}`
     regExUnits += `|${Object.values(this.currencyUnits).flat().join('|')}`
     regExUnits += `|${Object.values(this.spoonUnits).flat().join('|')}`
+    regExUnits += `|${Object.values(this.pressureUnits).flat().join('|')}`
+    regExUnits += `|${Object.values(this.energyUnits).flat().join('|')}`
+    regExUnits += `|${Object.values(this.frequencyUnits).flat().join('|')}`
+    regExUnits += `|${Object.values(this.volumeUnits).flat().join('|')}`
+    regExUnits += `|${Object.values(this.areaUnits).flat().join('|')}`
+    regExUnits += "(\d*)(?:'(\d+)(?:\"|in|inch|inches)?|ft|foot|feet))(?!\w)/gi"
     console.log(regExUnits)
     */
 
@@ -303,7 +445,7 @@ class MultiUnitConverter {
 
         // regex to detect numbers followed by units
         // find all the units in the text using the regex pattern
-        const regex = new RegExp(/(\d*\.?\d+)(?:\s*)(milimeters|milimeter|mm|centimeters|centimeter|cm|inches|inch|in|feet|foot|ft|yards|yard|yd|meters|meter|m|kilometers|kilometer|km|miles|mile|mi|milimeters|milimeter|mm|centimeters|centimeter|cm|inches|inch|in|feet|foot|ft|yards|yard|yd|meters|meter|m|kilometers|kilometer|km|miles|mile|mi|miligrams|miligram|mg|grams|gram|g|ounces|ounce|ozs|oz|pounds|pound|lbs|lb|kilograms|kilogram|kg|tonnes|tonne|tn|tons|ton|t|milimeters cubed|milimeter cubed|mm3|centimeters cubed|centimeter cubed|cm3|meters cubed|meter cubed|m3|milliliters|milliliter|ml|liters|liter|l|quarts|quart|qt|fluid ounces|fluid ounce|fl ozs|fl oz|cups|cup|gallons|gallon|gal|kelvins|kelvin|k|celsius|c|fahrenheit|f|milliamperes|milliampere|ma|amperes|ampere|a|kiloamperes|kiloampere|ka|teaspoons|teaspoon|tea spoon|tsp|tablespoons|tablespoons|table spoon|tbsp|pi|°C|°F|°K|C|F|K|(\d*)(?:'(\d+)(?:\"|in|inch|inches)?|ft|foot|feet))(?!\w)/g)
+        const regex = new RegExp(/(d*.?d+)(?:s*)miliseconds|milisecond|ms|seconds|second|s|sec|secs|minutes|minute|min|hours|hour|h|days|day|d|miligrams|miligram|mg|grams|gram|g|ounces|ounce|ozs|oz|pounds|pound|lbs|lb|kilograms|kilogram|kg|tonnes|tonne|tn|tons|ton|t|milimeters cubed|milimeter cubed|mm3|mm³|centimeters cubed|centimeter cubed|cm3|cm³|meters cubed|meter cubed|m3|m³|milliliters|milliliter|ml|liters|liter|l|fluid ounces|fluid ounce|fl ozs|fl oz|cups|cup|gallons|gallon|gal|kelvins|kelvin|k|K|celsius|c|°c|C|°C|fahrenheit|f|°f|F|°F|milliamperes|milliampere|ma|amperes|ampere|a|kiloamperes|kiloampere|ka|teaspoons|teaspoon|tea spoon|tsp|tablespoons|tablespoons|table spoon|tbsp|pascals|Pascal|pa|kilopascals|Kilopascal|kpa|megapascals|Megapascal|mpa|atmospheres|atmosphere|atm|pounds per square inch|pound per square inch|psi|bar|joules|joule|j|kilojoules|kilojoule|kJ|megajoules|megajoule|mJ|kilowatt-hours|kilowatt-hour|kwh|hertz|hertz|Hz|kilohertz|kilohertz|khz|megahertz|megahertz|mhz|gigahertz|gigahertz|ghz|cubic millimeters|cubic millimeter|millimeter cubed|millimeters cubed|mm3|mm³|cubic centimeters|cubic centimeter|centimeter cubed|centimeters cubed|cm3|cm³|cubic meters|cubic meter|meter cubed|meters cubed|m3|m³|cubic inches|cubic inch|inch cubed|inches cubed|in3|in³|cubic feet|cubic foot|ft3|ft³|cubic yards|cubic yard|yard cubed|yards cubed|yd3|yd³|square millimeters|square millimeter|millimeter squared|millimeters squared|mm2|mm²|square centimeters|square centimeter|centimeter squared|centimeters squared|cm²|cm²|square meters|square meter|meter squared|meters squared|m2|m²|square kilometers|square kilometer|kilometers squared|kilometerss squared|km²|km²|square inches|square inch|inche squared|inches squared|in2|in²|square feet|square foot|ft2|ft²|square yards|square yard|yd²2|yd²|acres|acre|ac|hectares|hectare|ha(d*)(?:'(d+)(?:"|in|inch|inches)?|ft|foot|feet))(?!w)/gi)
         const units = text.match(regex);
 
         // if no units are found, return the original text

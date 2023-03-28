@@ -7,8 +7,6 @@ class convertUnits {
     }
 
     /**
-    * 
-    *
     * @param {number} value The value
     * @param {string} unitInput Unit from
     * @param {string} unitOutput Unit to
@@ -77,8 +75,6 @@ class convertUnits {
     }
 
     /**
-    * 
-    *
     * @param {number} value The value
     * @param {string} unitInput Unit from
     * @param {string} unitOutput Unit to
@@ -242,8 +238,6 @@ class convertUnits {
     }
 
     /**
-    * 
-    *
     * @param {number} value The value
     * @param {string} unitInput Unit from
     * @param {string} unitOutput Unit to
@@ -362,8 +356,6 @@ class convertUnits {
     }
 
     /**
-    * 
-    *
     * @param {number} value The value
     * @param {string} unitInput Unit from
     * @param {string} unitOutput Unit to
@@ -473,8 +465,6 @@ class convertUnits {
         }
     }
     /**
-    * 
-    *
     * @param {number} value The value
     * @param {string} unitInput Unit from
     * @param {string} unitOutput Unit to
@@ -509,8 +499,6 @@ class convertUnits {
     }
     
     /**
-    * 
-    *
     * @param {number} value The value
     * @param {string} unitInput Unit from
     * @param {string} unitOutput Unit to
@@ -545,11 +533,8 @@ class convertUnits {
     }   
     
      /**
-    * 
-    *
     * @param {number} value The value
     * @param {string} unitInput Unit from
-    * @param {string} unitOutput Unit to
     * @returns {string}
     */
     convertSpoon(value, unitInput) {
@@ -561,6 +546,508 @@ class convertUnits {
             default:
                 return value;
         }        
+    }
+
+    /**
+    * @param {number} value The value
+    * @param {string} unitInput Unit from
+    * @param {string} unitOutput Unit to
+    * @returns {string}
+    */
+    convertPressure(value, unitInput, unitOutput) {
+        switch(unitInput) {
+            case("pa"): 
+                switch(unitOutput) {
+                    case ("atm"):
+                        return value/101300 + " atm";
+                    case("psi"):
+                        return value/6895 + " psi";
+                    case("kpa"):
+                        return value/1000 + " kPa";
+                    case("mpa"):
+                        return value/1000000 + " mPa";
+                    case("bar"):
+                        return value/100000 + " bar";
+                } break;
+                case("atm"): 
+                switch(unitOutput) {
+                    case ("pa"):
+                        return value*101325 + " Pa";
+                    case("psi"):
+                        return value*14.696 + " psi";
+                    case("kpa"):
+                        return value*101.325 + " kPa";
+                    case("mpa"):
+                        return value/9.8692 + " MPa";
+                    case("bar"):
+                        return value*1.01325 + " bar";
+                    case("atm"):
+                        return value + " atm";
+                } break;
+            case("psi"): 
+                switch(unitOutput) {
+                    case ("pa"):
+                        return value*6894.76 + " Pa";
+                    case("atm"):
+                        return value/14.696 + " atm";
+                    case("kpa"):
+                        return value*6.89476 + " kPa";
+                    case("mpa"):
+                        return value/145.038 + " MPa";
+                    case("bar"):
+                        return value*0.0689476 + " bar";
+                    case("psi"):
+                        return value + " psi";
+                } break;
+            case("kpa"): 
+                switch(unitOutput) {
+                    case ("pa"):
+                        return value*1000 + " Pa";
+                    case("atm"):
+                        return value/101.325 + " atm";
+                    case("psi"):
+                        return value/6.89476 + " psi";
+                    case("mpa"):
+                        return value/1000 + " MPa";
+                    case("bar"):
+                        return value/100 + " bar";
+                    case("kpa"):
+                        return value + " kPa";
+                } break;
+            case("mpa"): 
+                switch(unitOutput) {
+                    case ("pa"):
+                        return value*1000000 + " Pa";
+                    case("atm"):
+                        return value*9.8692 + " atm";
+                    case("psi"):
+                        return value*145.038 + " psi";
+                    case("kpa"):
+                        return value*1000 + " kPa";
+                    case("bar"):
+                        return value*10 + " bar";
+                    case("mpa"):
+                        return value + " MPa";
+                } break;
+            case("bar"): 
+                switch(unitOutput) {
+                    case ("pa"):
+                        return value*100000 + " Pa";
+                    case("atm"):
+                        return value*0.98692 + " atm";
+                    case("psi"):
+                        return value*14.5038 + " psi";
+                    case("kpa"):
+                        return value*100 + " kPa";
+                    case("mpa"):
+                        return value/10 + " MPa";
+                    case("bar"):
+                        return value + " bar";
+                } break;
+            default:
+                return value;
+        }
+    }
+
+    /**
+    * @param {number} value The value
+    * @param {string} unitInput Unit from
+    * @param {string} unitOutput Unit to
+    * @returns {string}
+    */
+    convertEnergy(value, unitInput, unitOutput) {
+        switch(unitInput) {
+            case("j"): 
+                switch(unitOutput) {
+                    case ("kj"):
+                        return value/1000 + " kJ";
+                    case("mj"):
+                        return value/1000000 + " mJ";
+                    case("kwh"):
+                        return value/3600000 + " kWh";
+                } 
+                break;
+            case("kj"): 
+                switch(unitOutput) {
+                    case ("j"):
+                        return value*1000 + " J";
+                    case("mj"):
+                        return value/1000 + " mJ";
+                    case("kwh"):
+                        return value/3600000 + " kWh";
+                } 
+                break;
+            case("mj"): 
+                switch(unitOutput) {
+                    case ("j"):
+                        return value*1000000 + " J";
+                    case("kj"):
+                        return value*1000 + " kJ";
+                    case("kwh"):
+                        return value/3600000000 + " kWh";
+                } 
+                break;
+            case("kwh"): 
+                switch(unitOutput) {
+                    case ("j"):
+                        return value*3600000 + " J";
+                    case("kj"):
+                        return value*3600 + " kJ";
+                    case("mj"):
+                        return value*3600000 + " mJ";
+                } 
+                break;
+            default:
+                return value;
+        } 
+    }
+
+    /**
+    * @param {number} value The value
+    * @param {string} unitInput Unit from
+    * @param {string} unitOutput Unit to
+    * @returns {string}
+    */
+    convertFrequency(value, unitInput, unitOutput) {
+        switch(unitInput) {
+            case("hz"): 
+                switch(unitOutput) {
+                case ("khz"):
+                    return value/1000 + " kHz";
+                case("mhz"):
+                    return value/1000000 + " MHz";
+                case("ghz"):
+                    return value/1000000000 + " GHz";
+                } 
+                break;
+            case("khz"): 
+                switch(unitOutput) {
+                case ("hz"):
+                    return value*1000 + " Hz";
+                case("mhz"):
+                    return value/1000 + " MHz";
+                case("ghz"):
+                    return value/1000000 + " GHz";
+                } 
+                break;
+            case("mhz"): 
+                switch(unitOutput) {
+                case ("hz"):
+                    return value*1000000 + " Hz";
+                case("khz"):
+                    return value*1000 + " kHz";
+                case("ghz"):
+                    return value/1000 + " GHz";
+                } 
+                break;
+            case("ghz"): 
+                switch(unitOutput) {
+                case ("hz"):
+                    return value*1000000000 + " Hz";
+                case("khz"):
+                    return value*1000000 + " kHz";
+                case("mhz"):
+                    return value*1000 + " MHz";
+                } 
+                break;
+            default:
+                return value;
+        } 
+    }
+
+    convertArea(value, unitInput, unitOutput) {
+        switch(unitInput) {
+            case("m2"): 
+                switch(unitOutput) {
+                    case ("km2"):
+                        return value/1000000 + " km²";
+                    case("cm2"):
+                        return value*10000 + " cm²";
+                    case("mm2"):
+                        return value*1000000 + " mm²";
+                    case("ha"):
+                        return value/10000 + " ha";
+                } 
+                break;
+            case("km2"): 
+                switch(unitOutput) {
+                case ("m2"):
+                    return value*1000000 + " m²";
+                case("cm2"):
+                    return value*10000000000 + " cm²";
+                case("mm2"):
+                    return value*1000000000000 + " mm²";
+                case("ha"):
+                    return value/100 + " ha";
+                } 
+                break;
+            case("cm2"): 
+                switch(unitOutput) {
+                case ("m2"):
+                    return value/10000 + " m²";
+                case("km2"):
+                    return value/10000000000 + " km²";
+                case("mm2"):
+                    return value*100 + " mm²";
+                case("ha"):
+                    return value/1000000 + " ha";
+                } 
+                break;
+            case("mm2"): 
+                switch(unitOutput) {
+                case ("m2"):
+                    return value/1000000 + " m²";
+                case("km2"):
+                    return value/1000000000000 + " km²";
+                case("cm2"):
+                    return value/100 + " cm²";
+                case("ha"):
+                    return value/100000000 + " ha";
+                } 
+                break;
+            case("ha"): 
+                switch(unitOutput) {
+                case ("m2"):
+                    return value*10000 + " m²";
+                case("km2"):
+                    return value*100 + " km²";
+                case("cm2"):
+                    return value*100000000 + " cm²";
+                case("mm2"):
+                    return value*10000000000 + " mm²";
+                } 
+                break;
+            
+            case("sqft"): 
+                switch(unitOutput) {
+                case ("sqyd"):
+                    return value/9 + " sq yd";
+                case("acre"):
+                    return value/43560 + " acre";
+                case("sqmi"):
+                    return value/27878400 + " sq mi";
+                } 
+                break;
+            case("sqyd"): 
+                switch(unitOutput) {
+                case ("sqft"):
+                    return value*9 + " sq ft";
+                case("acre"):
+                    return value/4840 + " acre";
+                case("sqmi"):
+                    return value/3097600 + " sq mi";
+                } 
+                break;
+            case("acre"): 
+                switch(unitOutput) {
+                case ("sqft"):
+                    return value*43560 + " sq ft";
+                case("sqyd"):
+                    return value*4840 + " sq yd";
+                case("sqmi"):
+                    return value/640 + " sq mi";
+                } 
+                break;
+            case("sqmi"): 
+                switch(unitOutput) {
+                case ("sqft"):
+                    return value*27878400 + " sq ft";
+                case("sqyd"):
+                    return value*3097600 + " sq yd";
+                case("acre"):
+                    return value*640 + " acre";
+                } 
+                break;
+            default:
+                return value;
+        } 
+    }
+
+    convertArea(value, unitInput, unitOutput) {
+        switch(unitInput) {
+            case("mm2"):
+                switch(unitOutput) {
+                case ("cm2"):
+                    return value/100 + " cm²";
+                case("m2"):
+                    return value/1000000 + " m²";
+                case("km2"):
+                    return value/1000000000000 + " km²";
+                case("in2"):
+                    return value/645 + " in²";
+                case("ft2"):
+                    return value/92903 + " ft²";
+                case("yd2"):
+                    return value/836127 + " yd²";
+                case("ac"):
+                    return value/4046856422 + " acres²";
+                case("ha"):
+                    return value/100000000 + " hectares²";
+                }
+                break;
+            case("cm2"):
+                switch(unitOutput) {
+                case ("mm2"):
+                    return value*100 + " mm²";
+                case("m2"):
+                    return value/10000 + " m²";
+                case("km2"):
+                    return value/10000000000 + " km²";
+                case("in2"):
+                    return value/6.452 + " in²";
+                case("ft2"):
+                    return value/929 + " ft²";
+                case("yd2"):
+                    return value/8361 + " yd²";
+                case("ac"):
+                    return value/404686 + " acres²";
+                case("ha"):
+                    return value/10000 + " hectares²";
+                }
+                break;
+            case("m2"):
+                switch(unitOutput) {
+                case ("mm2"):
+                    return value*1000000 + " mm²";
+                case("cm2"):
+                    return value*10000 + " cm²";
+                case("km2"):
+                    return value/1000000 + " km²";
+                case("in2"):
+                    return value*1550 + " in²";
+                case("ft2"):
+                    return value*10.764 + " ft²";
+                case("yd2"):
+                    return value*1.196 + " yd²";
+                case("ac"):
+                    return value/4047 + " acres²";
+                case("ha"):
+                    return value/10000 + " hectares²";
+                }
+                break;
+            case("km2"):
+                switch(unitOutput) {
+                case ("mm2"):
+                    return value*1000000000000 + " mm²";
+                case("cm2"):
+                    return value*10000000000 + " cm²";
+                case("m2"):
+                    return value*1000000 + " m²";
+                case("in2"):
+                    return value*2.59e+9 + " in²";
+                case("ft2"):
+                    return value*1.076e+7 + " ft²";
+                case("yd2"):
+                    return value*1.196e+6 + " yd²";
+                case("ac"):
+                    return value*247.105 + " acres²";
+                case("ha"):
+                    return value*100 + " hectares²";
+                }
+                break;
+            case("in2"):
+                switch(unitOutput) {
+                case ("mm2"):
+                    return value*645 + " mm²";
+                case("cm2"):
+                    return value*6.452 + " cm²";
+                case("m2"):
+                    return value/1550 + " m²";
+                case("km2"):
+                    return value/2.59e+9 + " km²";
+                case("ft2"):
+                    return value/144 + " ft²";
+                case("yd2"):
+                    return value/1296 + " yd²";
+                case("ac"):
+                    return value/6272640 + " acres²";
+                case("ha"):
+                    return value/15500031 + " hectares²";
+                }
+                break;
+            case("ft2"):
+                switch(unitOutput) {
+                case ("mm2"):
+                    return value*92903 + " mm²";
+                case("cm2"):
+                    return value*929 + " cm²";
+                case("m2"):
+                    return value/10.764 + " m²";
+                case("km2"):
+                    return value/1.076e+7 + " km²";
+                case("in2"):
+                    return value*144 + " in²";
+                case("yd2"):
+                    return value/9 + " yd²";
+                case("ac"):
+                    return value/43560 + " acres²";
+                case("ha"):
+                    return value/107639 + " hectares²";
+                }
+                break;
+            case("yd2"):
+                switch(unitOutput) {
+                case ("mm2"):
+                    return value*836127 + " mm²";
+                case("cm2"):
+                    return value*8361 + " cm²";
+                case("m2"):
+                    return value/1.196 + " m²";
+                case("km2"):
+                    return value/1.196e+6 + " km²";
+                case("in2"):
+                    return value*1296 + " in²";
+                case("ft2"):
+                    return value*9 + " ft²";
+                case("ac"):
+                    return value/4840 + " acres²";
+                case("ha"):
+                    return value/11960 + " hectares²";
+                }
+                break;
+            case("ac"):
+                switch(unitOutput) {
+                case ("mm2"):
+                    return value*4046856422 + " mm²";
+                case("cm2"):
+                    return value*404686 + " cm²";
+                case("m2"):
+                    return value*4047 + " m²";
+                case("km2"):
+                    return value/247.105 + " km²";
+                case("in2"):
+                    return value*6272640 + " in²";
+                case("ft2"):
+                    return value*43560 + " ft²";
+                case("yd2"):
+                    return value*4840 + " yd²";
+                case("ha"):
+                    return value*40.469 + " hectares²";
+                }
+                break;
+            case("ha"):
+                switch(unitOutput) {
+                case ("mm2"):
+                    return value*100000000 + " mm²";
+                case("cm2"):
+                    return value*10000 + " cm²";
+                case("m2"):
+                    return value*10000 + " m²";
+                case("km2"):
+                    return value/100 + " km²";
+                case("in2"):
+                    return value*15500031 + " in²";
+                case("ft2"):
+                    return value*107639 + " ft²";
+                case("yd2"):
+                    return value*11960 + " yd²";
+                case("ac"):
+                    return value/40.469 + " acres²";
+                }
+                break;
+            default:
+                return value;
+        }
     }
 }
 
