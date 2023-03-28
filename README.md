@@ -71,6 +71,16 @@ setUnitTemperature(temperature) // Sets the specified unit of temperature (SI un
 setUnitElectricCurrent(electricCurrent) // Sets the specified unit of electric current (SI unit if unspecified) 
 
 setUnitSpoon(spoon) // Sets the specified unit of spoon (SI unit if unspecified) 
+
+setUnitPressure(pressure) // Sets the specified unit of pressure (SI unit if unspecified) 
+
+setUnitEnergy(energy) // Sets the specified unit of energy (SI unit if unspecified) 
+
+setUnitFrequency(frequency) // Sets the specified unit of frequency (SI unit if unspecified)
+
+setUnitArea(area) // Sets the specified unit of area (SI unit if unspecified) 
+
+setUnitVolume(volume) // Sets the specified unit of volume (SI unit if unspecified) 
 ```
 
 ## Current list of available units and their aliases:
@@ -117,9 +127,9 @@ setUnitSpoon(spoon) // Sets the specified unit of spoon (SI unit if unspecified)
     },
 
     "temperatureUnits" : {
-        "K": ["kelvins", "kelvin", "k"],
-        "C": ["celsius", "c", "°c"],
-        "F": ["fahrenheit", "f", "°f"]
+        "K": ["kelvins", "kelvin", "k", "K"],
+        "C": ["celsius", "c", "°c", "C", "°C"],
+        "F": ["fahrenheit", "f", "°f", "F", "°F"]
     },
 
     "electricCurrentUnits" : {
@@ -131,6 +141,50 @@ setUnitSpoon(spoon) // Sets the specified unit of spoon (SI unit if unspecified)
     "spoonUnits" : {
         "tsp": ["teaspoons", "teaspoon", "tea spoon", "tsp"],
         "tbsp": ["tablespoons", "tablespoons", "table spoon", "tbsp"]
+    },
+
+    "pressureUnits": {
+        "Pa": ["pascals", "Pascal", "pa"],
+        "kPa": ["kilopascals", "Kilopascal","kpa"],
+        "MPa": ["megapascals", "Megapascal","mpa"],
+        "atm": ["atmospheres", "atmosphere", "atm"],
+        "psi": ["pounds per square inch", "pound per square inch", "psi"],
+        "bar": ["bar"]
+    },
+
+    "energyUnits": {
+        "J": ["joules", "joule", "j"],
+        "kJ": ["kilojoules", "kilojoule","kJ"],
+        "MJ": ["megajoules", "megajoule","mJ"],
+        "kWh": ["kilowatt-hours", "kilowatt-hour","kwh"]
+    },
+
+    "frequencyUnits": {
+        "Hz": ["hertz", "hertz", "Hz"],
+        "kHz": ["kilohertz", "kilohertz","khz"],
+        "MHz": ["megahertz", "megahertz","mhz"],
+        "GHz": ["gigahertz", "gigahertz","ghz"]
+    },
+
+    "volumeUnits": {
+        "mm3": ["cubic millimeters", "cubic millimeter", "millimeter cubed", "millimeters cubed","mm3", "mm³"],
+        "cm3": ["cubic centimeters", "cubic centimeter", "centimeter cubed", "centimeters cubed", "cm3", "cm³"],
+        "m3": ["cubic meters", "cubic meter", "meter cubed", "meters cubed", "m3", "m³"],
+        "in3": ["cubic inches", "cubic inch", "inch cubed", "inches cubed", "in3", "in³"],
+        "ft3": ["cubic feet", "cubic foot", "ft3", "ft³"],
+        "yd3": ["cubic yards", "cubic yard", "yard cubed", "yards cubed", "yd3", "yd³"]
+    },
+
+    "areaUnits": {
+        "mm2": ["square millimeters", "square millimeter", "millimeter squared", "millimeters squared", "mm2", "mm²"],
+        "cm2": ["square centimeters", "square centimeter", "centimeter squared", "centimeters squared", "cm²", "cm²"],
+        "m2": ["square meters", "square meter", "meter squared", "meters squared", "m2", "m²"],
+        "km2": ["square kilometers", "square kilometer", "kilometers squared", "kilometerss squared", "km²", "km²"],
+        "in2": ["square inches", "square inch", "inche squared", "inches squared", "in2", "in²"],
+        "ft2": ["square feet", "square foot", "ft2", "ft²"],
+        "yd2": ["square yards", "square yard", "yd²2", "yd²"],
+        "ac": ["acres", "acre", "ac"],
+        "ha": ["hectares", "hectare", "ha"]
     }
 }
 ```
