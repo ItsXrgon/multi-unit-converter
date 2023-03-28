@@ -19,7 +19,7 @@ You can then use the convertText(text) command to convert a text string to its S
 ```js
 const inputText = 'The car traveled 50 miles and used 5 gallons of gas.';
 const outputText = muc.convertText(inputText);
-console.log(outputText); // Output: 'The car traveled 80470 m and used 18.93 l of gas.'
+console.log(outputText); // Output: 'The car traveled 80.45 km and used 0.019 m³ of gas.'
 ```
 In this example, we pass the input text string 'The car traveled 50 miles and used 5 gallons of gas.' to the convertText() command, and store the output in the outputText variable. We then log the output using console.log(), which should return the string 'The car traveled 80.47 kilometers and used 18.93 liters of gas.'.
 
@@ -28,7 +28,7 @@ In this example, we pass the input text string 'The car traveled 50 miles and us
 muc.setUnitLength("km"); // Now the unit of the length we convert to is meter (m) not kilemeter (km)
 const inputText = 'The car traveled 50 miles and used 5 gallons of gas.';
 const outputText = muc.convertText(inputText);
-console.log(outputText); // Output: 'The car traveled 80.47 km and used 18.93 l of gas.
+console.log(outputText); // Output: 'The car traveled 80.47 km and used 0.019 m³ of gas.'
 ```
 
 In this example, we copy the same process as example 1 but this time we switches the default length unit to meter, which should return the string 'The car traveled 80.47 kilometers and used 18.93 liters of gas.'.
