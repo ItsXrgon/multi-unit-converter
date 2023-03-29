@@ -401,6 +401,8 @@ class convertUnits {
                 switch(unitOutput) {
                     case('l'):
                         return value * 1000 + " l";
+                    case ('ml'):
+                        return value * 1000000 + " ml";
                     case('cm3'):
                         return value * 1000000 + " cm³";
                     case('mm3'):
@@ -416,6 +418,8 @@ class convertUnits {
                 switch(unitOutput) {
                     case('l'):
                         return value / 1000 + " l";
+                    case ('ml'):
+                        return value * 1 + " ml";
                     case('m3'):
                         return value / 1000000 + " m³";
                     case('mm3'):
@@ -431,6 +435,8 @@ class convertUnits {
                 switch(unitOutput) {
                     case('l'):
                         return value / 1000000 + " l";
+                    case ('ml'):
+                        return value / 1000 + " ml";
                     case('m3'):
                         return value / 1000000000 + " m³";
                     case('cm3'):
@@ -460,6 +466,23 @@ class convertUnits {
                         return value * 16 + " cup(s)";
                 }
                 break;
+            case('cup'):
+                switch(unitOutput) {
+                    case('ml'):
+                        return value * 236.588 + " ml";
+                    case('l'):
+                        return value * 0.236588 + " l";
+                    case('fl_oz'):
+                        return value * 8 + " fl oz";
+                    case('gal'):
+                        return value / 16 + " gal";
+                    case ('cm3'):
+                        return value * 236.6 + " cm³";
+                    case ('m3'):
+                        return value / 4227 + " m³";
+                    case ('mm3'):
+                        return value * 236600 + " mm³";
+                } break;
             default:
                 return value;
         }
