@@ -344,7 +344,6 @@ class MultiUnitConverter {
         const numberAndUnit = unit; 
         unit = unit.replace(/[0-9\.°']/g, '').trim();
 
-        console.log(value + " / " + unit)
         const cu = new convertUnits()
         if(this.timeUnits.includes(unit)){ // case time units
             
