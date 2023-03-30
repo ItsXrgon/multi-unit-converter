@@ -3,6 +3,23 @@ const units = require("./units.json");
 const convertUnits = require("./convertUnits.js");
 const InvalidUnitException = require('./Exceptions/InvalidUnitException').InvalidUnitException;
 
+/**
+* Multi Unit Converter class to handle converting texts and setting units
+* @param {string} time The unit of time
+* @param {string} length The unit of length
+* @param {string} weight The unit of weight
+* @param {string} area The unit of area
+* @param {string} volume The unit of volume
+* @param {string} liquidVolume The unit of liquid volume
+* @param {string} speed The unit of speed
+* @param {string} acceleration The unit of acceleration
+* @param {string} temperature The unit of temperature
+* @param {string} electricCurrent The unit of electric current
+* @param {string} spoon The unit of spoon
+* @param {string} pressure The unit of pressure
+* @param {string} energy The unit of energy
+* @param {string} frequency The unit of frequency
+*/
 class MultiUnitConverter {
     time = "s" // Seconds
     length = "m" // Meter
@@ -22,19 +39,22 @@ class MultiUnitConverter {
 
     // JSON of lists of units function is compatible with
     
-    timeUnits = [].concat(...Object.values(units.timeUnits))
-    lengthUnits = [].concat(...Object.values(units.lengthUnits))
-    weightUnits = [].concat(...Object.values(units.weightUnits))
-    liquidVolumeUnits = [].concat(...Object.values(units.liquidVolumeUnits))
-    temperatureUnits = [].concat(...Object.values(units.temperatureUnits))
-    electricCurrentUnits = [].concat(...Object.values(units.electricCurrentUnits))
-    spoonUnits = [].concat(...Object.values(units.spoonUnits))
-    pressureUnits = [].concat(...Object.values(units.pressureUnits))
-    energyUnits = [].concat(...Object.values(units.energyUnits))
-    frequencyUnits = [].concat(...Object.values(units.frequencyUnits))
-    areaUnits = [].concat(...Object.values(units.areaUnits))
-    volumeUnits = [].concat(...Object.values(units.volumeUnits))
+    #timeUnits = [].concat(...Object.values(units.timeUnits))
+    #lengthUnits = [].concat(...Object.values(units.lengthUnits))
+    #weightUnits = [].concat(...Object.values(units.weightUnits))
+    #liquidVolumeUnits = [].concat(...Object.values(units.liquidVolumeUnits))
+    #temperatureUnits = [].concat(...Object.values(units.temperatureUnits))
+    #electricCurrentUnits = [].concat(...Object.values(units.electricCurrentUnits))
+    #spoonUnits = [].concat(...Object.values(units.spoonUnits))
+    #pressureUnits = [].concat(...Object.values(units.pressureUnits))
+    #energyUnits = [].concat(...Object.values(units.energyUnits))
+    #frequencyUnits = [].concat(...Object.values(units.frequencyUnits))
+    #areaUnits = [].concat(...Object.values(units.areaUnits))
+    #volumeUnits = [].concat(...Object.values(units.volumeUnits))
 
+    /**
+    * Creats an instance of MultiUnitConverter class
+    */
     constructor(){
         // SI Units already the base value
     }
@@ -50,7 +70,7 @@ class MultiUnitConverter {
     setUnitTime(time) {
         if(typeof time != 'string'){
             throw 'Unit should be a string!';
-        } else if(!this.timeUnits.includes(time.toLowerCase())){
+        } else if(!this.#timeUnits.includes(time.toLowerCase())){
             throw new InvalidUnitException(`Input ${time} is not a time unit!`);
         } else {       
             this.time = this.#resolveAliasesTemperature(time.toLowerCase());
@@ -65,7 +85,7 @@ class MultiUnitConverter {
     setUnitLength(length) {
         if(typeof length != 'string'){
             throw 'Unit should be a string!';
-        } else if(!this.lengthUnits.includes(length.toLowerCase())){
+        } else if(!this.#lengthUnits.includes(length.toLowerCase())){
             throw new InvalidUnitException(`Input ${length} is not a length unit!`);
         } else {            
             this.length = this.#resolveAliasesLength(length.toLowerCase());
@@ -80,7 +100,7 @@ class MultiUnitConverter {
     setUnitWeight(weight) {
         if(typeof weight != 'string'){
             throw 'Unit should be a string!';
-        } else if(!this.weightUnits.includes(weight.toLowerCase())){
+        } else if(!this.#weightUnits.includes(weight.toLowerCase())){
             throw new InvalidUnitException(`Input ${weight} is not a mass unit!`);
         } else {       
             this.mass = this.#resolveAliasesWeight(weight.toLowerCase());
@@ -95,7 +115,7 @@ class MultiUnitConverter {
     setUnitLiquidVolume(liquidVolume) {
         if(typeof liquidVolume != 'string'){
             throw 'Unit should be a string!';
-        } else if(!this.liquidVolumeUnits.includes(liquidVolume.toLowerCase())){
+        } else if(!this.#liquidVolumeUnits.includes(liquidVolume.toLowerCase())){
             throw new InvalidUnitException(`Input ${liquidVolume} is not a liquid volume unit!`);
         } else {       
             this.mass = this.#resolveAliasesLiquidVolume(liquidVolume.toLowerCase());
@@ -110,7 +130,7 @@ class MultiUnitConverter {
     setUnitTemperature(temperature) {
         if(typeof temperature  != 'string'){
             throw 'Unit should be a string!';
-        } else if(!this.temperatureUnits.includes(temperature.toLowerCase())){
+        } else if(!this.#temperatureUnits.includes(temperature.toLowerCase())){
             throw new InvalidUnitException(`Input ${temperature} is not a temperature unit!`);
         } else{       
             this.temperature = this.#resolveAliasesTemperature(temperature.toLowerCase());
@@ -125,7 +145,7 @@ class MultiUnitConverter {
     setUnitElectricCurrent(electricCurrent) {
         if(typeof electricCurrent != 'string'){
             throw 'Unit should be a string!';
-        } else if(!this.electricCurrentUnits.includes(electricCurrent.toLowerCase())){
+        } else if(!this.#electricCurrentUnits.includes(electricCurrent.toLowerCase())){
             throw new InvalidUnitException(`Input ${electricCurrent} is not an electric current unit!`);
         } else{       
             this.electricCurrent = this.#resolveAliasesElectricCurrent(electricCurrent.toLowerCase());
@@ -140,7 +160,7 @@ class MultiUnitConverter {
     setUnitSpoon(spoon) {
         if(typeof spoon != 'string'){
             throw 'Unit should be a string!';
-        } else if(!this.spoonUnits.includes(spoon.toLowerCase())){
+        } else if(!this.#spoonUnits.includes(spoon.toLowerCase())){
             throw new InvalidUnitException(`Input ${spoon} is not a spoon unit!`);
         } else{       
             this.spoon = this.#resolveAliasesSpoon(spoon.toLowerCase());
@@ -155,7 +175,7 @@ class MultiUnitConverter {
     setUnitPressure(pressure) {
         if(typeof pressure != 'string'){
             throw 'Unit should be a string!';
-        } else if(!this.pressureUnits.includes(pressure.toLowerCase())){
+        } else if(!this.#pressureUnits.includes(pressure.toLowerCase())){
             throw new InvalidUnitException(`Input ${pressure} is not a spoon unit!`);
         } else{       
             this.pressure = this.#resolveAliasesPressure(pressure.toLowerCase());
@@ -170,7 +190,7 @@ class MultiUnitConverter {
     setUnitEnergy(energy) {
         if(typeof energy != 'string'){
             throw 'Unit should be a string!';
-        } else if(!this.energyUnits.includes(energy.toLowerCase())){
+        } else if(!this.#energyUnits.includes(energy.toLowerCase())){
             throw new InvalidUnitException(`Input ${energy} is not a spoon unit!`);
         } else{       
             this.energy = this.#resolveAliasesEnergy(energy.toLowerCase());
@@ -185,7 +205,7 @@ class MultiUnitConverter {
     setUnitFrequency(frequency) {
         if(typeof frequency != 'string'){
             throw 'Unit should be a string!';
-        } else if(!this.frequencyUnits.includes(frequency.toLowerCase())){
+        } else if(!this.#frequencyUnits.includes(frequency.toLowerCase())){
             throw new InvalidUnitException(`Input ${frequency} is not a spoon unit!`);
         } else{       
             this.frequency = this.#resolveAliasesFrequency(frequency.toLowerCase());
@@ -200,7 +220,7 @@ class MultiUnitConverter {
     setUnitArea(area) {
         if(typeof area != 'string'){
             throw 'Unit should be a string!';
-        } else if(!this.areaUnits.includes(area.toLowerCase())){
+        } else if(!this.#areaUnits.includes(area.toLowerCase())){
             throw new InvalidUnitException(`Input ${area} is not a spoon unit!`);
         } else{       
             this.area = this.#resolveAliasesArea(area.toLowerCase());
@@ -215,7 +235,7 @@ class MultiUnitConverter {
     setUnitVolume(volume) {
         if(typeof volume != 'string'){
             throw 'Unit should be a string!';
-        } else if(!this.volumeUnits.includes(volume.toLowerCase())){
+        } else if(!this.#volumeUnits.includes(volume.toLowerCase())){
             throw new InvalidUnitException(`Input ${volume} is not a spoon unit!`);
         } else{       
             this.volume = this.#resolveAliasesVolume(volume.toLowerCase());
@@ -337,7 +357,7 @@ class MultiUnitConverter {
 
     /**
     * Converts the values
-    *@param {number} value The value of the input
+    * @param {number} value The value of the input
     * @param {string} unit The unit of the input
     */
     #convertUnitsToSelected(value, unit) {
@@ -345,77 +365,77 @@ class MultiUnitConverter {
         unit = unit.replace(/[0-9\.°']/g, '').trim();
 
         const cu = new convertUnits()
-        if(this.timeUnits.includes(unit)){ // case time units
+        if(this.#timeUnits.includes(unit)){ // case time units
             
             unit = this.#resolveAliasesTime(unit);
 
             if(unit == this.time) {return numberAndUnit}
             return cu.convertTime(value, unit, this.time); 
         }
-        if(this.lengthUnits.includes(unit)){ // case length units
+        if(this.#lengthUnits.includes(unit)){ // case length units
 
             unit = this.#resolveAliasesLength(unit);
 
             if(unit == this.length) {return "" + numberAndUnit}           
             return cu.convertLength(value, unit, this.length);
         }
-        if(this.weightUnits.includes(unit)){ // case weight units
+        if(this.#weightUnits.includes(unit)){ // case weight units
 
             unit = this.#resolveAliasesWeight(unit);
     
             if(unit == this.weight) {return "" + numberAndUnit}
             return cu.convertWeight(value, unit, this.weight);
         }
-        if(this.liquidVolumeUnits.includes(unit)){ // case liquid volume units
+        if(this.#liquidVolumeUnits.includes(unit)){ // case liquid volume units
 
             unit = this.#resolveAliasesLiquidVolume(unit);
            
             if(unit == this.liquidVolume) {return value}
             return cu.convertLiquidVolume(value, unit, this.liquidVolume);
         }
-        if(this.temperatureUnits.includes(unit)){ // case temperature units
+        if(this.#temperatureUnits.includes(unit)){ // case temperature units
  
             unit = this.#resolveAliasesTemperature(unit);
             
             if(unit == this.temperature) {return numberAndUnit}
             return cu.convertTempertaure(value, unit, this.temperature);
         }
-        if(this.electricCurrentUnits.includes(unit)){ // case electric current units
+        if(this.#electricCurrentUnits.includes(unit)){ // case electric current units
             
             unit = this.#resolveAliasesElectricCurrent(unit);
 
             if(unit == this.electricCurrent) {return numberAndUnit}
             return cu.convertElectricCurrent(value, unit, this.electricCurrent);
         }
-        if(this.spoonUnits.includes(unit)){ // case spoon units
+        if(this.#spoonUnits.includes(unit)){ // case spoon units
            
             unit = this.#resolveAliasesSpoon(unit);
             
             if(unit == this.spoon) {return numberAndUnit}
             return cu.convertSpoon(value, unit, this.spoon);
         }
-        if(this.energyUnits.includes(unit)){ // case energy units
+        if(this.#energyUnits.includes(unit)){ // case energy units
            
             unit = this.#resolveAliasesEnergy(unit);
             
             if(unit == this.energy) {return numberAndUnit}
             return cu.convertEnergy(value, unit, this.energy);
         }
-        if(this.frequencyUnits.includes(unit)){ // case frequency units
+        if(this.#frequencyUnits.includes(unit)){ // case frequency units
            
             unit = this.#resolveAliasesFrequency(unit);
             
             if(unit == this.frequency) {return numberAndUnit}
             return cu.convertFrequency(value, unit, this.frequency);
         }
-        if(this.volumeUnits.includes(unit)){ // case volume units
+        if(this.#volumeUnits.includes(unit)){ // case volume units
            
             unit = this.#resolveAliasesVolume(unit);
             
             if(unit == this.volume) {return numberAndUnit}
             return cu.convertVolume(value, unit, this.volume);
         }
-        if(this.areaUnits.includes(unit)){ // case area units
+        if(this.#areaUnits.includes(unit)){ // case area units
            
             unit = this.#resolveAliasesArea(unit);
             

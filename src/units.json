@@ -73,7 +73,7 @@
     },
 
     "frequencyUnits": {
-        "Hz": ["hertz", "hertz", "Hz"],
+        "Hz": ["hertz", "hertz", "hz"],
         "kHz": ["kilohertz", "kilohertz","khz"],
         "MHz": ["megahertz", "megahertz","mhz"],
         "GHz": ["gigahertz", "gigahertz","ghz"]

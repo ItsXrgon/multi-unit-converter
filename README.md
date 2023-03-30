@@ -160,7 +160,7 @@ setUnitVolume(volume) // Sets the specified unit of volume (SI unit if unspecifi
     },
 
     "frequencyUnits": {
-        "Hz": ["hertz", "hertz", "Hz"],
+        "Hz": ["hertz", "hertz", "hz"],
         "kHz": ["kilohertz", "kilohertz","khz"],
         "MHz": ["megahertz", "megahertz","mhz"],
         "GHz": ["gigahertz", "gigahertz","ghz"]
@@ -187,6 +187,7 @@ setUnitVolume(volume) // Sets the specified unit of volume (SI unit if unspecifi
         "ha": ["hectares", "hectare", "ha"]
     }
 }
+
 ```
 ### More units will be added in the future
 
