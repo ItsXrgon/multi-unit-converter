@@ -57,9 +57,9 @@
     },
 
     "pressureUnits": {
-        "Pa": ["pascals", "Pascal", "pa"],
-        "kPa": ["kilopascals", "Kilopascal","kpa"],
-        "MPa": ["megapascals", "Megapascal","mpa"],
+        "Pa": ["pascals", "pascal", "pa"],
+        "kPa": ["kilopascals", "kilopascal","kpa"],
+        "MPa": ["megapascals", "megapascal","mpa"],
         "atm": ["atmospheres", "atmosphere", "atm"],
         "psi": ["pounds per square inch", "pound per square inch", "psi"],
         "bar": ["bar"]

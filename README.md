@@ -21,7 +21,7 @@ const inputText = 'The car traveled 50 miles and used 5 gallons of gas.';
 const outputText = muc.convertText(inputText);
 console.log(outputText); // Output: 'The car traveled 80.45 km and used 0.019 m³ of gas.'
 ```
-In this example, we pass the input text string 'The car traveled 50 miles and used 5 gallons of gas.' to the convertText() command, and store the output in the outputText variable. We then log the output using console.log(), which should return the string 'The car traveled 80.47 kilometers and used 18.93 liters of gas.'.
+In this example, we pass the input text string 'The car traveled 50 miles and used 5 gallons of gas.' to the convertText() command, and store the output in the outputText variable. We then log the output using console.log(), which should return the string The car traveled 80470 m and used 0.019 m³ of gas.'.
 
 
 ```js
@@ -31,7 +31,7 @@ const outputText = muc.convertText(inputText);
 console.log(outputText); // Output: 'The car traveled 80.47 km and used 0.019 m³ of gas.'
 ```
 
-In this example, we copy the same process as example 1 but this time we switches the default length unit to meter, which should return the string 'The car traveled 80.47 kilometers and used 18.93 liters of gas.'.
+In this example, we copy the same process as example 1 but this time we switches the default length unit to meter, which should return the string 'The car traveled 80.47 km and used 0.019 m³ of gas.'.
 
 ## Input flexibility 
 
@@ -144,9 +144,9 @@ setUnitVolume(volume) // Sets the specified unit of volume (SI unit if unspecifi
     },
 
     "pressureUnits": {
-        "Pa": ["pascals", "Pascal", "pa"],
-        "kPa": ["kilopascals", "Kilopascal","kpa"],
-        "MPa": ["megapascals", "Megapascal","mpa"],
+        "Pa": ["pascals", "pascal", "pa"],
+        "kPa": ["kilopascals", "kilopascal","kpa"],
+        "MPa": ["megapascals", "megapascal","mpa"],
         "atm": ["atmospheres", "atmosphere", "atm"],
         "psi": ["pounds per square inch", "pound per square inch", "psi"],
         "bar": ["bar"]
