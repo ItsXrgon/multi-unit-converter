@@ -1,10 +1,6 @@
 "use strict";
 class convertUnits {
     // Functions to convert units and return their value + new unit
-    // Switch cases sorted according to how probable it is to swap from certains units to other unit
-    constructor(){
-        // SI Units already the base value
-    }
 
     /**
     * @param {number} value The value
@@ -581,7 +577,7 @@ class convertUnits {
         switch(unitInput) {
             case("pa"): 
                 switch(unitOutput) {
-                    case ("atm"):
+                    case("atm"):
                         return value/101300 + " atm";
                     case("psi"):
                         return value/6895 + " psi";
@@ -594,7 +590,7 @@ class convertUnits {
                 } break;
                 case("atm"): 
                 switch(unitOutput) {
-                    case ("pa"):
+                    case("pa"):
                         return value*101325 + " Pa";
                     case("psi"):
                         return value*14.696 + " psi";
@@ -604,12 +600,10 @@ class convertUnits {
                         return value/9.8692 + " MPa";
                     case("bar"):
                         return value*1.01325 + " bar";
-                    case("atm"):
-                        return value + " atm";
                 } break;
             case("psi"): 
                 switch(unitOutput) {
-                    case ("pa"):
+                    case("pa"):
                         return value*6894.76 + " Pa";
                     case("atm"):
                         return value/14.696 + " atm";
@@ -619,12 +613,10 @@ class convertUnits {
                         return value/145.038 + " MPa";
                     case("bar"):
                         return value*0.0689476 + " bar";
-                    case("psi"):
-                        return value + " psi";
                 } break;
             case("kpa"): 
                 switch(unitOutput) {
-                    case ("pa"):
+                    case("pa"):
                         return value*1000 + " Pa";
                     case("atm"):
                         return value/101.325 + " atm";
@@ -634,12 +626,10 @@ class convertUnits {
                         return value/1000 + " MPa";
                     case("bar"):
                         return value/100 + " bar";
-                    case("kpa"):
-                        return value + " kPa";
                 } break;
             case("mpa"): 
                 switch(unitOutput) {
-                    case ("pa"):
+                    case("pa"):
                         return value*1000000 + " Pa";
                     case("atm"):
                         return value*9.8692 + " atm";
@@ -649,12 +639,10 @@ class convertUnits {
                         return value*1000 + " kPa";
                     case("bar"):
                         return value*10 + " bar";
-                    case("mpa"):
-                        return value + " MPa";
                 } break;
             case("bar"): 
                 switch(unitOutput) {
-                    case ("pa"):
+                    case("pa"):
                         return value*100000 + " Pa";
                     case("atm"):
                         return value*0.98692 + " atm";
@@ -664,8 +652,6 @@ class convertUnits {
                         return value*100 + " kPa";
                     case("mpa"):
                         return value/10 + " MPa";
-                    case("bar"):
-                        return value + " bar";
                 } break;
             default:
                 return value;
@@ -682,7 +668,7 @@ class convertUnits {
         switch(unitInput) {
             case("j"): 
                 switch(unitOutput) {
-                    case ("kj"):
+                    case("kj"):
                         return value/1000 + " kJ";
                     case("mj"):
                         return value/1000000 + " mJ";
@@ -692,7 +678,7 @@ class convertUnits {
                 break;
             case("kj"): 
                 switch(unitOutput) {
-                    case ("j"):
+                    case("j"):
                         return value*1000 + " J";
                     case("mj"):
                         return value/1000 + " mJ";
@@ -702,7 +688,7 @@ class convertUnits {
                 break;
             case("mj"): 
                 switch(unitOutput) {
-                    case ("j"):
+                    case("j"):
                         return value*1000000 + " J";
                     case("kj"):
                         return value*1000 + " kJ";
@@ -712,7 +698,7 @@ class convertUnits {
                 break;
             case("kwh"): 
                 switch(unitOutput) {
-                    case ("j"):
+                    case("j"):
                         return value*3600000 + " J";
                     case("kj"):
                         return value*3600 + " kJ";
@@ -735,7 +721,7 @@ class convertUnits {
         switch(unitInput) {
             case("hz"): 
                 switch(unitOutput) {
-                case ("khz"):
+                case("khz"):
                     return value/1000 + " kHz";
                 case("mhz"):
                     return value/1000000 + " MHz";
@@ -745,7 +731,7 @@ class convertUnits {
                 break;
             case("khz"): 
                 switch(unitOutput) {
-                case ("hz"):
+                case("hz"):
                     return value*1000 + " Hz";
                 case("mhz"):
                     return value/1000 + " MHz";
@@ -755,7 +741,7 @@ class convertUnits {
                 break;
             case("mhz"): 
                 switch(unitOutput) {
-                case ("hz"):
+                case("hz"):
                     return value*1000000 + " Hz";
                 case("khz"):
                     return value*1000 + " kHz";
@@ -780,117 +766,9 @@ class convertUnits {
 
     convertArea(value, unitInput, unitOutput) {
         switch(unitInput) {
-            case("m2"): 
-                switch(unitOutput) {
-                    case ("km2"):
-                        return value/1000000 + " km²";
-                    case("cm2"):
-                        return value*10000 + " cm²";
-                    case("mm2"):
-                        return value*1000000 + " mm²";
-                    case("ha"):
-                        return value/10000 + " ha";
-                } 
-                break;
-            case("km2"): 
-                switch(unitOutput) {
-                case ("m2"):
-                    return value*1000000 + " m²";
-                case("cm2"):
-                    return value*10000000000 + " cm²";
-                case("mm2"):
-                    return value*1000000000000 + " mm²";
-                case("ha"):
-                    return value/100 + " ha";
-                } 
-                break;
-            case("cm2"): 
-                switch(unitOutput) {
-                case ("m2"):
-                    return value/10000 + " m²";
-                case("km2"):
-                    return value/10000000000 + " km²";
-                case("mm2"):
-                    return value*100 + " mm²";
-                case("ha"):
-                    return value/1000000 + " ha";
-                } 
-                break;
-            case("mm2"): 
-                switch(unitOutput) {
-                case ("m2"):
-                    return value/1000000 + " m²";
-                case("km2"):
-                    return value/1000000000000 + " km²";
-                case("cm2"):
-                    return value/100 + " cm²";
-                case("ha"):
-                    return value/100000000 + " ha";
-                } 
-                break;
-            case("ha"): 
-                switch(unitOutput) {
-                case ("m2"):
-                    return value*10000 + " m²";
-                case("km2"):
-                    return value*100 + " km²";
-                case("cm2"):
-                    return value*100000000 + " cm²";
-                case("mm2"):
-                    return value*10000000000 + " mm²";
-                } 
-                break;
-            
-            case("sqft"): 
-                switch(unitOutput) {
-                case ("sqyd"):
-                    return value/9 + " sq yd";
-                case("acre"):
-                    return value/43560 + " acre";
-                case("sqmi"):
-                    return value/27878400 + " sq mi";
-                } 
-                break;
-            case("sqyd"): 
-                switch(unitOutput) {
-                case ("sqft"):
-                    return value*9 + " sq ft";
-                case("acre"):
-                    return value/4840 + " acre";
-                case("sqmi"):
-                    return value/3097600 + " sq mi";
-                } 
-                break;
-            case("acre"): 
-                switch(unitOutput) {
-                case ("sqft"):
-                    return value*43560 + " sq ft";
-                case("sqyd"):
-                    return value*4840 + " sq yd";
-                case("sqmi"):
-                    return value/640 + " sq mi";
-                } 
-                break;
-            case("sqmi"): 
-                switch(unitOutput) {
-                case ("sqft"):
-                    return value*27878400 + " sq ft";
-                case("sqyd"):
-                    return value*3097600 + " sq yd";
-                case("acre"):
-                    return value*640 + " acre";
-                } 
-                break;
-            default:
-                return value;
-        } 
-    }
-
-    convertArea(value, unitInput, unitOutput) {
-        switch(unitInput) {
             case("mm2"):
                 switch(unitOutput) {
-                case ("cm2"):
+                case("cm2"):
                     return value/100 + " cm²";
                 case("m2"):
                     return value/1000000 + " m²";
@@ -910,7 +788,7 @@ class convertUnits {
                 break;
             case("cm2"):
                 switch(unitOutput) {
-                case ("mm2"):
+                case("mm2"):
                     return value*100 + " mm²";
                 case("m2"):
                     return value/10000 + " m²";
@@ -930,7 +808,7 @@ class convertUnits {
                 break;
             case("m2"):
                 switch(unitOutput) {
-                case ("mm2"):
+                case("mm2"):
                     return value*1000000 + " mm²";
                 case("cm2"):
                     return value*10000 + " cm²";
@@ -950,7 +828,7 @@ class convertUnits {
                 break;
             case("km2"):
                 switch(unitOutput) {
-                case ("mm2"):
+                case("mm2"):
                     return value*1000000000000 + " mm²";
                 case("cm2"):
                     return value*10000000000 + " cm²";
@@ -970,7 +848,7 @@ class convertUnits {
                 break;
             case("in2"):
                 switch(unitOutput) {
-                case ("mm2"):
+                case("mm2"):
                     return value*645 + " mm²";
                 case("cm2"):
                     return value*6.452 + " cm²";
@@ -990,7 +868,7 @@ class convertUnits {
                 break;
             case("ft2"):
                 switch(unitOutput) {
-                case ("mm2"):
+                case("mm2"):
                     return value*92903 + " mm²";
                 case("cm2"):
                     return value*929 + " cm²";
@@ -1010,7 +888,7 @@ class convertUnits {
                 break;
             case("yd2"):
                 switch(unitOutput) {
-                case ("mm2"):
+                case("mm2"):
                     return value*836127 + " mm²";
                 case("cm2"):
                     return value*8361 + " cm²";
@@ -1030,7 +908,7 @@ class convertUnits {
                 break;
             case("ac"):
                 switch(unitOutput) {
-                case ("mm2"):
+                case("mm2"):
                     return value*4046856422 + " mm²";
                 case("cm2"):
                     return value*404686 + " cm²";
@@ -1050,7 +928,7 @@ class convertUnits {
                 break;
             case("ha"):
                 switch(unitOutput) {
-                case ("mm2"):
+                case("mm2"):
                     return value*100000000 + " mm²";
                 case("cm2"):
                     return value*10000 + " cm²";

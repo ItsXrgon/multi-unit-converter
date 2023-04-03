@@ -64,7 +64,6 @@ class MultiUnitConverter {
 
     /**
     * Sets the unit of time that convertText() should convert to
-    *
     * @param {string} time  The unit of time
     */
     setUnitTime(time) {
@@ -79,7 +78,6 @@ class MultiUnitConverter {
 
     /**
     * Sets the unit of length that convertText() should convert to
-    *
     * @param {string} length  The unit of length
     */
     setUnitLength(length) {
@@ -94,22 +92,20 @@ class MultiUnitConverter {
 
     /**
     * Sets the unit of weight that convertText() should convert to
-    *
     * @param {string} weight  The unit of weight
     */
     setUnitWeight(weight) {
         if(typeof weight != 'string'){
             throw 'Unit should be a string!';
         } else if(!this.#weightUnits.includes(weight.toLowerCase())){
-            throw new InvalidUnitException(`Input ${weight} is not a mass unit!`);
+            throw new InvalidUnitException(`Input ${weight} is not a weight unit!`);
         } else {       
-            this.mass = this.#resolveAliasesWeight(weight.toLowerCase());
+            this.weight = this.#resolveAliasesWeight(weight.toLowerCase());
         }
     }
 
     /**
     * Sets the unit of liquid volume that convertText() should convert to
-    *
     * @param {string} liquidVolume The unit of liquid volume
     */
     setUnitLiquidVolume(liquidVolume) {
@@ -118,13 +114,12 @@ class MultiUnitConverter {
         } else if(!this.#liquidVolumeUnits.includes(liquidVolume.toLowerCase())){
             throw new InvalidUnitException(`Input ${liquidVolume} is not a liquid volume unit!`);
         } else {       
-            this.mass = this.#resolveAliasesLiquidVolume(liquidVolume.toLowerCase());
+            this.liquidVolume = this.#resolveAliasesLiquidVolume(liquidVolume.toLowerCase());
         }
     }
 
     /**
     * Sets the unit of temperature volume that convertText() should convert to
-    *
     * @param {string} temperature The unit of temperature
     */
     setUnitTemperature(temperature) {
@@ -139,7 +134,6 @@ class MultiUnitConverter {
 
     /**
     * Sets the unit of electric current volume that convertText() should convert to
-    *
     * @param {string} electricCurrent The unit of electric current
     */
     setUnitElectricCurrent(electricCurrent) {
@@ -154,7 +148,6 @@ class MultiUnitConverter {
 
     /**
     * Sets the unit of spoon volume that convertText() should convert to
-    *
     * @param {string} spoon The unit of spoon
     */
     setUnitSpoon(spoon) {
@@ -169,7 +162,6 @@ class MultiUnitConverter {
 
     /**
     * Sets the unit of spoon volume that convertText() should convert to
-    *
     * @param {string} spoon The unit of spoon
     */
     setUnitPressure(pressure) {
@@ -184,7 +176,6 @@ class MultiUnitConverter {
 
     /**
     * Sets the unit of spoon volume that convertText() should convert to
-    *
     * @param {string} spoon The unit of spoon
     */
     setUnitEnergy(energy) {
@@ -199,7 +190,6 @@ class MultiUnitConverter {
 
     /**
     * Sets the unit of spoon volume that convertText() should convert to
-    *
     * @param {string} spoon The unit of spoon
     */
     setUnitFrequency(frequency) {
@@ -242,6 +232,11 @@ class MultiUnitConverter {
         }
     }
 
+    /**
+    * Resolve alias of unit
+    * @param {string} unit  The input unit
+    * @returns {string} The output unit
+    */
     #resolveAliasesTime(unit) {
         if(units.timeUnits.day.includes(unit)) {unit = "day";}
         else if(units.timeUnits.h.includes(unit)) {unit = "h";}
@@ -251,6 +246,11 @@ class MultiUnitConverter {
         return unit;
     }
 
+    /**
+    * Resolve alias of unit
+    * @param {string} unit  The input unit
+    * @returns {string} The output unit
+    */
     #resolveAliasesLength(unit) {
         if(units.lengthUnits.cm.includes(unit)) { unit = "cm";}
         else if(units.lengthUnits.ft.includes(unit)) { unit = "ft";}
@@ -263,6 +263,11 @@ class MultiUnitConverter {
         return unit;
     }
 
+    /**
+    * Resolve alias of unit
+    * @param {string} unit  The input unit
+    * @returns {string} The output unit
+    */
     #resolveAliasesWeight(unit) {
         if(units.weightUnits.g.includes(unit)) {unit = "g";}
         else if(units.weightUnits.kg.includes(unit)) {unit = "kg";}
@@ -274,6 +279,11 @@ class MultiUnitConverter {
         return unit;
     }
 
+    /**
+    * Resolve alias of unit
+    * @param {string} unit  The input unit
+    * @returns {string} The output unit
+    */
     #resolveAliasesLiquidVolume(unit) {
         if(units.liquidVolumeUnits.cup.includes(unit)) {unit = "cup";}
         else if(units.liquidVolumeUnits.cm3.includes(unit)) {unit = "cm3";}
@@ -286,6 +296,11 @@ class MultiUnitConverter {
         return unit;
     }
 
+    /**
+    * Resolve alias of unit
+    * @param {string} unit  The input unit
+    * @returns {string} The output unit
+    */
     #resolveAliasesTemperature(unit) {
         if(units.temperatureUnits.C.includes(unit)) {unit = "c"; }
         else if(units.temperatureUnits.K.includes(unit)) {unit = "k";}
@@ -293,6 +308,11 @@ class MultiUnitConverter {
         return unit;
     }
 
+    /**
+    * Resolve alias of unit
+    * @param {string} unit  The input unit
+    * @returns {string} The output unit
+    */
     #resolveAliasesElectricCurrent(unit) {
         if(units.electricCurrentUnits.A.includes(unit)) {unit = "A"; }
         else if(units.electricCurrentUnits.kA.includes(unit)) {unit = "kA";} 
@@ -300,12 +320,22 @@ class MultiUnitConverter {
         return unit;
     }
 
+    /**
+    * Resolve alias of unit
+    * @param {string} unit  The input unit
+    * @returns {string} The output unit
+    */
     #resolveAliasesSpoon(unit) {
         if(units.spoonUnits.tbsp.includes(unit)) {unit = "tbsp";} 
         else if(units.spoonUnits.tsp.includes(unit)) {unit = "tsp";} 
         return unit;
     }
 
+    /**
+    * Resolve alias of unit
+    * @param {string} unit  The input unit
+    * @returns {string} The output unit
+    */
     #resolveAliasesPressure(unit) {
         if(units.pressureUnits.Pa.includes(unit)) {unit = "pa"; }
         else if(units.pressureUnits.kPa.includes(unit)) {unit = "kpa";}
@@ -316,6 +346,11 @@ class MultiUnitConverter {
         return unit;
     }
 
+    /**
+    * Resolve alias of unit
+    * @param {string} unit  The input unit
+    * @returns {string} The output unit
+    */
     #resolveAliasesEnergy(unit) {
         if(units.energyUnits.J.includes(unit)) {unit = "j"; }
         else if(units.energyUnits.kJ.includes(unit)) {unit = "kj";}
@@ -324,6 +359,11 @@ class MultiUnitConverter {
         return unit;
     }
 
+    /**
+    * Resolve alias of unit
+    * @param {string} unit  The input unit
+    * @returns {string} The output unit
+    */
     #resolveAliasesFrequency(unit) {
         if(units.frequencyUnits.Hz.includes(unit)) {unit = "hz"; }
         else if(units.frequencyUnits.kHz.includes(unit)) {unit = "khz";}
@@ -332,6 +372,11 @@ class MultiUnitConverter {
         return unit;
     }
 
+    /**
+    * Resolve alias of unit
+    * @param {string} unit  The input unit
+    * @returns {string} The output unit
+    */
     #resolveAliasesArea(unit) {
         if(units.areaUnits.mm2.includes(unit)) {unit = "mm2"; }
         else if(units.areaUnits.cm2.includes(unit)) {unit = "cm2";}
@@ -345,6 +390,11 @@ class MultiUnitConverter {
         return unit;
     }
 
+    /**
+    * Resolve alias of unit
+    * @param {string} unit  The input unit
+    * @returns {string} The output unit
+    */
     #resolveAliasesVolume(unit) {
         if(units.volumeUnits.mm3.includes(unit)) {unit = "mm3"; }
         else if(units.volumeUnits.cm3.includes(unit)) {unit = "cm3";}
@@ -412,7 +462,7 @@ class MultiUnitConverter {
             unit = this.#resolveAliasesSpoon(unit);
             
             if(unit == this.spoon) {return numberAndUnit}
-            return cu.convertSpoon(value, unit, this.spoon);
+            return cu.convertSpoon(value, unit);
         }
         if(this.#energyUnits.includes(unit)){ // case energy units
            
@@ -445,6 +495,11 @@ class MultiUnitConverter {
     }
 
 
+    /**
+    * Rounds numbers to decimal 3 places
+    * @param {number} value  The number to round
+    * @returns {number} Rounded number
+    */
     #roundNumbers(value) {
         const regex = /(\d+\.\d{4,})/g;
         const matches = String(value).match(regex);
@@ -477,7 +532,6 @@ class MultiUnitConverter {
 
     /**
     * Converts text to specified units
-    *
     * @param {string} text  The text to convert
     * @returns {string} Text with converted values and units
     */
@@ -485,7 +539,6 @@ class MultiUnitConverter {
         if(typeof text != 'string'){
             throw 'Text should be a string!';
         }
-
        
         // regex to detect numbers followed by units
         // find all the units in the text using the regex pattern

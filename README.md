@@ -7,11 +7,23 @@ You can install this library using npm:
 ```npm install multi-unit-converter```
 
 ## Usage
-To use this library, first import it into your project using require then initiliase it:
+To use this library in JS, first import it into your project using require then initiliase it:
 
 ```js
 const multiUnitConverter = require('multi-unit-converter');
 const muc = new multiUnitConverter();
+```
+
+
+For TS, Add the declaration to .d.ts file then import it into your project then initiliase it:
+
+```ts
+declare module 'multi-unit-converter'; // Add this to your .d.ts file
+```
+
+```ts
+import MultiUnitConverter from 'multi-unit-converter'
+const muc = new MultiUnitConverter();
 ```
 
 You can then use the convertText(text) command to convert a text string to its SI equivalent:
@@ -127,9 +139,9 @@ setUnitVolume(volume) // Sets the specified unit of volume (SI unit if unspecifi
     },
 
     "temperatureUnits" : {
-        "K": ["kelvins", "kelvin", "k"],
-        "C": ["celsius", "c", "°c"],
-        "F": ["fahrenheit", "f", "°f"]
+        "K": ["kelvins", "kelvin", "k", "K"],
+        "C": ["celsius", "c", "°c", "C", "°C"],
+        "F": ["fahrenheit", "f", "°f", "F", "°F"]
     },
 
     "electricCurrentUnits" : {
@@ -167,22 +179,22 @@ setUnitVolume(volume) // Sets the specified unit of volume (SI unit if unspecifi
     },
 
     "volumeUnits": {
-        "mm3": ["cubic millimeters", "cubic millimeter", "millimeter cubed", "millimeters cubed","mm3","mm^3", "mm³"],
-        "cm3": ["cubic centimeters", "cubic centimeter", "centimeter cubed", "centimeters cubed", "cm3","cm^3", "cm³"],
-        "m3": ["cubic meters", "cubic meter", "meter cubed", "meters cubed", "m3", "m^3", "m³"],
-        "in3": ["cubic inches", "cubic inch", "inch cubed", "inches cubed", "in3", "in^3", "in³"],
-        "ft3": ["cubic feet", "cubic foot", "ft3", "ft^3", "ft³"],
-        "yd3": ["cubic yards", "cubic yard", "yard cubed", "yards cubed", "yd3", "yd^3", "yd³"]
+        "mm3": ["cubic millimeters", "cubic millimeter", "millimeter cubed", "millimeters cubed","mm3", "mm³"],
+        "cm3": ["cubic centimeters", "cubic centimeter", "centimeter cubed", "centimeters cubed", "cm3", "cm³"],
+        "m3": ["cubic meters", "cubic meter", "meter cubed", "meters cubed", "m3", "m³"],
+        "in3": ["cubic inches", "cubic inch", "inch cubed", "inches cubed", "in3", "in³"],
+        "ft3": ["cubic feet", "cubic foot", "ft3", "ft³"],
+        "yd3": ["cubic yards", "cubic yard", "yard cubed", "yards cubed", "yd3", "yd³"]
     },
 
     "areaUnits": {
-        "mm2": ["square millimeters", "square millimeter", "millimeter squared", "millimeters squared", "mm2", "mm^2", "mm²"],
-        "cm2": ["square centimeters", "square centimeter", "centimeter squared", "centimeters squared", "cm2", "cm^2", "cm²"],
-        "m2": ["square meters", "square meter", "meter squared", "meters squared", "m2", "m&2", "m²"],
-        "km2": ["square kilometers", "square kilometer", "kilometers squared", "kilometerss squared", "km2", "km^2", "km²"],
-        "in2": ["square inches", "square inch", "inche squared", "inches squared", "in2", "in^2", "in²"],
-        "ft2": ["square feet", "square foot", "ft2", "ft^2", "ft²"],
-        "yd2": ["square yards", "square yard", "yd2", "yd^2", "yd²"],
+        "mm2": ["square millimeters", "square millimeter", "millimeter squared", "millimeters squared", "mm2", "mm²"],
+        "cm2": ["square centimeters", "square centimeter", "centimeter squared", "centimeters squared", "cm²", "cm²"],
+        "m2": ["square meters", "square meter", "meter squared", "meters squared", "m2", "m²"],
+        "km2": ["square kilometers", "square kilometer", "kilometers squared", "kilometerss squared", "km²", "km²"],
+        "in2": ["square inches", "square inch", "inche squared", "inches squared", "in2", "in²"],
+        "ft2": ["square feet", "square foot", "ft2", "ft²"],
+        "yd2": ["square yards", "square yard", "yd²2", "yd²"],
         "ac": ["acres", "acre", "ac"],
         "ha": ["hectares", "hectare", "ha"]
     }
