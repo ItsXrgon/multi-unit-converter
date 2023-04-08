@@ -83,6 +83,7 @@
         "mm3": ["cubic millimeters", "cubic millimeter", "millimeter cubed", "millimeters cubed","mm3","mm^3", "mm³"],
         "cm3": ["cubic centimeters", "cubic centimeter", "centimeter cubed", "centimeters cubed", "cm3","cm^3", "cm³"],
         "m3": ["cubic meters", "cubic meter", "meter cubed", "meters cubed", "m3", "m^3", "m³"],
+        "km3": ["cubic kilometers", "cubic kilometer", "kilometers cubed", "kilometers cubed", "km3", "km^3", "km³"],
         "in3": ["cubic inches", "cubic inch", "inch cubed", "inches cubed", "in3", "in^3", "in³"],
         "ft3": ["cubic feet", "cubic foot", "ft3", "ft^3", "ft³"],
         "yd3": ["cubic yards", "cubic yard", "yard cubed", "yards cubed", "yd3", "yd^3", "yd³"]
@@ -92,11 +93,11 @@
         "mm2": ["square millimeters", "square millimeter", "millimeter squared", "millimeters squared", "mm2", "mm^2", "mm²"],
         "cm2": ["square centimeters", "square centimeter", "centimeter squared", "centimeters squared", "cm2", "cm^2", "cm²"],
         "m2": ["square meters", "square meter", "meter squared", "meters squared", "m2", "m&2", "m²"],
-        "km2": ["square kilometers", "square kilometer", "kilometers squared", "kilometerss squared", "km2", "km^2", "km²"],
+        "km2": ["square kilometers", "square kilometer", "kilometers squared", "kilometers squared", "km2", "km^2", "km²"],
         "in2": ["square inches", "square inch", "inche squared", "inches squared", "in2", "in^2", "in²"],
         "ft2": ["square feet", "square foot", "ft2", "ft^2", "ft²"],
         "yd2": ["square yards", "square yard", "yd2", "yd^2", "yd²"],
-        "ac": ["acres", "acre", "ac"],
-        "ha": ["hectares", "hectare", "ha"]
+        "ac2": ["square acres", "square acres","acree squared", "acres squared", "ac²", "ac^2"],
+        "ha2": ["hectares squared", "hectare squared","square hectare", "square hectares", "ha²", "ha^2"]
     }
 }

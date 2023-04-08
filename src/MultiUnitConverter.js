@@ -385,8 +385,8 @@ class MultiUnitConverter {
         else if(units.areaUnits.in2.includes(unit)) {unit = "in2"; }
         else if(units.areaUnits.ft2.includes(unit)) {unit = "ft2";}
         else if(units.areaUnits.yd2.includes(unit)) {unit = "yd2"; }
-        else if(units.areaUnits.ac.includes(unit)) {unit = "ac"; }
-        else if(units.areaUnits.ha.includes(unit)) {unit = "ha"; }
+        else if(units.areaUnits.ac.includes(unit)) {unit = "ac2"; }
+        else if(units.areaUnits.ha.includes(unit)) {unit = "ha2"; }
         return unit;
     }
 
@@ -399,6 +399,7 @@ class MultiUnitConverter {
         if(units.volumeUnits.mm3.includes(unit)) {unit = "mm3"; }
         else if(units.volumeUnits.cm3.includes(unit)) {unit = "cm3";}
         else if(units.volumeUnits.m3.includes(unit)) {unit = "m3"; }
+        else if(units.volumeUnits.km3.includes(unit)) {unit = "km3"; }
         else if(units.volumeUnits.in3.includes(unit)) {unit = "in3"; }
         else if(units.volumeUnits.ft3.includes(unit)) {unit = "ft3";}
         else if(units.volumeUnits.yd3.includes(unit)) {unit = "yd3"; }

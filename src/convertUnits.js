@@ -780,9 +780,9 @@ class convertUnits {
                     return value/92903 + " ft²";
                 case("yd2"):
                     return value/836127 + " yd²";
-                case("ac"):
+                case("ac2"):
                     return value/4046856422 + " acres²";
-                case("ha"):
+                case("ha2"):
                     return value/100000000 + " hectares²";
                 }
                 break;
@@ -800,9 +800,9 @@ class convertUnits {
                     return value/929 + " ft²";
                 case("yd2"):
                     return value/8361 + " yd²";
-                case("ac"):
+                case("ac2"):
                     return value/404686 + " acres²";
-                case("ha"):
+                case("ha2"):
                     return value/10000 + " hectares²";
                 }
                 break;
@@ -820,9 +820,9 @@ class convertUnits {
                     return value*10.764 + " ft²";
                 case("yd2"):
                     return value*1.196 + " yd²";
-                case("ac"):
+                case("ac2"):
                     return value/4047 + " acres²";
-                case("ha"):
+                case("ha2"):
                     return value/10000 + " hectares²";
                 }
                 break;
@@ -840,9 +840,9 @@ class convertUnits {
                     return value*1.076e+7 + " ft²";
                 case("yd2"):
                     return value*1.196e+6 + " yd²";
-                case("ac"):
+                case("ac2"):
                     return value*247.105 + " acres²";
-                case("ha"):
+                case("ha2"):
                     return value*100 + " hectares²";
                 }
                 break;
@@ -860,9 +860,9 @@ class convertUnits {
                     return value/144 + " ft²";
                 case("yd2"):
                     return value/1296 + " yd²";
-                case("ac"):
+                case("ac2"):
                     return value/6272640 + " acres²";
-                case("ha"):
+                case("ha2"):
                     return value/15500031 + " hectares²";
                 }
                 break;
@@ -880,9 +880,9 @@ class convertUnits {
                     return value*144 + " in²";
                 case("yd2"):
                     return value/9 + " yd²";
-                case("ac"):
+                case("ac2"):
                     return value/43560 + " acres²";
-                case("ha"):
+                case("ha2"):
                     return value/107639 + " hectares²";
                 }
                 break;
@@ -900,13 +900,13 @@ class convertUnits {
                     return value*1296 + " in²";
                 case("ft2"):
                     return value*9 + " ft²";
-                case("ac"):
+                case("ac2"):
                     return value/4840 + " acres²";
-                case("ha"):
+                case("ha2"):
                     return value/11960 + " hectares²";
                 }
                 break;
-            case("ac"):
+            case("ac2"):
                 switch(unitOutput) {
                 case("mm2"):
                     return value*4046856422 + " mm²";
@@ -922,11 +922,11 @@ class convertUnits {
                     return value*43560 + " ft²";
                 case("yd2"):
                     return value*4840 + " yd²";
-                case("ha"):
+                case("ha2"):
                     return value*40.469 + " hectares²";
                 }
                 break;
-            case("ha"):
+            case("ha2"):
                 switch(unitOutput) {
                 case("mm2"):
                     return value*100000000 + " mm²";
@@ -942,13 +942,133 @@ class convertUnits {
                     return value*107639 + " ft²";
                 case("yd2"):
                     return value*11960 + " yd²";
-                case("ac"):
+                case("ac2"):
                     return value/40.469 + " acres²";
                 }
                 break;
             default:
                 return value;
         }
+    }
+
+    convertVolume(value, unitInput, unitOutput) {
+        switch(unitInput) {
+            case("mm3"): 
+                switch(unitOutput) {
+                    case ("cm3"):
+                        return value/1000 + " cm³";
+                    case("m3"):
+                        return value/1000000000 + " m³";
+                    case("km3"):
+                        return value/1000000000000000000 + " km³";
+                    case("in3"):
+                        return value/16387 + " in³";
+                    case("ft3"):
+                        return value/28316846 + " ft³";
+                    case("yd3"):
+                        return value/764554858 + " yd³";
+                } 
+                break;
+            case("cm3"): 
+                switch(unitOutput) {
+                    case ("mm3"):
+                        return value*1000 + " mm³";
+                    case("m3"):
+                        return value/1000000 + " m³";
+                    case("km3"):
+                        return value/1000000000000 + " km³";
+                    case("in3"):
+                        return value/16.387 + " in³";
+                    case("ft3"):
+                        return value/28317 + " ft³";
+                    case("yd3"):
+                        return value/764555 + " yd³";
+                } 
+                break;
+            case("m3"): 
+                switch(unitOutput) {
+                    case ("mm3"):
+                        return value*1000000000 + " mm³";
+                    case("cm3"):
+                        return value*1000000 + " cm³";
+                    case("km3"):
+                        return value/1000000000 + " km³";
+                    case("in3"):
+                        return value*61024 + " in³";
+                    case("ft3"):
+                        return value*35.315 + " ft³";
+                    case("yd3"):
+                        return value*1.308 + " yd³";
+                } 
+                break;
+            case("km3"): 
+                switch(unitOutput) {
+                    case ("mm3"):
+                        return value*1000000000000000000 + " mm³";
+                    case("cm3"):
+                        return value*1000000000000 + " cm³";
+                    case("m3"):
+                        return value*1000000000 + " m³";
+                    case("in3"):
+                        return value*3.531 * Math.pow(10, 17) + " in³";
+                    case("ft3"):
+                        return value*4.169 * Math.pow(10, 10) + " ft³";
+                    case("yd3"):
+                        return value*1.307 * Math.pow(10, 9) + " yd³";
+                } 
+                break;
+            case("in3"): 
+                switch(unitOutput) {
+                    case ("mm3"):
+                        return value*16387 + " mm³";
+                    case("cm3"):
+                        return value*16.387 + " cm³";
+                    case("m3"):
+                        return value/61024 + " m³";
+                    case("km3"):
+                        return value/3.531 * Math.pow(10, 17) + " km³";
+                    case("ft3"):
+                        return value/1728 + " ft³";
+                    case("yd3"):
+                        return value/46656 + " yd³";
+                    } 
+                break;
+            case("ft3"): 
+                switch(unitOutput) {
+                    case ("mm3"):
+                        return value*28316846 + " mm³";
+                    case("cm3"):
+                        return value*28317 + " cm³";
+                    case("m3"):
+                        return value/35.315 + " m³";
+                    case("km3"):
+                        return value/4.169 * Math.pow(10, 10) + " km³";
+                    case("in3"):
+                        return value*1728 + " in³";
+                    case("yd3"):
+                        return value/27 + " yd³";
+                } 
+                break;
+            case("yd3"): 
+                switch(unitOutput) {
+                    case ("mm3"):
+                        return value*764554858 + " mm³";
+                    case("cm3"):
+                        return value*764555 + " cm³";
+                    case("m3"):
+                        return value*1.308 + " m³";
+                    case("km3"):
+                        return value/1.307 * Math.pow(10, 9) + " km³";
+                    case("in3"):
+                        return value*46656 + " in³";
+                    case("ft3"):
+                        return value*27 + " ft³";
+                    } 
+                break;
+            default:
+                return value;
+        }
+      
     }
 }
 
