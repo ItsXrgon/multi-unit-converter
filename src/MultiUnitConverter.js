@@ -19,8 +19,13 @@ const InvalidUnitException = require('./Exceptions/InvalidUnitException').Invali
 * @param {string} pressure The unit of pressure
 * @param {string} energy The unit of energy
 * @param {string} frequency The unit of frequency
+*
+* @param {number} precision The sig figs to round to
 */
 class MultiUnitConverter {
+
+    precision = 3; // sig figs to round to
+
     time = "s" // Seconds
     length = "m" // Meter
     weight = "kg" // Kilogram
@@ -61,6 +66,55 @@ class MultiUnitConverter {
 
     // Functions to change the units convertText(text) changes the units to
     // Units should be a string and included in the available list of units 
+
+    /**
+    * Sets the sig figs of the numbers that convertText() outputs
+    * @param {number} precision  The sig figs
+    */
+    setPrecision(precision) {
+        if(typeof precision != 'number'){
+            throw 'Precision should be a number!';
+        } else {       
+            this.precision = precision;
+        }
+    }
+
+    /**
+    * Sets a template for the units that convertText() should convert to
+    * @param {string} template The template
+    */
+    setAllUnits(template) {
+        switch(template.toLowerCase()){
+            case("metric"): 
+                this.length = "m";
+                this.weight = "g";
+                this.liquidVolume = "l";
+                this.area = "m2";
+                this.volume = "m3";
+                this.speed = "mps";
+                break;
+            case("imperial"): 
+                this.length = "in";
+                this.weight = "lb";
+                this.liquidVolume = "fl_oz";
+                this.area = "ft2";
+                this.volume = "ft3";
+                this.speed = "mph";
+                break;
+            case("us"): 
+                this.length = "ft";
+                this.weight = "lb";
+                this.liquidVolume = "fl_oz";
+                this.area = "ft2";
+                this.speed = "mph";
+                break;
+            case("recipe"):
+                this.spoon = "tbsp"
+                this.weight = "g";
+                this.liquidVolume = "cup";
+                break;
+        }
+    }
 
     /**
     * Sets the unit of time that convertText() should convert to
@@ -385,8 +439,8 @@ class MultiUnitConverter {
         else if(units.areaUnits.in2.includes(unit)) {unit = "in2"; }
         else if(units.areaUnits.ft2.includes(unit)) {unit = "ft2";}
         else if(units.areaUnits.yd2.includes(unit)) {unit = "yd2"; }
-        else if(units.areaUnits.ac.includes(unit)) {unit = "ac2"; }
-        else if(units.areaUnits.ha.includes(unit)) {unit = "ha2"; }
+        else if(units.areaUnits.ac2.includes(unit)) {unit = "ac2"; }
+        else if(units.areaUnits.ha2.includes(unit)) {unit = "ha2"; }
         return unit;
     }
 
@@ -506,7 +560,7 @@ class MultiUnitConverter {
         const matches = String(value).match(regex);
         if (matches) {
             matches.forEach(num => {
-                const rounded = parseFloat(num).toFixed(3);
+                const rounded = parseFloat(parseFloat(num).toPrecision(this.precision))
                 value = value.replace(num, rounded);
             });
         }

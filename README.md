@@ -70,6 +70,14 @@ All 4 function calls would return "0.05 m" as all 4 are acceptable spelling of c
 ```js
 convertText(text)  // Converts the units and values in a text (string) to specified units
 
+setPrecision(number)  // Sets the significant figures to round to (default is 3)
+
+setAllUnits(template) // Sets units to a template of the following [metric, us, imperial, recipe]
+    // Metric:- length: meter, weight: grams, liquid volume: liter, area: m², volume: m³
+    // Imperial:- length: inch, weight: pound, liquid volume: gallon, area: ft², volume: ft³
+    // US:- length: foot, weight: pound, liquid volume: liter, gallon:  ft², volume: ft³
+    // Recipe:- Spoon: tablespoon, weight: grams, liquid volume: cups
+
 setUnitTime(time) // Sets the specified unit of time (SI unit if unspecified) 
 
 setUnitLength(length) // Sets the specified unit of length (SI unit if unspecified) 
