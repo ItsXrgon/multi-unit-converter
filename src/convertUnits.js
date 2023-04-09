@@ -780,10 +780,10 @@ class convertUnits {
                     return value/92903 + " ft²";
                 case("yd2"):
                     return value/836127 + " yd²";
-                case("ac2"):
-                    return value/4046856422 + " acres²";
-                case("ha2"):
-                    return value/100000000 + " hectares²";
+                case("ac"):
+                    return value/4046856422 + " acres";
+                case("ha"):
+                    return value/100000000 + " hectares";
                 }
                 break;
             case("cm2"):
@@ -800,10 +800,10 @@ class convertUnits {
                     return value/929 + " ft²";
                 case("yd2"):
                     return value/8361 + " yd²";
-                case("ac2"):
-                    return value/404686 + " acres²";
-                case("ha2"):
-                    return value/10000 + " hectares²";
+                case("ac"):
+                    return value/404686 + " acres";
+                case("ha"):
+                    return value/10000 + " hectares";
                 }
                 break;
             case("m2"):
@@ -820,10 +820,10 @@ class convertUnits {
                     return value*10.764 + " ft²";
                 case("yd2"):
                     return value*1.196 + " yd²";
-                case("ac2"):
-                    return value/4047 + " acres²";
-                case("ha2"):
-                    return value/10000 + " hectares²";
+                case("ac"):
+                    return value/4047 + " acres";
+                case("ha"):
+                    return value/10000 + " hectares";
                 }
                 break;
             case("km2"):
@@ -840,10 +840,10 @@ class convertUnits {
                     return value*1.076e+7 + " ft²";
                 case("yd2"):
                     return value*1.196e+6 + " yd²";
-                case("ac2"):
-                    return value*247.105 + " acres²";
-                case("ha2"):
-                    return value*100 + " hectares²";
+                case("ac"):
+                    return value*247.105 + " acres";
+                case("ha"):
+                    return value*100 + " hectares";
                 }
                 break;
             case("in2"):
@@ -860,10 +860,10 @@ class convertUnits {
                     return value/144 + " ft²";
                 case("yd2"):
                     return value/1296 + " yd²";
-                case("ac2"):
-                    return value/6272640 + " acres²";
-                case("ha2"):
-                    return value/15500031 + " hectares²";
+                case("ac"):
+                    return value/6272640 + " acres";
+                case("ha"):
+                    return value/15500031 + " hectares";
                 }
                 break;
             case("ft2"):
@@ -880,10 +880,10 @@ class convertUnits {
                     return value*144 + " in²";
                 case("yd2"):
                     return value/9 + " yd²";
-                case("ac2"):
-                    return value/43560 + " acres²";
-                case("ha2"):
-                    return value/107639 + " hectares²";
+                case("ac"):
+                    return value/43560 + " acres";
+                case("ha"):
+                    return value/107639 + " hectares";
                 }
                 break;
             case("yd2"):
@@ -900,13 +900,13 @@ class convertUnits {
                     return value*1296 + " in²";
                 case("ft2"):
                     return value*9 + " ft²";
-                case("ac2"):
-                    return value/4840 + " acres²";
-                case("ha2"):
-                    return value/11960 + " hectares²";
+                case("ac"):
+                    return value/4840 + " acres";
+                case("ha"):
+                    return value/11960 + " hectares";
                 }
                 break;
-            case("ac2"):
+            case("ac"):
                 switch(unitOutput) {
                 case("mm2"):
                     return value*4046856422 + " mm²";
@@ -922,11 +922,11 @@ class convertUnits {
                     return value*43560 + " ft²";
                 case("yd2"):
                     return value*4840 + " yd²";
-                case("ha2"):
-                    return value*40.469 + " hectares²";
+                case("ha"):
+                    return value*40.469 + " hectares";
                 }
                 break;
-            case("ha2"):
+            case("ha"):
                 switch(unitOutput) {
                 case("mm2"):
                     return value*100000000 + " mm²";
@@ -942,8 +942,8 @@ class convertUnits {
                     return value*107639 + " ft²";
                 case("yd2"):
                     return value*11960 + " yd²";
-                case("ac2"):
-                    return value/40.469 + " acres²";
+                case("ac"):
+                    return value/40.469 + " acres";
                 }
                 break;
             default:

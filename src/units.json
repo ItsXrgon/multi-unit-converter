@@ -97,7 +97,7 @@
         "in2": ["square inches", "square inch", "inche squared", "inches squared", "in2", "in^2", "in²"],
         "ft2": ["square feet", "square foot", "ft2", "ft^2", "ft²"],
         "yd2": ["square yards", "square yard", "yd2", "yd^2", "yd²"],
-        "ac2": ["square acres", "square acres","acree squared", "acres squared", "ac²", "ac^2"],
-        "ha2": ["hectares squared", "hectare squared","square hectare", "square hectares", "ha²", "ha^2"]
+        "ac": ["acres","acre","ac"],
+        "ha": ["hectares", "hectare", "ha"]
     }
 }
