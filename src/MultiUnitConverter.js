@@ -2,6 +2,7 @@
 const units = require("./units.json");
 const convertUnits = require("./convertUnits.js");
 const InvalidUnitException = require('./Exceptions/InvalidUnitException').InvalidUnitException;
+const InvalidPrecisionValue = require('./Exceptions/InvalidPrecisionValue').InvalidPrecisionValue;
 
 /**
 * Multi Unit Converter class to handle converting texts and setting units
@@ -73,8 +74,10 @@ class MultiUnitConverter {
     */
     setPrecision(precision) {
         if(typeof precision != 'number'){
-            throw 'Precision should be a number!';
-        } else {       
+            throw new InvalidPrecisionValueException('Precision should be a number!');
+        } else if(precision <= 0){
+            throw new InvalidPrecisionValueException('Precision should 1 or more!');
+        }else {       
             this.precision = precision;
         }
     }
@@ -113,6 +116,8 @@ class MultiUnitConverter {
                 this.weight = "g";
                 this.liquidVolume = "cup";
                 break;
+            default:
+                throw new InvalidTemplateException("Not an available template!");
         }
     }
 
