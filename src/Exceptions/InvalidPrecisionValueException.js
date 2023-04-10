@@ -1,11 +1,11 @@
 "use strict";
-class InvalidPrecisionValue extends Error {
+class InvalidPrecisionValueException extends Error {
     constructor(message) {
         super(message);
-        this.name = 'InvalidPrecisionValue';
+        this.name = 'InvalidPrecisionValueException';
     }
 }
 
 module.exports = {
-    InvalidPrecisionValue
+    InvalidPrecisionValueException
 }

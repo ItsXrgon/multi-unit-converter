@@ -2,7 +2,8 @@
 const units = require("./units.json");
 const convertUnits = require("./convertUnits.js");
 const InvalidUnitException = require('./Exceptions/InvalidUnitException').InvalidUnitException;
-const InvalidPrecisionValue = require('./Exceptions/InvalidPrecisionValue').InvalidPrecisionValue;
+const InvalidPrecisionValueException = require('./Exceptions/InvalidPrecisionValueException').InvalidPrecisionValueException;
+const InvalidTemplateException = require('./Exceptions/InvalidTemplateException').InvalidTemplateException;
 
 /**
 * Multi Unit Converter class to handle converting texts and setting units
@@ -469,6 +470,7 @@ class MultiUnitConverter {
     * Converts the values
     * @param {number} value The value of the input
     * @param {string} unit The unit of the input
+    * @returns {string} converted unit string
     */
     #convertUnitsToSelected(value, unit) {
         const numberAndUnit = unit; 
