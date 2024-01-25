@@ -7,7 +7,7 @@ class mile {
 	offset = 0;
 	type = 'length';
 	system = 'imperial';
-	aliases = ['miles', 'mile', 'mi'];
+	aliases = ['miles', 'mile', 'mi', 'mi.', 'miles.'];
 }
 
 module.exports = mile;

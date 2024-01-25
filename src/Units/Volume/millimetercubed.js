@@ -7,7 +7,17 @@ class millimetercubed {
 	offset = 0;
 	type = 'volume';
 	system = 'metric';
-	aliases = ['millimetercubed', 'millimetercubed', 'mm³'];
+	aliases = [
+		'millimeterscubed',
+		'millimetercubed',
+		'millimeters cubed',
+		'millimeter cubed',
+		'mm³',
+		'mm^3',
+		'mm3',
+		'mmcubed',
+		'mmcubic',
+	];
 }
 
 module.exports = millimetercubed;

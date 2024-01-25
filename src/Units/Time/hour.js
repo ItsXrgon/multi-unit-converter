@@ -6,7 +6,7 @@ class hour {
 	toSI = 3600;
 	offset = 0;
 	type = 'time';
-	aliases = ['hours', 'hour', 'h'];
+	aliases = ['hours', 'hour', 'h', 'hr', 'hrs'];
 }
 
 module.exports = hour;

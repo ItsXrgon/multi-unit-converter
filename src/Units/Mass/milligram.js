@@ -7,7 +7,7 @@ class milligram {
 	offset = 0;
 	type = 'weight';
 	system = 'metric';
-	aliases = ['milligrams', 'milligram', 'mg'];
+	aliases = ['milligrams', 'milligram', 'milligramme', 'milligrammes', 'mg'];
 }
 
 module.exports = milligram;

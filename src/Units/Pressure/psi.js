@@ -7,7 +7,7 @@ class psi {
 	offset = 0;
 	type = 'pressure';
 	system = 'imperial';
-	aliases = ['psis', 'psi'];
+	aliases = ['pounds per square inch', 'pound per square inch', 'psis', 'psi'];
 }
 
 module.exports = psi;

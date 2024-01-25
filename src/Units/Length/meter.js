@@ -7,7 +7,16 @@ class meter {
 	offset = 0;
 	type = 'length';
 	system = 'metric';
-	aliases = ['meters', 'meter', 'm'];
+	aliases = [
+		'meters',
+		'meter',
+		'm',
+		'metres',
+		'metre',
+		'metres',
+		'metre',
+		'met',
+	];
 }
 
 module.exports = meter;

@@ -7,7 +7,16 @@ class centimeter {
 	offset = 0;
 	type = 'length';
 	system = 'metric';
-	aliases = ['centimeters', 'centimeter', 'cm'];
+	aliases = [
+		'centimeters',
+		'centimeter',
+		'cm',
+		'cms',
+		'centimetre',
+		'centimetres',
+		'centimetre',
+		'centi',
+	];
 }
 
 module.exports = centimeter;

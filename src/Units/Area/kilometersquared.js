@@ -7,7 +7,15 @@ class kilometersquared {
 	offset = 0;
 	type = 'area';
 	system = 'metric';
-	aliases = ['kilometersquared', 'kilometersquared', 'km²'];
+	aliases = [
+		'kilometerssquared',
+		'kilometersquared',
+		'kilometers squared',
+		'kilometer squared',
+		'km²',
+		'km^2',
+		'km2',
+	];
 }
 
 module.exports = kilometersquared;

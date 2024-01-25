@@ -7,7 +7,18 @@ class centimetercubed {
 	offset = 0;
 	type = 'volume';
 	system = 'metric';
-	aliases = ['centimetercubed', 'centimetercubed', 'cm³'];
+	aliases = [
+		'centimeterscubed',
+		'centimetercubed',
+		'centimeters cubed',
+		'centimeter cubed',
+		'centimeter^3',
+		'centimeter3',
+		'cm³',
+		'cm^3',
+		'cm3',
+		'cmcubed',
+	];
 }
 
 module.exports = centimetercubed;

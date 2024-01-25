@@ -7,7 +7,17 @@ class fahrenheit {
 	offset = 459.67;
 	type = 'temperature';
 	system = 'imperial';
-	aliases = ['fahrenheit', 'fahrenheit', 'f'];
+	aliases = [
+		'fahrenheit',
+		'f',
+		'°f',
+		'degf',
+		'deg f',
+		'F',
+		'°F',
+		'degF',
+		'deg F',
+	];
 }
 
 module.exports = fahrenheit;

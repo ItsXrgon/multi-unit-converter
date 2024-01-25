@@ -6,7 +6,7 @@ class day {
 	toSI = 86400;
 	offset = 0;
 	type = 'time';
-	aliases = ['days', 'day'];
+	aliases = ['days', 'day', 'd'];
 }
 
 module.exports = day;

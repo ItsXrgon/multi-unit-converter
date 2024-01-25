@@ -7,7 +7,7 @@ class ounce {
 	offset = 0;
 	type = 'weight';
 	system = 'imperial';
-	aliases = ['ounces', 'ounce', 'oz'];
+	aliases = ['ounces', 'ounce', 'oz', 'oz.', 'ozs', 'ozs.'];
 }
 
 module.exports = ounce;

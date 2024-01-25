@@ -7,7 +7,7 @@ class yard {
 	offset = 0;
 	type = 'length';
 	system = 'imperial';
-	aliases = ['yards', 'yard', 'yd'];
+	aliases = ['yards', 'yard', 'yd', 'yds', 'y', 'yd.'];
 }
 
 module.exports = yard;

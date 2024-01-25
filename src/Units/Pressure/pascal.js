@@ -7,7 +7,7 @@ class pascal {
 	offset = 0;
 	type = 'pressure';
 	system = 'metric';
-	aliases = ['pascals', 'pascal', 'Pa'];
+	aliases = ['pascals', 'pascal', 'Pa', 'P'];
 }
 
 module.exports = pascal;

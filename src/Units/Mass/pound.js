@@ -7,7 +7,18 @@ class pound {
 	offset = 0;
 	type = 'weight';
 	system = 'imperial';
-	aliases = ['pounds', 'pound', 'lbs', 'lb'];
+	aliases = [
+		'pounds',
+		'pound',
+		'lb',
+		'lb.',
+		'lbs',
+		'lbs.',
+		'#',
+		'#.',
+		'℔',
+		'℔.',
+	];
 }
 
 module.exports = pound;

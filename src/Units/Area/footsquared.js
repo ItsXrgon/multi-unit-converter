@@ -7,7 +7,15 @@ class footsquared {
 	offset = 0;
 	type = 'area';
 	system = 'imperial';
-	aliases = ['footsquared', 'footsquared', 'ft²'];
+	aliases = [
+		'feetsquared',
+		'footsquared',
+		'feet squared',
+		'foot squared',
+		'ft²',
+		'ft^2',
+		'ft2',
+	];
 }
 
 module.exports = footsquared;

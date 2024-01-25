@@ -7,7 +7,16 @@ class yardcubed {
 	offset = 0;
 	type = 'volume';
 	system = 'imperial';
-	aliases = ['yardcubed', 'yardcubed', 'yd³'];
+	aliases = [
+		'yardscubed',
+		'yardcubed',
+		'yards cubed',
+		'yard cubed',
+		'yd³',
+		'yd^3',
+		'yd3',
+		'ydcubed',
+	];
 }
 
 module.exports = yardcubed;

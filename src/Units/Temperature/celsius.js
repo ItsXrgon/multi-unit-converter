@@ -7,7 +7,7 @@ class celsius {
 	offset = 273.15;
 	type = 'temperature';
 	system = 'metric';
-	aliases = ['celsius', 'celsius', 'c'];
+	aliases = ['celsius', 'c', '°c', 'degc', 'deg c', 'C', '°C', 'degC', 'deg C'];
 }
 
 module.exports = celsius;

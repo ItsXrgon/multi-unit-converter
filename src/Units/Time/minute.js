@@ -6,7 +6,7 @@ class minute {
 	toSI = 60;
 	offset = 0;
 	type = 'time';
-	aliases = ['minutes', 'minute', 'min', 'mins'];
+	aliases = ['minutes', 'minute', 'mins', 'min', 'm'];
 }
 
 module.exports = minute;

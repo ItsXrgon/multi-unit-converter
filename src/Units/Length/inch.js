@@ -7,7 +7,7 @@ class inch {
 	offset = 0;
 	type = 'length';
 	system = 'imperial';
-	aliases = ['inches', 'inch', 'in', '"', "''", '″'];
+	aliases = ['inches', 'inch', 'in', '"', "''", '″', '″', 'in.'];
 }
 
 module.exports = inch;

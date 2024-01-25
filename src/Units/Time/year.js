@@ -6,7 +6,7 @@ class year {
 	toSI = 31536000;
 	offset = 0;
 	type = 'time';
-	aliases = ['years', 'year'];
+	aliases = ['years', 'year', 'y', 'yr', 'yrs'];
 }
 
 module.exports = year;

@@ -7,7 +7,7 @@ class atmosphere {
 	offset = 0;
 	type = 'pressure';
 	system = 'metric';
-	aliases = ['atmosphere', 'atmosphere', 'atm'];
+	aliases = ['atmosphere', 'atmosphere', 'atm', 'atms'];
 }
 
 module.exports = atmosphere;

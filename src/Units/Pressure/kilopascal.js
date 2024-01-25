@@ -7,7 +7,7 @@ class kilopascal {
 	offset = 0;
 	type = 'pressure';
 	system = 'metric';
-	aliases = ['kilopascal', 'kilopascal', 'kPa'];
+	aliases = ['kilopascals', 'kilopascal', 'kPa', 'kP'];
 }
 
 module.exports = kilopascal;

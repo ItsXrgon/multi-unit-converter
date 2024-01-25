@@ -7,7 +7,16 @@ class centimetersquared {
 	offset = 0;
 	type = 'area';
 	system = 'metric';
-	aliases = ['centimetersquared', 'centimetersq', 'cm2', 'cm^2', 'cm²'];
+	aliases = [
+		'centimeterssquared',
+		'centimetersquared',
+		'centimeters squared',
+		'centimeter squared',
+		'centimetersq',
+		'cm2',
+		'cm^2',
+		'cm²',
+	];
 }
 
 module.exports = centimetersquared;

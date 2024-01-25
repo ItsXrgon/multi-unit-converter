@@ -6,7 +6,7 @@ class week {
 	toSI = 604800;
 	offset = 0;
 	type = 'time';
-	aliases = ['weeks', 'week'];
+	aliases = ['weeks', 'week', 'w'];
 }
 
 module.exports = week;

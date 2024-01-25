@@ -7,7 +7,7 @@ class foot {
 	offset = 0;
 	type = 'length';
 	system = 'imperial';
-	aliases = ['feet', 'foot', 'ft', "'", '′', '″', "''"];
+	aliases = ['feet', 'foot', 'ft', "'", "''", '′', '′', 'ft.'];
 }
 
 module.exports = foot;

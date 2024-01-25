@@ -7,7 +7,7 @@ class gram {
 	offset = 0;
 	type = 'weight';
 	system = 'metric';
-	aliases = ['grams', 'gram', 'g'];
+	aliases = ['grams', 'gram', 'gramme', 'grammes', 'g'];
 }
 
 module.exports = gram;

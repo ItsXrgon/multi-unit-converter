@@ -7,7 +7,7 @@ class megapascal {
 	offset = 0;
 	type = 'pressure';
 	system = 'metric';
-	aliases = ['megapascals', 'megapascal', 'MPa'];
+	aliases = ['megapascals', 'megapascal', 'MPa', 'MP'];
 }
 
 module.exports = megapascal;

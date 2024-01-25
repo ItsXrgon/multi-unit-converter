@@ -7,7 +7,7 @@ class acre {
 	offset = 0;
 	type = 'area';
 	system = 'imperial';
-	aliases = ['acre', 'acre', 'ac'];
+	aliases = ['acres', 'acre', 'ac'];
 }
 
 module.exports = acre;

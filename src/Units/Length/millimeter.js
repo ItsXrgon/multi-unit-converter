@@ -7,7 +7,7 @@ class millimeter {
 	offset = 0;
 	type = 'length';
 	system = 'metric';
-	aliases = ['millimeters', 'millimeter', 'mm'];
+	aliases = ['millimeters', 'millimeter', 'mm', 'millimetres', 'millimetre', 'millimetres', 'millimetre', 'millim', 'milli'];
 }
 
 module.exports = millimeter;

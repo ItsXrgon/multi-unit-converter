@@ -10,6 +10,7 @@ const liter = require('./liter');
 const millimetercubed = require('./millimetercubed');
 const tablespoon = require('./tablespoon');
 const teaspoon = require('./teaspoon');
+const footcubed = require('./footcubed');
 
 module.exports = [
 	new centimetercubed(),
@@ -24,4 +25,5 @@ module.exports = [
 	new millimetercubed(),
 	new tablespoon(),
 	new teaspoon(),
+	new footcubed(),
 ];

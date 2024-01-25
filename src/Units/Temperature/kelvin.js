@@ -7,7 +7,7 @@ class kelvin {
 	offset = 0;
 	type = 'temperature';
 	system = 'metric';
-	aliases = ['kelvin', 'kelvin', 'k'];
+	aliases = ['kelvins', 'kelvin', 'k', '°k', 'degk', 'deg k', 'K', '°K', 'degK', 'deg K'];
 }
 
 module.exports = kelvin;

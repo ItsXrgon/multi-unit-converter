@@ -7,7 +7,16 @@ class metersquared {
 	offset = 0;
 	type = 'area';
 	system = 'metric';
-	aliases = ['metersquared', 'metersq', 'm2', 'm^2', 'm²'];
+	aliases = [
+		'meterssquared',
+		'metersquared',
+		'meters squared',
+		'meter squared',
+		'metersq',
+		'm2',
+		'm^2',
+		'm²',
+	];
 }
 
 module.exports = metersquared;

@@ -7,7 +7,16 @@ class kilometercubed {
 	offset = 0;
 	type = 'volume';
 	system = 'metric';
-	aliases = ['kilometercubed', 'kilometercubed', 'km³'];
+	aliases = [
+		'kilometerscubed',
+		'kilometercubed',
+		'kilometers cubed',
+		'kilometer cubed',
+		'km³',
+		'km^3',
+		'km3',
+		'kmcubed',
+	];
 }
 
 module.exports = kilometercubed;

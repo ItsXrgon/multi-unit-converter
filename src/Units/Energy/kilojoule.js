@@ -7,7 +7,7 @@ class kilojoule {
 	offset = 0;
 	type = 'energy';
 	system = 'metric';
-	aliases = ['kilojoules', 'kilojoule', 'kJ', 'kj'];
+	aliases = ['kilojoules', 'kilojoule', 'kJ'];
 }
 
 module.exports = kilojoule;
