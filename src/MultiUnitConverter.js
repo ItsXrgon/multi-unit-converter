@@ -418,18 +418,17 @@ class MultiUnitConverter {
 	 * @returns {string} converted unit string
 	 */
 	#convertUnitsToSelected(value, unit) {
-		const numberAndUnit = unit;
 		unit = unit.replace(/[0-9\.°']/g, '').trim();
 		let output = 0;
-
+		
 		if (this.timeAliases.includes(unit)) {
 			// case time units
 			const timeUnit = this.#resolveAliasesTime(unit);
 			const selectedUnit = this.#resolveAliasesTime(this.units.time);
 
-			output = value * timeUnit.toSI;
+			output = value * timeUnit.toSI + timeUnit.offset;
 			if (this.units.time !== this.siUnits.time) {
-				output = value / selectedUnit.toSI;
+				output = value / selectedUnit.toSI - selectedUnit.offset;
 			}
 			return output + ' ' + selectedUnit.symbol;
 		}
@@ -438,9 +437,9 @@ class MultiUnitConverter {
 			const lengthUnit = this.#resolveAliasesLength(unit);
 			const selectedUnit = this.#resolveAliasesLength(this.units.length);
 
-			output = value * lengthUnit.toSI;
+			output = value * lengthUnit.toSI + lengthUnit.offset;
 			if (this.units.length !== this.siUnits.length) {
-				output = value / selectedUnit.toSI;
+				output = value / selectedUnit.toSI - selectedUnit.offset;
 			}
 			return output + ' ' + selectedUnit.symbol;
 		}
@@ -449,9 +448,9 @@ class MultiUnitConverter {
 			const massUnit = this.#resolveAliasesmass(unit);
 			const selectedUnit = this.#resolveAliasesmass(this.units.mass);
 
-			output = value * massUnit.toSI;
+			output = value * massUnit.toSI + massUnit.offset;
 			if (this.units.mass !== this.siUnits.mass) {
-				output = value / selectedUnit.toSI;
+				output = value / selectedUnit.toSI - selectedUnit.offset;
 			}
 			return output + ' ' + selectedUnit.symbol;
 		}
@@ -462,9 +461,9 @@ class MultiUnitConverter {
 				this.units.liquidVolume
 			);
 
-			output = value * liquidUnit.toSI;
+			output = value * liquidUnit.toSI + liquidUnit.offset;
 			if (this.units.liquidVolume !== this.siUnits.liquidVolume) {
-				output = value / selectedUnit.toSI;
+				output = value / selectedUnit.toSI - selectedUnit.offset;
 			}
 			return output + ' ' + selectedUnit.symbol;
 		}
@@ -475,9 +474,9 @@ class MultiUnitConverter {
 				this.units.temperature
 			);
 
-			output = value * temperatureUnit.toSI;
+			output = value * temperatureUnit.toSI + temperatureUnit.offset;
 			if (this.units.temperature !== this.siUnits.temperature) {
-				output = value / selectedUnit.toSI;
+				output = value / selectedUnit.toSI - selectedUnit.offset;
 			}
 			return output + ' ' + selectedUnit.symbol;
 		}
@@ -488,9 +487,9 @@ class MultiUnitConverter {
 				this.units.electricCurrent
 			);
 
-			output = value * currentUnit.toSI;
+			output = value * currentUnit.toSI + currentUnit.offset;
 			if (this.units.electricCurrent !== this.siUnits.electricCurrent) {
-				output = value / selectedUnit.toSI;
+				output = value / selectedUnit.toSI - selectedUnit.offset;
 			}
 			return output + ' ' + selectedUnit.symbol;
 		}
@@ -499,9 +498,9 @@ class MultiUnitConverter {
 			const pressureUnit = this.#resolveAliasesPressure(unit);
 			const selectedUnit = this.#resolveAliasesPressure(this.units.pressure);
 
-			output = value * pressureUnit.toSI;
+			output = value * pressureUnit.toSI + pressureUnit.offset;
 			if (this.units.pressure !== this.siUnits.pressure) {
-				output = value / selectedUnit.toSI;
+				output = value / selectedUnit.toSI - selectedUnit.offset;
 			}
 			return output + ' ' + selectedUnit.symbol;
 		}
@@ -510,9 +509,9 @@ class MultiUnitConverter {
 			const energyUnit = this.#resolveAliasesEnergy(unit);
 			const selectedUnit = this.#resolveAliasesEnergy(this.units.energy);
 
-			output = value * energyUnit.toSI;
+			output = value * energyUnit.toSI + energyUnit.offset;
 			if (this.units.energy !== this.siUnits.energy) {
-				output = value / selectedUnit.toSI;
+				output = value / selectedUnit.toSI - selectedUnit.offset;
 			}
 			return output + ' ' + selectedUnit.symbol;
 		}
@@ -521,9 +520,9 @@ class MultiUnitConverter {
 			const frequencyUnit = this.#resolveAliasesFrequency(unit);
 			const selectedUnit = this.#resolveAliasesFrequency(this.units.frequency);
 
-			output = value * frequencyUnit.toSI;
+			output = value * frequencyUnit.toSI + frequencyUnit.offset;
 			if (this.units.frequency !== this.siUnits.frequency) {
-				output = value / selectedUnit.toSI;
+				output = value / selectedUnit.toSI - selectedUnit.offset;
 			}
 			return output + ' ' + selectedUnit.symbol;
 		}
@@ -532,9 +531,9 @@ class MultiUnitConverter {
 			const volumeUnit = this.#resolveAliasesVolume(unit);
 			const selectedUnit = this.#resolveAliasesVolume(this.units.volume);
 
-			output = value * volumeUnit.toSI;
+			output = value * volumeUnit.toSI + volumeUnit.offset;
 			if (this.units.volume !== this.siUnits.volume) {
-				output = value / selectedUnit.toSI;
+				output = value / selectedUnit.toSI - selectedUnit.offset;
 			}
 			return output + ' ' + selectedUnit.symbol;
 		}
@@ -543,9 +542,9 @@ class MultiUnitConverter {
 			const areaUnit = this.#resolveAliasesArea(unit);
 			const selectedUnit = this.#resolveAliasesArea(this.units.area);
 
-			output = value * areaUnit.toSI;
+			output = value * areaUnit.toSI + areaUnit.offset;
 			if (this.units.area !== this.siUnits.area) {
-				output = value / selectedUnit.toSI;
+				output = value / selectedUnit.toSI - selectedUnit.offset;
 			}
 			return output + ' ' + selectedUnit.symbol;
 		}

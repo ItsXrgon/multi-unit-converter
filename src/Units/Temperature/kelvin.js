@@ -1,7 +1,7 @@
 class kelvin {
 	name = 'kelvin';
 	label = 'Kelvin';
-	symbol = '°K';
+	symbol = 'K';
 	base = 'kelvin';
 	toSI = 1;
 	offset = 0;

@@ -7,7 +7,7 @@ class cup {
 	offset = 0;
 	type = 'volume';
 	system = 'imperial';
-	aliases = ['cups', 'cup', 'c'];
+	aliases = ['cups', 'cup'];
 }
 
 module.exports = cup;

@@ -7,7 +7,7 @@ class lightyear {
 	offset = 0;
 	type = 'length';
 	system = 'astronomical';
-	aliases = ['lightyears', 'lightyear', 'ly'];
+	aliases = ['lightyears', 'light years', 'lightyear', 'light year', 'ly'];
 }
 
 module.exports = lightyear;
