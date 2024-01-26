@@ -5,11 +5,68 @@ const InvalidPrecisionValueException =
 	require('./Exceptions/InvalidPrecisionValueException').InvalidPrecisionValueException;
 const InvalidTemplateException =
 	require('./Exceptions/InvalidTemplateException').InvalidTemplateException;
-
+/**
+ * Class to convert units
+ * @class
+ * @property {number} precision The sig figs of the numbers that convertText() outputs
+ * @property {object} units The units to convert to
+ * @property {string} units.time The unit of time
+ * @property {string} units.length The unit of length
+ * @property {string} units.mass The unit of mass
+ * @property {string} units.liquidVolume The unit of liquid volume
+ * @property {string} units.temperature The unit of temperature
+ * @property {string} units.electricCurrent The unit of electric current
+ * @property {string} units.pressure The unit of pressure
+ * @property {string} units.energy The unit of energy
+ * @property {string} units.frequency The unit of frequency
+ * @property {string} units.volume The unit of volume
+ * @property {string} units.area The unit of area
+ * @property {object} siUnits The SI units
+ * @property {string} siUnits.time The SI unit of time
+ * @property {string} siUnits.length The SI unit of length
+ * @property {string} siUnits.mass The SI unit of mass
+ * @property {string} siUnits.liquidVolume The SI unit of liquid volume
+ * @property {string} siUnits.temperature The SI unit of temperature
+ * @property {string} siUnits.electricCurrent The SI unit of electric current
+ * @property {string} siUnits.pressure The SI unit of pressure
+ * @property {string} siUnits.energy The SI unit of energy
+ * @property {string} siUnits.frequency The SI unit of frequency
+ * @property {string} siUnits.volume The SI unit of volume
+ * @property {string} siUnits.area The SI unit of area
+ * @property {object} lengthUnits The length units
+ * @property {object} massUnits The mass units
+ * @property {object} liquidVolumeUnits The liquid volume units
+ * @property {object} timeUnits The time units
+ * @property {object} temperatureUnits The temperature units
+ * @property {object} electricCurrentUnits The electric current units
+ * @property {object} pressureUnits The pressure units
+ * @property {object} energyUnits The energy units
+ * @property {object} frequencyUnits The frequency units
+ * @property {object} volumeUnits The volume units
+ * @property {object} areaUnits The area units
+ * @property {object} lengthAliases The length aliases
+ * @property {object} massAliases The mass aliases
+ * @property {object} liquidVolumeAliases The liquid volume aliases
+ * @property {object} timeAliases The time aliases
+ * @property {object} temperatureAliases The temperature aliases
+ * @property {object} electricCurrentAliases The electric current aliases
+ * @property {object} pressureAliases The pressure aliases
+ * @property {object} energyAliases The energy aliases
+ * @property {object} frequencyAliases The frequency aliases
+ * @property {object} volumeAliases The volume aliases
+ * @property {object} areaAliases The area aliases
+ * @property {object} lengthAliases The length aliases
+ * @property {object} massAliases The mass aliases
+ * @property {object} liquidVolumeAliases The liquid volume aliases
+ * @property {object} timeAliases The time aliases
+ * @property {object} temperatureAliases The temperature aliases
+ * @property {object} electricCurrentAliases The electric current aliases
+ */
 class MultiUnitConverter {
 	/**
 	 * Creates an instance of MultiUnitConverter class
 	 */
+
 	constructor({
 		time = 'second',
 		length = 'meter',
