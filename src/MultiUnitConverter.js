@@ -84,36 +84,6 @@ class MultiUnitConverter {
 		precision = 3,
 	} = {}) {
 		this.precision = precision;
-		this.units = {
-			time,
-			length,
-			mass,
-			area,
-			volume,
-			liquidVolume,
-			//speed,
-			//acceleration,
-			temperature,
-			electricCurrent,
-			pressure,
-			energy,
-			frequency,
-		};
-		this.siUnits = {
-			time: 'second',
-			length: 'meter',
-			mass: 'kilogram',
-			area: 'metersquared',
-			volume: 'metercubed',
-			liquidVolume: 'metercubed',
-			//speed: 'meterpersecond',
-			//acceleration: 'meterpersecondsquare',
-			temperature: 'kelvin',
-			electricCurrent: 'ampere',
-			pressure: 'pascal',
-			energy: 'joule',
-			frequency: 'hertz',
-		};
 
 		this.lengthUnits = require('./Units/Length/index.js');
 		this.massUnits = require('./Units/Mass/index.js');
@@ -148,6 +118,54 @@ class MultiUnitConverter {
 			.flat();
 		this.volumeAliases = this.volumeUnits.map((unit) => unit.aliases).flat();
 		this.areaAliases = this.areaUnits.map((unit) => unit.aliases).flat();
+
+		this.siUnits = {
+			time: this.timeUnits.find((unit) => unit.name === 'second'),
+			length: this.lengthUnits.find((unit) => unit.name === 'meter'),
+			mass: this.massUnits.find((unit) => unit.name === 'kilogram'),
+			liquidVolume: this.liquidVolumeUnits.find(
+				(unit) => unit.name === 'metercubed'
+			),
+			temperature: this.temperatureUnits.find((unit) => unit.name === 'kelvin'),
+			electricCurrent: this.electricCurrentUnits.find(
+				(unit) => unit.name === 'a'
+			),
+			pressure: this.pressureUnits.find((unit) => unit.name === 'pascal'),
+			energy: this.energyUnits.find((unit) => unit.name === 'joule'),
+			frequency: this.frequencyUnits.find((unit) => unit.name === 'hertz'),
+			volume: this.volumeUnits.find((unit) => unit.name === 'metercubed'),
+			area: this.areaUnits.find((unit) => unit.name === 'metersquared'),
+		};
+
+		this.units = {
+			time: this.timeUnits.find((unit) => unit.name === time.toLowerCase()),
+			length: this.lengthUnits.find(
+				(unit) => unit.name === length.toLowerCase()
+			),
+			mass: this.massUnits.find((unit) => unit.name === mass.toLowerCase()),
+			liquidVolume: this.liquidVolumeUnits.find(
+				(unit) => unit.name === liquidVolume.toLowerCase()
+			),
+			temperature: this.temperatureUnits.find(
+				(unit) => unit.name === temperature.toLowerCase()
+			),
+			electricCurrent: this.electricCurrentUnits.find(
+				(unit) => unit.name === electricCurrent.toLowerCase()
+			),
+			pressure: this.pressureUnits.find(
+				(unit) => unit.name === pressure.toLowerCase()
+			),
+			energy: this.energyUnits.find(
+				(unit) => unit.name === energy.toLowerCase()
+			),
+			frequency: this.frequencyUnits.find(
+				(unit) => unit.name === frequency.toLowerCase()
+			),
+			volume: this.volumeUnits.find(
+				(unit) => unit.name === volume.toLowerCase()
+			),
+			area: this.areaUnits.find((unit) => unit.name === area.toLowerCase()),
+		};
 	}
 	// Functions to change the units convertText(text) changes the units to
 	// Units should be a string and included in the available list of units
@@ -216,7 +234,7 @@ class MultiUnitConverter {
 		} else if (!this.timeAliases.includes(time.toLowerCase())) {
 			throw new InvalidUnitException(`Input ${time} is not a time unit!`);
 		} else {
-			this.units.time = this.resolveAliasesTime(time.toLowerCase()).name;
+			this.units.time = this.resolveAliasesTime(time.toLowerCase());
 		}
 	}
 
@@ -230,7 +248,7 @@ class MultiUnitConverter {
 		} else if (!this.lengthAliases.includes(length.toLowerCase())) {
 			throw new InvalidUnitException(`Input ${length} is not a length unit!`);
 		} else {
-			this.units.length = this.resolveAliasesLength(length.toLowerCase()).name;
+			this.units.length = this.resolveAliasesLength(length.toLowerCase());
 		}
 	}
 
@@ -244,7 +262,7 @@ class MultiUnitConverter {
 		} else if (!this.massAliases.includes(mass.toLowerCase())) {
 			throw new InvalidUnitException(`Input ${mass} is not a mass unit!`);
 		} else {
-			this.units.mass = this.resolveAliasesMass(mass.toLowerCase()).name;
+			this.units.mass = this.resolveAliasesMass(mass.toLowerCase());
 		}
 	}
 
@@ -262,7 +280,7 @@ class MultiUnitConverter {
 		} else {
 			this.units.liquidVolume = this.resolveAliasesLiquidVolume(
 				liquidVolume.toLowerCase()
-			).name;
+			);
 		}
 	}
 
@@ -280,7 +298,7 @@ class MultiUnitConverter {
 		} else {
 			this.units.temperature = this.resolveAliasesTemperature(
 				temperature.toLowerCase()
-			).name;
+			);
 		}
 	}
 
@@ -300,7 +318,7 @@ class MultiUnitConverter {
 		} else {
 			this.units.electricCurrent = this.resolveAliasesElectricCurrent(
 				electricCurrent.toLowerCase()
-			).name;
+			);
 		}
 	}
 
@@ -314,9 +332,7 @@ class MultiUnitConverter {
 		} else if (!this.pressureAliases.includes(pressure.toLowerCase())) {
 			throw new InvalidUnitException(`Input ${pressure} is not a spoon unit!`);
 		} else {
-			this.units.pressure = this.resolveAliasesPressure(
-				pressure.toLowerCase()
-			).name;
+			this.units.pressure = this.resolveAliasesPressure(pressure.toLowerCase());
 		}
 	}
 
@@ -330,7 +346,7 @@ class MultiUnitConverter {
 		} else if (!this.energyAliases.includes(energy.toLowerCase())) {
 			throw new InvalidUnitException(`Input ${energy} is not a spoon unit!`);
 		} else {
-			this.units.energy = this.resolveAliasesEnergy(energy.toLowerCase()).name;
+			this.units.energy = this.resolveAliasesEnergy(energy.toLowerCase());
 		}
 	}
 
@@ -346,7 +362,7 @@ class MultiUnitConverter {
 		} else {
 			this.units.frequency = this.resolveAliasesFrequency(
 				frequency.toLowerCase()
-			).name;
+			);
 		}
 	}
 
@@ -361,7 +377,7 @@ class MultiUnitConverter {
 		} else if (!this.areaAliases.includes(area.toLowerCase())) {
 			throw new InvalidUnitException(`Input ${area} is not a spoon unit!`);
 		} else {
-			this.units.area = this.resolveAliasesArea(area.toLowerCase()).name;
+			this.units.area = this.resolveAliasesArea(area.toLowerCase());
 		}
 	}
 
@@ -376,7 +392,7 @@ class MultiUnitConverter {
 		} else if (!this.volumeAliases.includes(volume.toLowerCase())) {
 			throw new InvalidUnitException(`Input ${volume} is not a spoon unit!`);
 		} else {
-			this.units.volume = this.resolveAliasesVolume(volume.toLowerCase()).name;
+			this.units.volume = this.resolveAliasesVolume(volume.toLowerCase());
 		}
 	}
 
@@ -481,7 +497,7 @@ class MultiUnitConverter {
 		if (this.timeAliases.includes(unit)) {
 			// case time units
 			const timeUnit = this.resolveAliasesTime(unit);
-			const selectedUnit = this.resolveAliasesTime(this.units.time);
+			const selectedUnit = this.units.time;
 
 			output = value * timeUnit.toSI + timeUnit.offset;
 			if (this.units.time !== this.siUnits.time) {
@@ -492,7 +508,7 @@ class MultiUnitConverter {
 		if (this.lengthAliases.includes(unit)) {
 			// case length units
 			const lengthUnit = this.resolveAliasesLength(unit);
-			const selectedUnit = this.resolveAliasesLength(this.units.length);
+			const selectedUnit = this.units.length;
 
 			output = value * lengthUnit.toSI + lengthUnit.offset;
 			if (this.units.length !== this.siUnits.length) {
@@ -503,7 +519,7 @@ class MultiUnitConverter {
 		if (this.massAliases.includes(unit)) {
 			// case mass units
 			const massUnit = this.resolveAliasesMass(unit);
-			const selectedUnit = this.resolveAliasesMass(this.units.mass);
+			const selectedUnit = this.units.mass;
 
 			output = value * massUnit.toSI + massUnit.offset;
 			if (this.units.mass !== this.siUnits.mass) {
@@ -514,9 +530,7 @@ class MultiUnitConverter {
 		if (this.liquidVolumeAliases.includes(unit)) {
 			// case liquid volume units
 			const liquidUnit = this.resolveAliasesLiquidVolume(unit);
-			const selectedUnit = this.resolveAliasesLiquidVolume(
-				this.units.liquidVolume
-			);
+			const selectedUnit = this.units.liquidVolume;
 
 			output = value * liquidUnit.toSI + liquidUnit.offset;
 			if (this.units.liquidVolume !== this.siUnits.liquidVolume) {
@@ -527,9 +541,7 @@ class MultiUnitConverter {
 		if (this.temperatureAliases.includes(unit)) {
 			// case temperature units
 			const temperatureUnit = this.resolveAliasesTemperature(unit);
-			const selectedUnit = this.resolveAliasesTemperature(
-				this.units.temperature
-			);
+			const selectedUnit = this.units.temperature;
 
 			output = value * temperatureUnit.toSI + temperatureUnit.offset;
 			if (this.units.temperature !== this.siUnits.temperature) {
@@ -540,9 +552,7 @@ class MultiUnitConverter {
 		if (this.electricCurrentAliases.includes(unit)) {
 			// case electric current units
 			const currentUnit = this.resolveAliasesElectricCurrent(unit);
-			const selectedUnit = this.resolveAliasesElectricCurrent(
-				this.units.electricCurrent
-			);
+			const selectedUnit = this.units.electricCurrent;
 
 			output = value * currentUnit.toSI + currentUnit.offset;
 			if (this.units.electricCurrent !== this.siUnits.electricCurrent) {
@@ -553,7 +563,7 @@ class MultiUnitConverter {
 		if (this.pressureAliases.includes(unit)) {
 			// case pressure units
 			const pressureUnit = this.resolveAliasesPressure(unit);
-			const selectedUnit = this.resolveAliasesPressure(this.units.pressure);
+			const selectedUnit = this.units.pressure;
 
 			output = value * pressureUnit.toSI + pressureUnit.offset;
 			if (this.units.pressure !== this.siUnits.pressure) {
@@ -564,7 +574,7 @@ class MultiUnitConverter {
 		if (this.energyAliases.includes(unit)) {
 			// case energy units
 			const energyUnit = this.resolveAliasesEnergy(unit);
-			const selectedUnit = this.resolveAliasesEnergy(this.units.energy);
+			const selectedUnit = this.units.energy;
 
 			output = value * energyUnit.toSI + energyUnit.offset;
 			if (this.units.energy !== this.siUnits.energy) {
@@ -575,7 +585,7 @@ class MultiUnitConverter {
 		if (this.frequencyAliases.includes(unit)) {
 			// case frequency units
 			const frequencyUnit = this.resolveAliasesFrequency(unit);
-			const selectedUnit = this.resolveAliasesFrequency(this.units.frequency);
+			const selectedUnit = this.units.frequency;
 
 			output = value * frequencyUnit.toSI + frequencyUnit.offset;
 			if (this.units.frequency !== this.siUnits.frequency) {
@@ -586,7 +596,7 @@ class MultiUnitConverter {
 		if (this.volumeAliases.includes(unit)) {
 			// case volume units
 			const volumeUnit = this.resolveAliasesVolume(unit);
-			const selectedUnit = this.resolveAliasesVolume(this.units.volume);
+			const selectedUnit = this.units.volume;
 
 			output = value * volumeUnit.toSI + volumeUnit.offset;
 			if (this.units.volume !== this.siUnits.volume) {
@@ -597,7 +607,7 @@ class MultiUnitConverter {
 		if (this.areaAliases.includes(unit)) {
 			// case area units
 			const areaUnit = this.resolveAliasesArea(unit);
-			const selectedUnit = this.resolveAliasesArea(this.units.area);
+			const selectedUnit = this.units.area;
 
 			output = value * areaUnit.toSI + areaUnit.offset;
 			if (this.units.area !== this.siUnits.area) {

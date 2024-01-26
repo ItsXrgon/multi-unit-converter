@@ -33,14 +33,14 @@ describe('multi-unit-converter', () => {
 	test('function switches the default unit', () => {
 		const muc = new MultiUnitConverter();
 		muc.setUnitTime('min');
-		expect(muc.units.time).toBe('minute');
+		expect(muc.units.time.name).toBe('minute');
 	});
 
 	// Test case for handling aliases of units
 	test('function can handle aliases of units', () => {
 		const muc = new MultiUnitConverter();
 		muc.setUnitLength('miles');
-		expect(muc.units.length).toBe('mile');
+		expect(muc.units.length.name).toBe('mile');
 	});
 
 	// Test case for throwing an InvalidUnitError
