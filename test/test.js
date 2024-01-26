@@ -1,5 +1,5 @@
 'use strict';
-const MultiUnitConverter = require('../src/MultiUnitConverter.js');
+const MultiUnitConverter = require('../src/index.js');
 
 describe('multi-unit-converter', () => {
 	// Test case for a string with a single value and unit 1
