@@ -6,10 +6,10 @@ JavaScript library that detects all units in a string and converts them to SI un
 
 The `multi-unit-converter` JavaScript library simplifies the process of detecting and converting different units within a text string. Whether you want to convert units to the standard International System of Units (SI) or specify custom units, this library offers a straightforward solution.
 
-1- All units and their values are detected using a Regural Expression
-2- Then each unit is matched with its stored version in the library by comparing with the aliases of each
-3- Finally the unit is converted by multiplying by the toSI value stored in the library then adding the offset
-4- If the unit to convert to is different from the SI unit, then the previous value is divided by the toSI of that and the offset is subtracted.
+1. All units and their values are detected using a Regural Expression
+2. Then each unit is matched with its stored version in the library by comparing with the aliases of each
+3. Finally the unit is converted by multiplying by the toSI value stored in the library then adding the offset
+4. If the unit to convert to is different from the SI unit, then the previous value is divided by the toSI of that and the offset is subtracted.
 
 ## Installation
 
