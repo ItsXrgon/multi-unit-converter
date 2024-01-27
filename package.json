@@ -1,32 +1,32 @@
 {
-  "name": "multi-unit-converter",
-  "version": "1.5.6",
-  "description": "Convert all units in a string to specified units or SI units if unspecified",
-  "main": "src/index.js",
-  "module": "src/index.js",
-  "type": "commonjs",
-  "scripts": {
-    "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ItsXrgon/multi-unit-converter.git"
-  },
-  "types": "src/types/index.d.ts",
-  "keywords": [
-    "units",
-    "measurements",
-    "conversions",
-    "SI-units",
-    "SI"
-  ],
-  "author": "ItsXrgon",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/itsXrgon/multi-unit-converter/issues"
-  },
-  "homepage": "https://github.com/itsXrgon/multi-unit-converter#readme",
-  "devDependencies": {
-    "jest": "29.5.0"
-  }
+	"name": "multi-unit-converter",
+	"version": "1.6.1",
+	"description": "Convert all units in a string to specified units or SI units if unspecified",
+	"main": "src/index.js",
+	"module": "src/index.js",
+	"type": "commonjs",
+	"scripts": {
+		"test": "jest"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ItsXrgon/multi-unit-converter.git"
+	},
+	"types": "src/types/index.d.ts",
+	"keywords": [
+		"units",
+		"measurements",
+		"conversions",
+		"SI-units",
+		"SI"
+	],
+	"author": "ItsXrgon",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/itsXrgon/multi-unit-converter/issues"
+	},
+	"homepage": "https://github.com/itsXrgon/multi-unit-converter#readme",
+	"devDependencies": {
+		"jest": "29.5.0"
+	}
 }

@@ -5,50 +5,7 @@
     <title>Multi Unit Converter</title>
   </head>
   <body>
-    <!-- Your library content here -->
     <script src="src/index.js"></script>
   </body>
   </head>
-  <body>
-    <h1>Unit Conversion Library Demo</h1>
-    <p>Enter a text with multiple units:</p>
-    <input type="text" id="input" placeholder="e.g. 2ft, 3in, 5lbs, 10oz">
-    <label>
-      Units to convert to:
-    </label>
-    <p>Unit of lenfth:</p>
-    <select id="output-units">
-      <option value="m">meters (m)</option>
-      <option value="kg">kilograms (kg)</option>
-      <option value="s">seconds (s)</option>
-    </select>
-    <p>Select the output units:</p>
-    <select id="output-units">
-      <option value="m">meters (m)</option>
-      <option value="kg">kilograms (kg)</option>
-      <option value="s">seconds (s)</option>
-    </select>
-    <p>Select the output units:</p>
-    <select id="output-units">
-      <option value="m">meters (m)</option>
-      <option value="kg">kilograms (kg)</option>
-      <option value="s">seconds (s)</option>
-    </select>
-    <p>Select the output units:</p>
-    <select id="output-units">
-      <option value="m">meters (m)</option>
-      <option value="kg">kilograms (kg)</option>
-      <option value="s">seconds (s)</option>
-    </select>
-    <button onclick="convert()">Convert</button>
-    <div id="output"></div>
-    <script>
-      function convert() {
-        const input = document.getElementById('input').value;
-        const outputUnits = document.getElementById('output-units').value;
-        const result = yourConversionFunction(input, outputUnits);
-        document.getElementById('output').innerHTML = result;
-      }
-    </script>
-  </body>
 </html>

@@ -184,7 +184,7 @@ class MultiUnitConverter {
 	 * Sets a template for the units that convertText() should convert to
 	 * @param {string} template The template
 	 */
-	setAllUnits(template) {
+	setTemplate(template) {
 		switch (template.toLowerCase()) {
 			case 'metric':
 				this.length = this.lengthUnits.find((unit) => unit.name === 'meter');
@@ -400,9 +400,9 @@ class MultiUnitConverter {
 	}
 
 	/**
-	 * 
-	 * @param {string} unit 
-	 * @returns 
+	 *
+	 * @param {string} unit
+	 * @returns
 	 */
 	resolveAliasesTime(unit) {
 		for (const [, unitObject] of Object.entries(this.timeUnits)) {

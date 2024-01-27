@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 class InvalidUnitException extends Error {
-    constructor(message) {
-        super(message);
-        this.name = 'InvalidUnitException';
-    }
+	constructor(message) {
+		super(message);
+		this.name = 'InvalidUnitException';
+	}
 }
 
 module.exports = {
-    InvalidUnitException
-}
+	InvalidUnitException,
+};
