@@ -14,7 +14,7 @@ To use this library in JS, first import it into your project using require then 
 
 ```js
 const multiUnitConverter = require('multi-unit-converter');
-const muc = new multiUnitConverter();
+const muc = new MultiUnitConverter();
 ```
 
 For TS, Add the declaration to .d.ts file then import it into your project then initiliase it:
@@ -24,7 +24,7 @@ declare module 'multi-unit-converter'; // Add this to your .d.ts file
 ```
 
 ```ts
-import MultiUnitConverter from 'multi-unit-converter';
+import { MultiUnitConverter } from 'multi-unit-converter';
 const muc = new MultiUnitConverter();
 ```
 
@@ -75,7 +75,7 @@ convertText(text); // Converts the units and values in a text (string) to specif
 
 setPrecision(number); // Sets the significant figures to round to (default is 3)
 
-setAllUnits(template); // Sets units to a template of the following [metric, US, imperial, recipe]
+setTemplate(template); // Sets units to a template of the following [metric, US, imperial, recipe]
 // Metric:- length: meter, weight: grams, liquid volume: liter, area: m², volume: m³
 // Imperial:- length: inch, weight: pound, liquid volume: gallon, area: ft², volume: ft³
 // US:- length: foot, weight: pound, liquid volume: liter, gallon:  ft², volume: ft³
@@ -92,8 +92,6 @@ setUnitLiquidVolume(liquidVolume); // Sets the specified unit of liquid volume (
 setUnitTemperature(temperature); // Sets the specified unit of temperature (SI unit if unspecified)
 
 setUnitElectricCurrent(electricCurrent); // Sets the specified unit of electric current (SI unit if unspecified)
-
-setUnitSpoon(spoon); // Sets the specified unit of spoon (SI unit if unspecified)
 
 setUnitPressure(pressure); // Sets the specified unit of pressure (SI unit if unspecified)
 
