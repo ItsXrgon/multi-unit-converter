@@ -74,8 +74,6 @@ class MultiUnitConverter {
 		area = 'metersquared',
 		volume = 'metercubed',
 		liquidVolume = 'metercubed',
-		//speed = 'meterpersecond',
-		//acceleration = 'meterpersecondsquare',
 		temperature = 'kelvin',
 		electricCurrent = 'ampere',
 		pressure = 'pascal',
@@ -167,8 +165,6 @@ class MultiUnitConverter {
 			area: this.areaUnits.find((unit) => unit.name === area.toLowerCase()),
 		};
 	}
-	// Functions to change the units convertText(text) changes the units to
-	// Units should be a string and included in the available list of units
 
 	/**
 	 * Sets the sig figs of the numbers that convertText() outputs
@@ -191,33 +187,40 @@ class MultiUnitConverter {
 	setAllUnits(template) {
 		switch (template.toLowerCase()) {
 			case 'metric':
-				this.length = 'meter';
-				this.mass = 'kilogram';
-				this.liquidVolume = 'metercubed';
-				this.area = 'metersquared';
-				this.volume = 'metercubed';
-				this.speed = 'meterpersecond';
-				this.acceleration = 'meterpersecondsquare';
+				this.length = this.lengthUnits.find((unit) => unit.name === 'meter');
+				this.mass = this.massUnits.find((unit) => unit.name === 'kilogram');
+				this.liquidVolume = this.liquidVolumeUnits.find(
+					(unit) => unit.name === 'metercubed'
+				);
+				this.area = this.areaUnits.find((unit) => unit.name === 'metersquared');
+				this.volume = this.volumeUnits.find(
+					(unit) => unit.name === 'metercubed'
+				);
 				break;
 			case 'imperial':
-				this.length = 'in';
-				this.mass = 'lb';
-				this.liquidVolume = 'fl_oz';
-				this.area = 'ft2';
-				this.volume = 'ft3';
-				this.speed = 'mph';
+				this.length = this.lengthUnits.find((unit) => unit.name === 'foot');
+				this.mass = this.massUnits.find((unit) => unit.name === 'pound');
+				this.liquidVolume = this.liquidVolumeUnits.find(
+					(unit) => unit.name === 'fluidounce'
+				);
+				this.area = this.areaUnits.find((unit) => unit.name === 'footsquared');
+				this.volume = this.volumeUnits.find(
+					(unit) => unit.name === 'footcubed'
+				);
 				break;
 			case 'us':
-				this.length = 'ft';
-				this.mass = 'lb';
-				this.liquidVolume = 'fl_oz';
-				this.area = 'ft2';
-				this.speed = 'mph';
+				this.length = this.lengthUnits.find((unit) => unit.name === 'foot');
+				this.mass = this.massUnits.find((unit) => unit.name === 'pound');
+				this.liquidVolume = this.liquidVolumeUnits.find(
+					(unit) => unit.name === 'fluidounce'
+				);
+				this.area = this.areaUnits.find((unit) => unit.name === 'footsquared');
 				break;
 			case 'recipe':
-				this.spoon = 'tbsp';
-				this.mass = 'g';
-				this.liquidVolume = 'cup';
+				this.mass = this.massUnits.find((unit) => unit.name === 'gram');
+				this.liquidVolume = this.liquidVolumeUnits.find(
+					(unit) => unit.name === 'cup'
+				);
 				break;
 			default:
 				throw new InvalidTemplateException('Not an available template!');
@@ -396,6 +399,11 @@ class MultiUnitConverter {
 		}
 	}
 
+	/**
+	 * 
+	 * @param {string} unit 
+	 * @returns 
+	 */
 	resolveAliasesTime(unit) {
 		for (const [, unitObject] of Object.entries(this.timeUnits)) {
 			if (unitObject.aliases.includes(unit)) {

@@ -12,6 +12,7 @@
     "type": "git",
     "url": "https://github.com/ItsXrgon/multi-unit-converter.git"
   },
+  "types": "src/types/index.d.ts",
   "keywords": [
     "units",
     "measurements",
