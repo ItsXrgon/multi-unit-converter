@@ -501,7 +501,7 @@ class MultiUnitConverter {
 
 			output = value * timeUnit.toSI + timeUnit.offset;
 			if (this.units.time !== this.siUnits.time) {
-				output = value / selectedUnit.toSI - selectedUnit.offset;
+				output = output / selectedUnit.toSI - selectedUnit.offset;
 			}
 			return output + ' ' + selectedUnit.symbol;
 		}
@@ -512,7 +512,7 @@ class MultiUnitConverter {
 
 			output = value * lengthUnit.toSI + lengthUnit.offset;
 			if (this.units.length !== this.siUnits.length) {
-				output = value / selectedUnit.toSI - selectedUnit.offset;
+				output = output / selectedUnit.toSI - selectedUnit.offset;
 			}
 			return output + ' ' + selectedUnit.symbol;
 		}
@@ -523,7 +523,7 @@ class MultiUnitConverter {
 
 			output = value * massUnit.toSI + massUnit.offset;
 			if (this.units.mass !== this.siUnits.mass) {
-				output = value / selectedUnit.toSI - selectedUnit.offset;
+				output = output / selectedUnit.toSI - selectedUnit.offset;
 			}
 			return output + ' ' + selectedUnit.symbol;
 		}
@@ -534,7 +534,7 @@ class MultiUnitConverter {
 
 			output = value * liquidUnit.toSI + liquidUnit.offset;
 			if (this.units.liquidVolume !== this.siUnits.liquidVolume) {
-				output = value / selectedUnit.toSI - selectedUnit.offset;
+				output = output / selectedUnit.toSI - selectedUnit.offset;
 			}
 			return output + ' ' + selectedUnit.symbol;
 		}
@@ -545,7 +545,7 @@ class MultiUnitConverter {
 
 			output = value * temperatureUnit.toSI + temperatureUnit.offset;
 			if (this.units.temperature !== this.siUnits.temperature) {
-				output = value / selectedUnit.toSI - selectedUnit.offset;
+				output = output / selectedUnit.toSI - selectedUnit.offset;
 			}
 			return output + ' ' + selectedUnit.symbol;
 		}
@@ -556,7 +556,7 @@ class MultiUnitConverter {
 
 			output = value * currentUnit.toSI + currentUnit.offset;
 			if (this.units.electricCurrent !== this.siUnits.electricCurrent) {
-				output = value / selectedUnit.toSI - selectedUnit.offset;
+				output = output / selectedUnit.toSI - selectedUnit.offset;
 			}
 			return output + ' ' + selectedUnit.symbol;
 		}
@@ -567,7 +567,7 @@ class MultiUnitConverter {
 
 			output = value * pressureUnit.toSI + pressureUnit.offset;
 			if (this.units.pressure !== this.siUnits.pressure) {
-				output = value / selectedUnit.toSI - selectedUnit.offset;
+				output = output / selectedUnit.toSI - selectedUnit.offset;
 			}
 			return output + ' ' + selectedUnit.symbol;
 		}
@@ -578,7 +578,7 @@ class MultiUnitConverter {
 
 			output = value * energyUnit.toSI + energyUnit.offset;
 			if (this.units.energy !== this.siUnits.energy) {
-				output = value / selectedUnit.toSI - selectedUnit.offset;
+				output = output / selectedUnit.toSI - selectedUnit.offset;
 			}
 			return output + ' ' + selectedUnit.symbol;
 		}
@@ -589,7 +589,7 @@ class MultiUnitConverter {
 
 			output = value * frequencyUnit.toSI + frequencyUnit.offset;
 			if (this.units.frequency !== this.siUnits.frequency) {
-				output = value / selectedUnit.toSI - selectedUnit.offset;
+				output = output / selectedUnit.toSI - selectedUnit.offset;
 			}
 			return output + ' ' + selectedUnit.symbol;
 		}
@@ -600,7 +600,7 @@ class MultiUnitConverter {
 
 			output = value * volumeUnit.toSI + volumeUnit.offset;
 			if (this.units.volume !== this.siUnits.volume) {
-				output = value / selectedUnit.toSI - selectedUnit.offset;
+				output = output / selectedUnit.toSI - selectedUnit.offset;
 			}
 			return output + ' ' + selectedUnit.symbol;
 		}
@@ -611,7 +611,7 @@ class MultiUnitConverter {
 
 			output = value * areaUnit.toSI + areaUnit.offset;
 			if (this.units.area !== this.siUnits.area) {
-				output = value / selectedUnit.toSI - selectedUnit.offset;
+				output = output / selectedUnit.toSI - selectedUnit.offset;
 			}
 			return output + ' ' + selectedUnit.symbol;
 		}
