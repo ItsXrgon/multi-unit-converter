@@ -1,4 +1,7 @@
 'use strict';
+
+const generateRegex = require('./regexGenerator.js');
+
 const InvalidUnitException =
 	require('./Exceptions/InvalidUnitException').InvalidUnitException;
 const InvalidPrecisionValueException =
@@ -82,6 +85,7 @@ class MultiUnitConverter {
 		precision = 3,
 	} = {}) {
 		this.precision = precision;
+		this.regex = generateRegex();
 
 		this.lengthUnits = require('./Units/Length/index.js');
 		this.massUnits = require('./Units/Mass/index.js');
@@ -643,24 +647,6 @@ class MultiUnitConverter {
 		return value;
 	}
 
-	/* CODE TO GET REGEX
-    let regExUnits = "/(\d*\.?\d+)(?:\s*)"
-    regExUnits += `(${Object.values(this.timeUnits).flat().join('|')}`
-    regExUnits += `|${Object.values(this.lengthUnits).flat().join('|')}`
-    regExUnits += `|${Object.values(this.massUnits).flat().join('|')}`
-    regExUnits += `|${Object.values(this.liquidVolumeUnits).flat().join('|')}`
-    regExUnits += `|${Object.values(this.temperatureUnits).flat().join('|')}`
-    regExUnits += `|${Object.values(this.electricCurrentUnits).flat().join('|')}`
-    regExUnits += `|${Object.values(this.spoonUnits).flat().join('|')}`
-    regExUnits += `|${Object.values(this.pressureUnits).flat().join('|')}`
-    regExUnits += `|${Object.values(this.energyUnits).flat().join('|')}`
-    regExUnits += `|${Object.values(this.frequencyUnits).flat().join('|')}`
-    regExUnits += `|${Object.values(this.volumeUnits).flat().join('|')}`
-    regExUnits += `|${Object.values(this.areaUnits).flat().join('|')}`
-    regExUnits += "|(\d*)(?:'(\d+)(?:\"|in|inch|inches)?|ft|foot|feet))(?!\w)/g"
-    console.log(regExUnits)
-    */
-
 	/**
 	 * Converts text to specified units
 	 * @param {string} text  The text to convert
@@ -673,10 +659,7 @@ class MultiUnitConverter {
 
 		// regex to detect numbers followed by units
 		// find all the units in the text using the regex pattern
-		const regex = new RegExp(
-			/(\d*\.?\d+)(?:\s*)(miliseconds|milisecond|ms|seconds|second|s|sec|secs|minutes|minute|min|hours|hour|h|days|day|d|milimeters|milimeter|mm|mms|centimeters|centimeter|cm|cms|yards|yard|yd|meters|meter|m|kilometers|kilometer|km|miles|mile|mi|miligrams|miligram|mg|grams|gram|g|ounces|ounce|ozs|oz|pounds|pound|lbs|lb|kilograms|kilogram|kg|tonnes|tonne|tn|tons|ton|t|milimeters cubed|milimeter cubed|mm3|mm³|centimeters cubed|centimeter cubed|cm3|cm³|meters cubed|meter cubed|m3|m³|milliliters|milliliter|ml|liters|liter|l|fluid ounces|fluid ounce|fl ozs|fl oz|cups|cup|gallons|gallon|gal|milliamperes|milliampere|ma|amperes|ampere|a|kiloamperes|kiloampere|ka|teaspoons|teaspoon|tea spoon|tsp|tablespoons|tablespoons|table spoon|tbsp|pascals|Pascal|pa|kilopascals|Kilopascal|kpa|megapascals|Megapascal|mpa|atmospheres|atmosphere|atm|pounds per square inch|pound per square inch|psi|bar|joules|joule|j|kilojoules|kilojoule|kJ|megajoules|megajoule|mJ|kilowatt-hours|kilowatt-hour|kwh|hertz|hertz|Hz|kilohertz|kilohertz|khz|megahertz|megahertz|mhz|gigahertz|gigahertz|ghz|cubic millimeters|cubic millimeter|millimeter cubed|millimeters cubed|mm3|mm³|cubic centimeters|cubic centimeter|centimeter cubed|centimeters cubed|cm3|cm³|cubic meters|cubic meter|meter cubed|meters cubed|m3|m³|cubic inches|cubic inch|inch cubed|inches cubed|in3|in³|cubic feet|cubic foot|ft3|ft³|cubic yards|cubic yard|yard cubed|yards cubed|yd3|yd³|square millimeters|square millimeter|millimeter squared|millimeters squared|mm2|mm²|square centimeters|square centimeter|centimeter squared|centimeters squared|cm²|cm²|square meters|square meter|meter squared|meters squared|m2|m²|square kilometers|square kilometer|kilometers squared|kilometerss squared|km²|km²|square inches|square inch|inche squared|inches squared|in2|in²|square feet|square foot|ft2|ft²|square yards|square yard|yd²2|yd²|acres|acre|ac|hectares|hectare|ha|°C|°F|°K|C|F|K|in|inch|inches|ft|foot|feet|(\d*)(?:'(\d+)(?:\"|in|inch|inches)?|ft|foot|feet))(?!\w)/gi
-		);
-		const units = text.match(regex);
+		const units = text.match(this.regex);
 		// if no units are found, return the original text
 		if (!units) {
 			return text;

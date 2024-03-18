@@ -120,9 +120,10 @@ describe('multi-unit-converter', () => {
 	// Test case for rounding large numbers
 	test('rounds conversion of large numbers to 3 significant figures', () => {
 		const muc = new MultiUnitConverter();
+		muc.setUnitLength('light years');
 		const input = 'The distance to the nearest star is 4.5678 light years.';
 		const expectedOutput =
-			'The distance to the nearest star is 4.5678 light years.';
+			'The distance to the nearest star is 4.57 ly.';
 		expect(muc.convertText(input)).toBe(expectedOutput);
 	});
 

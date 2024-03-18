@@ -4,6 +4,9 @@
  * @description Multi Unit Converter
  * @license MIT
  * @version 1.6.0
+ * @exports Unit
+ * @exports MultiUnitConverter
+ * @exports MultiUnitConverterOptions
  * @fileoverview Multi Unit Converter
  */
 
@@ -21,6 +24,7 @@ declare module 'multi-unit-converter' {
 		energy?: string;
 		frequency?: string;
 		precision?: number;
+		regex?: string;
 	}
 
 	export interface Unit {
