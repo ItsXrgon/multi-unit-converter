@@ -51,7 +51,7 @@ declare module 'multi-unit-converter' {
 	}
 
 	export class MultiUnitConverter {
-		constructor();
+		constructor(options?: MultiUnitConverterOptions);
 		precision: number;
 		units: {
 			time: Unit;
@@ -105,7 +105,6 @@ declare module 'multi-unit-converter' {
 		volumeAliases: string[];
 		areaAliases: string[];
 
-		constructor(options?: MultiUnitConverterOptions);
 		convertText(input: string): string;
 		setTemplate(template: string): void;
 		setPrecision(precision: number): void;
@@ -131,3 +130,6 @@ declare module 'multi-unit-converter' {
 		resolveAliasesPressure(unit: string): Unit;
 	}
 }
+
+export = MultiUnitConverter;
+export as namespace MultiUnitConverter;
