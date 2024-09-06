@@ -51,6 +51,7 @@ declare module 'multi-unit-converter' {
 	}
 
 	export class MultiUnitConverter {
+		constructor();
 		precision: number;
 		units: {
 			time: Unit;
