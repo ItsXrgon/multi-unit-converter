@@ -12,11 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Step 2: Set up Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -24,38 +22,31 @@ jobs:
           registry-url: 'https://registry.npmjs.org/'
           always-auth: true
 
-      # Step 3: Authenticate with npm
       - name: Authenticate with npm
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
-      # Step 4: Install dependencies
       - name: Install dependencies
-        run: npm ci  
+        run: npm ci
 
-      # Step 5: Publish to npm (npmjs.com)
       - name: Publish to npm
         run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # Step 6: Set up GitHub Packages registry
       - name: Set up GitHub Packages registry
         run: |
           echo "@itsxrgon:registry=https://npm.pkg.github.com" >> ~/.npmrc
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_PAT }}" >> ~/.npmrc
 
-      # Step 7: Temporarily modify package.json for GitHub Packages
       - name: Modify package.json for GitHub Packages
         run: |
           npm pkg set name="@itsxrgon/multi-unit-converter"
 
-      # Step 8: Publish to GitHub Packages
       - name: Publish to GitHub Packages
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_PAT }}
 
-      # Step 9: Revert package.json to its original state
       - name: Revert package.json
         run: |
           npm pkg set name="multi-unit-converter"
