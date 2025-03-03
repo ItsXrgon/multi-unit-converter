@@ -1,6 +1,6 @@
 {
 	"name": "multi-unit-converter",
-	"version": "1.6.4",
+	"version": "1.6.5",
 	"description": "Convert all units in a string to specified units or SI units if unspecified",
 	"main": "src/index.js",
 	"module": "src/index.js",
