@@ -5,11 +5,4 @@ const kilopascal = require('./kilopascal');
 const megapascal = require('./megapascal');
 const psi = require('./psi');
 
-module.exports = [
-	new atmosphere(),
-	new bar(),
-	new pascal(),
-	new kilopascal(),
-	new megapascal(),
-	new psi(),
-];
+module.exports = [new atmosphere(), new bar(), new pascal(), new kilopascal(), new megapascal(), new psi()];

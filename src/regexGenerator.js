@@ -15,39 +15,17 @@ function generateRegex() {
 	this.volumeUnits = require('./Units/Volume/index.js');
 	this.areaUnits = require('./Units/Area/index.js');
 
-	const length = this.lengthUnits
-		.flatMap((unit) => unit.aliases.join('|'))
-		.join('|');
-	const mass = this.massUnits
-		.flatMap((unit) => unit.aliases.join('|'))
-		.join('|');
-	const liquidVolume = this.liquidVolumeUnits
-		.flatMap((unit) => unit.aliases.join('|'))
-		.join('|');
-	const time = this.timeUnits
-		.flatMap((unit) => unit.aliases.join('|'))
-		.join('|');
-	const temperature = this.temperatureUnits
-		.flatMap((unit) => unit.aliases.join('|'))
-		.join('|');
-	const electricCurrent = this.electricCurrentUnits
-		.flatMap((unit) => unit.aliases.join('|'))
-		.join('|');
-	const pressure = this.pressureUnits
-		.flatMap((unit) => unit.aliases.join('|'))
-		.join('|');
-	const energy = this.energyUnits
-		.flatMap((unit) => unit.aliases.join('|'))
-		.join('|');
-	const frequency = this.frequencyUnits
-		.flatMap((unit) => unit.aliases.join('|'))
-		.join('|');
-	const volume = this.volumeUnits
-		.flatMap((unit) => unit.aliases.join('|'))
-		.join('|');
-	const area = this.areaUnits
-		.flatMap((unit) => unit.aliases.join('|'))
-		.join('|');
+	const length = this.lengthUnits.flatMap((unit) => unit.aliases.join('|')).join('|');
+	const mass = this.massUnits.flatMap((unit) => unit.aliases.join('|')).join('|');
+	const liquidVolume = this.liquidVolumeUnits.flatMap((unit) => unit.aliases.join('|')).join('|');
+	const time = this.timeUnits.flatMap((unit) => unit.aliases.join('|')).join('|');
+	const temperature = this.temperatureUnits.flatMap((unit) => unit.aliases.join('|')).join('|');
+	const electricCurrent = this.electricCurrentUnits.flatMap((unit) => unit.aliases.join('|')).join('|');
+	const pressure = this.pressureUnits.flatMap((unit) => unit.aliases.join('|')).join('|');
+	const energy = this.energyUnits.flatMap((unit) => unit.aliases.join('|')).join('|');
+	const frequency = this.frequencyUnits.flatMap((unit) => unit.aliases.join('|')).join('|');
+	const volume = this.volumeUnits.flatMap((unit) => unit.aliases.join('|')).join('|');
+	const area = this.areaUnits.flatMap((unit) => unit.aliases.join('|')).join('|');
 
 	const regexString = `(\\d*\\.?\\d+)(?:\\s*)(${length}|${mass}|${liquidVolume}|${time}|${temperature}|${electricCurrent}|${pressure}|${energy}|${frequency}|${volume}|${area}|(\\d*)(?:'(\\d+)(?:"|in|inch|inches)?|ft|foot|feet))(?!\\w)`;
 	return new RegExp(regexString, 'gi');

@@ -7,15 +7,7 @@ class inchsquared {
 	offset = 0;
 	type = 'area';
 	system = 'imperial';
-	aliases = [
-		'inchessquared',
-		'inchesquared',
-		'inches squared',
-		'inche squared',
-		'in²',
-		'in^2',
-		'in2',
-	];
+	aliases = ['inchessquared', 'inchesquared', 'inches squared', 'inche squared', 'in²', 'in^2', 'in2'];
 }
 
 module.exports = inchsquared;

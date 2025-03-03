@@ -7,16 +7,7 @@ class inchcubed {
 	offset = 0;
 	type = 'volume';
 	system = 'imperial';
-	aliases = [
-		'inchescubed',
-		'inchescubed',
-		'inches cubed',
-		'inch cubed',
-		'in³',
-		'in^3',
-		'in3',
-		'incubed',
-	];
+	aliases = ['inchescubed', 'inchescubed', 'inches cubed', 'inch cubed', 'in³', 'in^3', 'in3', 'incubed'];
 }
 
 module.exports = inchcubed;

@@ -7,16 +7,7 @@ class footcubed {
 	offset = 0;
 	type = 'volume';
 	system = 'imperial';
-	aliases = [
-		'feetcubed',
-		'footcubed',
-		'feet cubed',
-		'foot cubed',
-		'ft³',
-		'ft^3',
-		'ft3',
-		'ftcubed',
-	];
+	aliases = ['feetcubed', 'footcubed', 'feet cubed', 'foot cubed', 'ft³', 'ft^3', 'ft3', 'ftcubed'];
 }
 
 module.exports = footcubed;

@@ -7,15 +7,7 @@ class kiloampere {
 	offset = 0;
 	type = 'current';
 	system = 'metric';
-	aliases = [
-		'kiloamperes',
-		'kiloampere',
-		'kiloamper',
-		'kiloamps',
-		'kiloamp',
-		'kiloa',
-		'ka',
-	];
+	aliases = ['kiloamperes', 'kiloampere', 'kiloamper', 'kiloamps', 'kiloamp', 'kiloa', 'ka'];
 }
 
 module.exports = kiloampere;

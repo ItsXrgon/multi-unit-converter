@@ -7,15 +7,7 @@ class yardsquared {
 	offset = 0;
 	type = 'area';
 	system = 'imperial';
-	aliases = [
-		'yardssquared',
-		'yardsquared',
-		'yards squared',
-		'yard squared',
-		'yd²',
-		'yd^2',
-		'yd2',
-	];
+	aliases = ['yardssquared', 'yardsquared', 'yards squared', 'yard squared', 'yd²', 'yd^2', 'yd2'];
 }
 
 module.exports = yardsquared;

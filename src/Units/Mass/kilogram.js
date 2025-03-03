@@ -7,15 +7,7 @@ class kilogram {
 	offset = 0;
 	type = 'weight';
 	system = 'metric';
-	aliases = [
-		'kilograms',
-		'kilogram',
-		'kilogramme',
-		'kilogrammes',
-		'kilo',
-		'kilos',
-		'kg',
-	];
+	aliases = ['kilograms', 'kilogram', 'kilogramme', 'kilogrammes', 'kilo', 'kilos', 'kg'];
 }
 
 module.exports = kilogram;

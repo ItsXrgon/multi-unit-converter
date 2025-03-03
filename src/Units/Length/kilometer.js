@@ -7,16 +7,7 @@ class kilometer {
 	offset = 0;
 	type = 'length';
 	system = 'metric';
-	aliases = [
-		'kilometers',
-		'kilometer',
-		'km',
-		'kms',
-		'kilometre',
-		'kilometres',
-		'kilometre',
-		'kilo',
-	];
+	aliases = ['kilometers', 'kilometer', 'km', 'kms', 'kilometre', 'kilometres', 'kilometre', 'kilo'];
 }
 
 module.exports = kilometer;

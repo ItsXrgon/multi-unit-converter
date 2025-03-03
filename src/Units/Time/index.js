@@ -6,12 +6,4 @@ const second = require('./second');
 const week = require('./week');
 const year = require('./year');
 
-module.exports = [
-	new day(),
-	new hour(),
-	new minute(),
-	new month(),
-	new second(),
-	new week(),
-	new year(),
-];
+module.exports = [new day(), new hour(), new minute(), new month(), new second(), new week(), new year()];

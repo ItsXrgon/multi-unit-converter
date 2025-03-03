@@ -7,15 +7,7 @@ class metercubed {
 	offset = 0;
 	type = 'volume';
 	system = 'metric';
-	aliases = [
-		'cubic meters',
-		'cubic meter',
-		'metercubed',
-		'metercubed',
-		'm3',
-		'm^3',
-		'm³',
-	];
+	aliases = ['cubic meters', 'cubic meter', 'metercubed', 'metercubed', 'm3', 'm^3', 'm³'];
 }
 
 module.exports = metercubed;

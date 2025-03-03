@@ -7,7 +7,7 @@ class ampere {
 	offset = 0;
 	type = 'current';
 	system = 'metric';
-	aliases = ['amperes', 'ampere', 'amp', 'amps', 'A',];
+	aliases = ['amperes', 'ampere', 'amp', 'amps', 'A'];
 }
 
 module.exports = ampere;

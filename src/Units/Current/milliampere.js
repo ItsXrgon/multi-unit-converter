@@ -7,14 +7,7 @@ class milliampere {
 	offset = 0;
 	type = 'current';
 	system = 'metric';
-	aliases = [
-		'milliamperes',
-		'milliampere',
-		'milliamp',
-		'milliamps',
-		'mA',
-		'ma',
-	];
+	aliases = ['milliamperes', 'milliampere', 'milliamp', 'milliamps', 'mA', 'ma'];
 }
 
 module.exports = milliampere;

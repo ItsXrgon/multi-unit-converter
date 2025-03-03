@@ -2,12 +2,10 @@
 
 const generateRegex = require('./regexGenerator.js');
 
-const InvalidUnitException =
-	require('./Exceptions/InvalidUnitException').InvalidUnitException;
+const InvalidUnitException = require('./Exceptions/InvalidUnitException').InvalidUnitException;
 const InvalidPrecisionValueException =
 	require('./Exceptions/InvalidPrecisionValueException').InvalidPrecisionValueException;
-const InvalidTemplateException =
-	require('./Exceptions/InvalidTemplateException').InvalidTemplateException;
+const InvalidTemplateException = require('./Exceptions/InvalidTemplateException').InvalidTemplateException;
 /**
  * Class to convert units
  * @class
@@ -101,23 +99,13 @@ class MultiUnitConverter {
 
 		this.lengthAliases = this.lengthUnits.map((unit) => unit.aliases).flat();
 		this.massAliases = this.massUnits.map((unit) => unit.aliases).flat();
-		this.liquidVolumeAliases = this.liquidVolumeUnits
-			.map((unit) => unit.aliases)
-			.flat();
+		this.liquidVolumeAliases = this.liquidVolumeUnits.map((unit) => unit.aliases).flat();
 		this.timeAliases = this.timeUnits.map((unit) => unit.aliases).flat();
-		this.temperatureAliases = this.temperatureUnits
-			.map((unit) => unit.aliases)
-			.flat();
-		this.electricCurrentAliases = this.electricCurrentUnits
-			.map((unit) => unit.aliases)
-			.flat();
-		this.pressureAliases = this.pressureUnits
-			.map((unit) => unit.aliases)
-			.flat();
+		this.temperatureAliases = this.temperatureUnits.map((unit) => unit.aliases).flat();
+		this.electricCurrentAliases = this.electricCurrentUnits.map((unit) => unit.aliases).flat();
+		this.pressureAliases = this.pressureUnits.map((unit) => unit.aliases).flat();
 		this.energyAliases = this.energyUnits.map((unit) => unit.aliases).flat();
-		this.frequencyAliases = this.frequencyUnits
-			.map((unit) => unit.aliases)
-			.flat();
+		this.frequencyAliases = this.frequencyUnits.map((unit) => unit.aliases).flat();
 		this.volumeAliases = this.volumeUnits.map((unit) => unit.aliases).flat();
 		this.areaAliases = this.areaUnits.map((unit) => unit.aliases).flat();
 
@@ -125,13 +113,9 @@ class MultiUnitConverter {
 			time: this.timeUnits.find((unit) => unit.name === 'second'),
 			length: this.lengthUnits.find((unit) => unit.name === 'meter'),
 			mass: this.massUnits.find((unit) => unit.name === 'kilogram'),
-			liquidVolume: this.liquidVolumeUnits.find(
-				(unit) => unit.name === 'metercubed'
-			),
+			liquidVolume: this.liquidVolumeUnits.find((unit) => unit.name === 'metercubed'),
 			temperature: this.temperatureUnits.find((unit) => unit.name === 'kelvin'),
-			electricCurrent: this.electricCurrentUnits.find(
-				(unit) => unit.name === 'a'
-			),
+			electricCurrent: this.electricCurrentUnits.find((unit) => unit.name === 'a'),
 			pressure: this.pressureUnits.find((unit) => unit.name === 'pascal'),
 			energy: this.energyUnits.find((unit) => unit.name === 'joule'),
 			frequency: this.frequencyUnits.find((unit) => unit.name === 'hertz'),
@@ -141,31 +125,15 @@ class MultiUnitConverter {
 
 		this.units = {
 			time: this.timeUnits.find((unit) => unit.name === time.toLowerCase()),
-			length: this.lengthUnits.find(
-				(unit) => unit.name === length.toLowerCase()
-			),
+			length: this.lengthUnits.find((unit) => unit.name === length.toLowerCase()),
 			mass: this.massUnits.find((unit) => unit.name === mass.toLowerCase()),
-			liquidVolume: this.liquidVolumeUnits.find(
-				(unit) => unit.name === liquidVolume.toLowerCase()
-			),
-			temperature: this.temperatureUnits.find(
-				(unit) => unit.name === temperature.toLowerCase()
-			),
-			electricCurrent: this.electricCurrentUnits.find(
-				(unit) => unit.name === electricCurrent.toLowerCase()
-			),
-			pressure: this.pressureUnits.find(
-				(unit) => unit.name === pressure.toLowerCase()
-			),
-			energy: this.energyUnits.find(
-				(unit) => unit.name === energy.toLowerCase()
-			),
-			frequency: this.frequencyUnits.find(
-				(unit) => unit.name === frequency.toLowerCase()
-			),
-			volume: this.volumeUnits.find(
-				(unit) => unit.name === volume.toLowerCase()
-			),
+			liquidVolume: this.liquidVolumeUnits.find((unit) => unit.name === liquidVolume.toLowerCase()),
+			temperature: this.temperatureUnits.find((unit) => unit.name === temperature.toLowerCase()),
+			electricCurrent: this.electricCurrentUnits.find((unit) => unit.name === electricCurrent.toLowerCase()),
+			pressure: this.pressureUnits.find((unit) => unit.name === pressure.toLowerCase()),
+			energy: this.energyUnits.find((unit) => unit.name === energy.toLowerCase()),
+			frequency: this.frequencyUnits.find((unit) => unit.name === frequency.toLowerCase()),
+			volume: this.volumeUnits.find((unit) => unit.name === volume.toLowerCase()),
 			area: this.areaUnits.find((unit) => unit.name === area.toLowerCase()),
 		};
 	}
@@ -193,38 +161,26 @@ class MultiUnitConverter {
 			case 'metric':
 				this.length = this.lengthUnits.find((unit) => unit.name === 'meter');
 				this.mass = this.massUnits.find((unit) => unit.name === 'kilogram');
-				this.liquidVolume = this.liquidVolumeUnits.find(
-					(unit) => unit.name === 'metercubed'
-				);
+				this.liquidVolume = this.liquidVolumeUnits.find((unit) => unit.name === 'metercubed');
 				this.area = this.areaUnits.find((unit) => unit.name === 'metersquared');
-				this.volume = this.volumeUnits.find(
-					(unit) => unit.name === 'metercubed'
-				);
+				this.volume = this.volumeUnits.find((unit) => unit.name === 'metercubed');
 				break;
 			case 'imperial':
 				this.length = this.lengthUnits.find((unit) => unit.name === 'foot');
 				this.mass = this.massUnits.find((unit) => unit.name === 'pound');
-				this.liquidVolume = this.liquidVolumeUnits.find(
-					(unit) => unit.name === 'fluidounce'
-				);
+				this.liquidVolume = this.liquidVolumeUnits.find((unit) => unit.name === 'fluidounce');
 				this.area = this.areaUnits.find((unit) => unit.name === 'footsquared');
-				this.volume = this.volumeUnits.find(
-					(unit) => unit.name === 'footcubed'
-				);
+				this.volume = this.volumeUnits.find((unit) => unit.name === 'footcubed');
 				break;
 			case 'us':
 				this.length = this.lengthUnits.find((unit) => unit.name === 'foot');
 				this.mass = this.massUnits.find((unit) => unit.name === 'pound');
-				this.liquidVolume = this.liquidVolumeUnits.find(
-					(unit) => unit.name === 'fluidounce'
-				);
+				this.liquidVolume = this.liquidVolumeUnits.find((unit) => unit.name === 'fluidounce');
 				this.area = this.areaUnits.find((unit) => unit.name === 'footsquared');
 				break;
 			case 'recipe':
 				this.mass = this.massUnits.find((unit) => unit.name === 'gram');
-				this.liquidVolume = this.liquidVolumeUnits.find(
-					(unit) => unit.name === 'cup'
-				);
+				this.liquidVolume = this.liquidVolumeUnits.find((unit) => unit.name === 'cup');
 				break;
 			default:
 				throw new InvalidTemplateException('Not an available template!');
@@ -281,13 +237,9 @@ class MultiUnitConverter {
 		if (typeof liquidVolume != 'string') {
 			throw 'Unit should be a string!';
 		} else if (!this.liquidVolumeAliases.includes(liquidVolume.toLowerCase())) {
-			throw new InvalidUnitException(
-				`Input ${liquidVolume} is not a liquid volume unit!`
-			);
+			throw new InvalidUnitException(`Input ${liquidVolume} is not a liquid volume unit!`);
 		} else {
-			this.units.liquidVolume = this.resolveAliasesLiquidVolume(
-				liquidVolume.toLowerCase()
-			);
+			this.units.liquidVolume = this.resolveAliasesLiquidVolume(liquidVolume.toLowerCase());
 		}
 	}
 
@@ -299,13 +251,9 @@ class MultiUnitConverter {
 		if (typeof temperature != 'string') {
 			throw 'Unit should be a string!';
 		} else if (!this.temperatureAliases.includes(temperature.toLowerCase())) {
-			throw new InvalidUnitException(
-				`Input ${temperature} is not a temperature unit!`
-			);
+			throw new InvalidUnitException(`Input ${temperature} is not a temperature unit!`);
 		} else {
-			this.units.temperature = this.resolveAliasesTemperature(
-				temperature.toLowerCase()
-			);
+			this.units.temperature = this.resolveAliasesTemperature(temperature.toLowerCase());
 		}
 	}
 
@@ -316,16 +264,10 @@ class MultiUnitConverter {
 	setUnitElectricCurrent(electricCurrent) {
 		if (typeof electricCurrent != 'string') {
 			throw 'Unit should be a string!';
-		} else if (
-			!this.electricCurrentAliases.includes(electricCurrent.toLowerCase())
-		) {
-			throw new InvalidUnitException(
-				`Input ${electricCurrent} is not an electric current unit!`
-			);
+		} else if (!this.electricCurrentAliases.includes(electricCurrent.toLowerCase())) {
+			throw new InvalidUnitException(`Input ${electricCurrent} is not an electric current unit!`);
 		} else {
-			this.units.electricCurrent = this.resolveAliasesElectricCurrent(
-				electricCurrent.toLowerCase()
-			);
+			this.units.electricCurrent = this.resolveAliasesElectricCurrent(electricCurrent.toLowerCase());
 		}
 	}
 
@@ -367,9 +309,7 @@ class MultiUnitConverter {
 		} else if (!this.frequencyUnits.includes(frequency.toLowerCase())) {
 			throw new InvalidUnitException(`Input ${frequency} is not a spoon unit!`);
 		} else {
-			this.units.frequency = this.resolveAliasesFrequency(
-				frequency.toLowerCase()
-			);
+			this.units.frequency = this.resolveAliasesFrequency(frequency.toLowerCase());
 		}
 	}
 
