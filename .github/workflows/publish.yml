@@ -3,7 +3,7 @@ name: Publish to npm
 on:
   push:
     branches:
-      - main
+      - main  
   release:
     types: [created]
 
@@ -20,9 +20,16 @@ jobs:
         with:
           node-version: 20
           registry-url: 'https://registry.npmjs.org/'
+          always-auth: true
+
+      - name: Authenticate with npm
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci  # Better than 'npm install' for CI/CD
+
+      - name: Build package (if necessary)
+        run: npm run build  # Remove if no build step is needed
 
       - name: Publish to npm
         run: npm publish --access public
