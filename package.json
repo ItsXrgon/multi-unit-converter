@@ -1,5 +1,5 @@
 {
-	"name": "@itsxrgon/multi-unit-converter",
+	"name": "multi-unit-converter",
 	"version": "1.6.6",
 	"description": "Convert all units in a string to specified units or SI units if unspecified",
 	"main": "src/index.js",
