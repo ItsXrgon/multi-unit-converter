@@ -1,25 +1,32 @@
 {
 	"name": "multi-unit-converter",
-	"version": "1.6.7",
-	"description": "Convert all units in a string to specified units or SI units if unspecified",
-	"main": "src/index.js",
-	"module": "src/index.js",
+	"version": "2.0.0",
+	"description": "Parse measurements in text and convert them in place to SI, metric, imperial, or custom units",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
 	"type": "commonjs",
 	"scripts": {
+		"build": "tsc",
 		"test": "jest",
-		"format": "prettier --write src/**/*.js"
+		"format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+		"prepublishOnly": "npm run build"
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/ItsXrgon/multi-unit-converter.git"
 	},
-	"types": "src/types/index.d.ts",
 	"keywords": [
-		"units",
-		"measurements",
-		"conversions",
-		"SI-units",
-		"SI"
+		"unit-conversion",
+		"convert-units",
+		"measurement-parser",
+		"extract-measurements",
+		"convert-text",
+		"parse-units",
+		"si-units",
+		"metric",
+		"imperial",
+		"quantities",
+		"typescript"
 	],
 	"author": "ItsXrgon",
 	"license": "MIT",
@@ -27,8 +34,19 @@
 		"url": "https://github.com/itsXrgon/multi-unit-converter/issues"
 	},
 	"homepage": "https://github.com/itsXrgon/multi-unit-converter#readme",
+	"files": [
+		"dist"
+	],
 	"devDependencies": {
+		"@types/jest": "^29.5.14",
+		"@types/js-quantities": "^1.6.6",
+		"@types/node": "^22.15.3",
 		"jest": "29.5.0",
-		"prettier": "^3.5.3"
+		"prettier": "^3.5.3",
+		"ts-jest": "^29.4.12",
+		"typescript": "^5.8.3"
+	},
+	"dependencies": {
+		"js-quantities": "^1.8.0"
 	}
 }

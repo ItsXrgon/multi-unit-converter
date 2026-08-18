@@ -1,0 +1,80 @@
+import type { ConverterOptions, PresetName } from './types';
+
+/**
+ * Target-unit bundles for `usePreset()`.
+ * `recipe` only overrides mass, volume, liquid volume, and temperature.
+ */
+const presets: Record<PresetName, ConverterOptions> = {
+	SI: {
+		length: 'meter',
+		mass: 'kilogram',
+		time: 'second',
+		temperature: 'kelvin',
+		area: 'metersquared',
+		volume: 'metercubed',
+		liquidVolume: 'metercubed',
+		current: 'ampere',
+		pressure: 'pascal',
+		energy: 'joule',
+		frequency: 'hertz',
+		speed: 'mps',
+		acceleration: 'mps2',
+		density: 'kgm3',
+	},
+	metric: {
+		length: 'meter',
+		mass: 'kilogram',
+		time: 'second',
+		temperature: 'celsius',
+		area: 'metersquared',
+		volume: 'metercubed',
+		liquidVolume: 'liter',
+		current: 'ampere',
+		pressure: 'kilopascal',
+		energy: 'kilojoule',
+		frequency: 'hertz',
+		speed: 'kph',
+		acceleration: 'mps2',
+		density: 'kgm3',
+	},
+	imperial: {
+		length: 'foot',
+		mass: 'pound',
+		time: 'second',
+		temperature: 'fahrenheit',
+		area: 'footsquared',
+		volume: 'footcubed',
+		liquidVolume: 'gallon',
+		current: 'ampere',
+		pressure: 'psi',
+		energy: 'joule',
+		frequency: 'hertz',
+		speed: 'mph',
+		acceleration: 'fps2',
+		density: 'kgm3',
+	},
+	us: {
+		length: 'foot',
+		mass: 'pound',
+		time: 'second',
+		temperature: 'fahrenheit',
+		area: 'footsquared',
+		volume: 'footcubed',
+		liquidVolume: 'gallon',
+		current: 'ampere',
+		pressure: 'psi',
+		energy: 'joule',
+		frequency: 'hertz',
+		speed: 'mph',
+		acceleration: 'fps2',
+		density: 'kgm3',
+	},
+	recipe: {
+		mass: 'gram',
+		liquidVolume: 'cup',
+		temperature: 'celsius',
+		volume: 'milliliter',
+	},
+};
+
+export default presets;

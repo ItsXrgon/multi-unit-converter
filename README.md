@@ -1,476 +1,269 @@
 # multi-unit-converter
 
-JavaScript library that detects all units in a string and converts them to SI units, or units specified by user.
+Parse **measurements in text** — `2km`, `20min`, `50 miles`, `60 km/h` — and **convert them in place** to SI, metric, imperial, or units you configure.
+
+Use `parse()` to extract quantities from documents, `convertText()` to rewrite a string, or `convert()` for a single value. Built for prose and user-facing copy, not one-off `convert(1).from('lb').to('kg')` calls. Conversion math uses [js-quantities](https://github.com/gentooboontoo/js-quantities); this library handles aliases, compounds, ambiguity, and formatting.
+
+```ts
+import MultiUnitConverter from 'multi-unit-converter';
+
+const muc = new MultiUnitConverter();
+
+muc.convertText('I ran 2km in 20min');
+// 'I ran 2000 m in 1200 s'
+
+muc.parse('I ran 2km in 20min');
+// [
+//   { value: 2, unit: 'km', category: 'length', siValue: 2000, siUnit: 'm', start: 6, end: 9, ... },
+//   { value: 20, unit: 'min', category: 'time', siValue: 1200, siUnit: 's', start: 13, end: 18, ... }
+// ]
+
+muc.convert(2, 'km', 'm');
+// 2000
+```
 
 ## How it works
 
-The `multi-unit-converter` JavaScript library simplifies the process of detecting and converting different units within a text string. Whether you want to convert units to the standard International System of Units (SI) or specify custom units, this library offers a straightforward solution.
+```
+┌──────────────────────────────┐
+│        convertText()         │  ← natural language
+├──────────────────────────────┤
+│           parse()            │  ← text → measurements
+├──────────────────────────────┤
+│          convert()           │  ← measurement → measurement
+├──────────────────────────────┤
+│       js-quantities          │  ← conversion math
+└──────────────────────────────┘
+```
 
-1. All units and their values are detected using a Regural Expression
-2. Then each unit is matched with its stored version in the library by comparing with the aliases of each
-3. Finally the unit is converted by multiplying by the toSI value stored in the library then adding the offset
-4. If the unit to convert to is different from the SI unit, then the previous value is divided by the toSI of that and the offset is subtracted.
+1. `parse()` finds numbers and units in the string (including compounds like `km/h`).
+2. `convert()` / `convertParsed()` convert using js-quantities, or via SI for custom units.
+3. `convertText()` replaces each match in the original string.
 
 ## Installation
 
-You can install this library using npm:
-
-`npm install multi-unit-converter`
+```bash
+npm install multi-unit-converter
+```
 
 ## Usage
 
-To use this library in JS, import it into your project using require then initiliase it:
-
 ```js
-const multiUnitConverter = require('multi-unit-converter');
+const { MultiUnitConverter } = require('multi-unit-converter');
 const muc = new MultiUnitConverter();
 ```
-
-For TS, import it into your project then initiliase it:
 
 ```ts
-import { MultiUnitConverter } from 'multi-unit-converter';
+import MultiUnitConverter from 'multi-unit-converter';
 const muc = new MultiUnitConverter();
 ```
 
-You can then use the convertText(text) command to convert a text string to its SI equivalent:
+### Convert text
 
 ```js
-const inputText = 'The car traveled 50 miles and used 5 gallons of gas.';
-const outputText = muc.convertText(inputText);
-console.log(outputText); // Output: 'The car traveled 80.45 km and used 0.019 m³ of gas.'
+muc.convertText('The car traveled 50 miles and used 5 gallons of gas.');
+// 'The car traveled 80500 m and used 0.0189 m³ of gas.'
 ```
 
-In this example, we pass the input text string 'The car traveled 50 miles and used 5 gallons of gas.' to the convertText() command, and store the output in the outputText variable. We then log the output using console.log(), which should return the string The car traveled 80470 m and used 0.019 m³ of gas.'.
+`50 miles` is exactly **80.4672 km** (80 467.2 m). With the default of 3 significant figures, `convertText()` prints `80500 m`. Raise precision when you need more digits:
 
 ```js
-muc.setUnitLength('km'); // Now the unit of the length we convert to is meter (m) not kilemeter (km)
-const inputText = 'The car traveled 50 miles and used 5 gallons of gas.';
-const outputText = muc.convertText(inputText);
-console.log(outputText); // Output: 'The car traveled 80.47 km and used 0.019 m³ of gas.'
+muc.convertText('The car traveled 50 miles.', { precision: 6 });
+// 'The car traveled 80467.2 m.'
+
+muc.configure({ length: 'km', precision: 4 });
+muc.convertText('The car traveled 50 miles.');
+// 'The car traveled 80.47 km.'
 ```
 
-In this example, we copy the same process as example 1 but this time we switches the default length unit to meter, which should return the string 'The car traveled 80.47 km and used 0.019 m³ of gas.'.
-
-## Input flexibility
-
-This library works for the most common spelling of units, for example
+### Parse structured measurements
 
 ```js
-muc.setUnitLength('m');
-muc.setUnitLength('meter');
-muc.setUnitLength('meters');
+muc.parse('I ran 2km in 20min');
 ```
 
-All 3 function calls would all set the length unit value to 'm' as it is the abbreviation of the other 2.
+Each match includes `value`, `unit`, `unitName`, `category`, `siValue`, `siUnit`, `start`, `end`, `confidence`, `ambiguous`, and `compound`. That is enough to highlight matches, extract quantities from documents, validate them, or convert only some of them.
 
 ```js
-text = muc.convertText('5 cm');
-text = muc.convertText('5 cms');
-text = muc.convertText('5 centimeters');
-text = muc.convertText('5 centimeter');
+const parsed = muc.parse('I ran 2km in 20min');
+muc.convertParsed(parsed);
+// [{ ..., convertedValue: 2000, convertedUnit: 'm' }, { ..., convertedValue: 1200, convertedUnit: 's' }]
 ```
 
-All 4 function calls would return "0.05 m" as all 4 are acceptable spelling of centimeter, therefore detected and converted to the specified length unit (in this case its meter).
-
-## Functions available
+### Convert a single value
 
 ```js
-convertText(text); // Converts the units and values in a text (string) to specified units
-
-setPrecision(number); // Sets the significant figures to round to (default is 3)
-
-setTemplate(template); // Sets units to a template of the following [metric, US, imperial, recipe]
-// Metric:- length: meter, weight: grams, liquid volume: liter, area: m², volume: m³
-// Imperial:- length: inch, weight: pound, liquid volume: gallon, area: ft², volume: ft³
-// US:- length: foot, weight: pound, liquid volume: liter, gallon:  ft², volume: ft³
-// Recipe:-  weight: grams, liquid volume: cups
-
-setUnitTime(time); // Sets the specified unit of time (SI unit if unspecified)
-
-setUnitLength(length); // Sets the specified unit of length (SI unit if unspecified)
-
-setUnitWeight(weight); // Sets the specified unit of weight (SI unit if unspecified)
-
-setUnitLiquidVolume(liquidVolume); // Sets the specified unit of liquid volume (SI unit if unspecified)
-
-setUnitTemperature(temperature); // Sets the specified unit of temperature (SI unit if unspecified)
-
-setUnitElectricCurrent(electricCurrent); // Sets the specified unit of electric current (SI unit if unspecified)
-
-setUnitPressure(pressure); // Sets the specified unit of pressure (SI unit if unspecified)
-
-setUnitEnergy(energy); // Sets the specified unit of energy (SI unit if unspecified)
-
-setUnitFrequency(frequency); // Sets the specified unit of frequency (SI unit if unspecified)
-
-setUnitArea(area); // Sets the specified unit of area (SI unit if unspecified)
-
-setUnitVolume(volume); // Sets the specified unit of volume (SI unit if unspecified)
+muc.convert(2, 'km', 'm'); // 2000
+muc.convert(32, '°F', '°C'); // 0
+muc.convert(2, 'km'); // 2000 — uses the configured length unit (meter by default)
 ```
 
-## List of all supported units with their aliases
+## Compound units
 
-### Time units
+```js
+muc.convertText('I was driving at 60 km/h');
+// 'I was driving at 16.7 m/s'
 
-```json
-{
- "millisecond": [
-  "milliseconds",
-  "millisecond",
-  "ms",
-  "msec",
-  "msecs",
-  "millisecs",
-  "millisec"
- ],
- "second": ["seconds", "second", "s", "sec", "secs"],
- "minute": ["minutes", "minute", "mins", "min"],
- "hour": ["hours", "hour", "h", "hr", "hrs"],
- "day": ["days", "day", "d"],
- "week": ["weeks", "week", "w"],
- "month": ["months", "month"],
- "years": ["years", "year", "y", "yr", "yrs"]
+muc.convertText('I was driving at 60 km/h', { precision: 4 });
+// 'I was driving at 16.67 m/s'
+
+muc.convertText('100 kg/m³');
+// '100 kg/m³'
+
+muc.convertText('32 ft/s²', { precision: 4 });
+// '9.754 m/s²'
+
+muc.convertText('50 miles per hour');
+// '22.4 m/s'
+```
+
+Supported forms include `km/h`, `m/s`, `kg/m³`, `ft/s²`, `mph`, and `miles per hour` / `meters per second`.
+
+## Numbers
+
+The parser accepts:
+
+```text
+2.5 km
+2,500 km
+-20 °C
++5 °C
+.5 kg
+5e3 m
+1.2×10³ m
+1/2 mile
+½ mile
+2 1/2 miles
+```
+
+## Ambiguous units
+
+Some short aliases are ambiguous (`5m` could be meters or minutes, `5 in` could be inches or the preposition *in*).
+
+```js
+muc.parse('5 m');  // meters, high confidence, not ambiguous
+muc.parse('5m');   // meters, marked ambiguous (minutes is an alternative)
+muc.parse('5m', { strict: true }); // [] — strict mode refuses the guess
+
+muc.parse('I put 5 in the box'); // [] — treated as a preposition
+muc.parse('The board is 5 in wide'); // inches
+```
+
+`convertText(text, { strict: true })` skips ambiguous matches instead of guessing.
+
+## Formatting
+
+```js
+muc.convertText(text, {
+  precision: 3,              // significant figures (default 3)
+  preserveSpacing: true,     // '2km' → '2000m' instead of '2000 m'
+  preserveNumberStyle: true, // keep thousands separators when possible
+  format: 'short',           // 'm' (default) or 'long' ('meters')
+  strict: false,
+});
+```
+
+```js
+muc.convertText('I ran 2km', { format: 'long' });
+// 'I ran 2000 meters'
+```
+
+## Configuration
+
+```js
+muc.configure({
+  length: 'm',
+  mass: 'kg',
+  time: 's',
+  temperature: 'K',
+  energy: 'J',
+  volume: 'm3',
+  liquidVolume: 'L',
+  current: 'A',
+  precision: 4,
+});
+
+muc.usePreset('SI');        // default
+muc.usePreset('metric');    // everyday metric (°C, L, km/h, …)
+muc.usePreset('imperial');  // ft, lb, °F, gal, mph, …
+muc.usePreset('us');
+muc.usePreset('recipe');    // g, cups, °C
+```
+
+Constructor options are the same object:
+
+```js
+const muc = new MultiUnitConverter({ length: 'km', precision: 4 });
+```
+
+## Custom units
+
+```js
+muc.defineUnit({
+  name: 'banana',
+  category: 'length',
+  aliases: ['bananas'],
+  toSI: 0.18,
+  siUnit: 'm',
+});
+
+muc.convertText('The table is 10 bananas long');
+// 'The table is 1.8 m long'
+```
+
+Use this for domain-specific units. Built-in conversions stay in js-quantities so this library does not maintain its own factor tables.
+
+## API
+
+| Method | Purpose |
+| --- | --- |
+| `parse(text, options?)` | Structured measurements in `text` |
+| `convert(value, from, to?)` | One-shot conversion |
+| `convertParsed(parsed, to?)` | Convert `parse()` results |
+| `convertText(text, options?)` | Replace measurements in `text` |
+| `configure(options)` | Set target units and precision |
+| `usePreset(name)` | `SI`, `metric`, `imperial`, `us`, `recipe` |
+| `defineUnit(definition)` | Add a custom unit |
+
+Constructor / `configure()` options: `length`, `mass`, `time`, `temperature`, `area`, `volume`, `liquidVolume`, `current`, `pressure`, `energy`, `frequency`, `speed`, `acceleration`, `density`, `precision`.
+
+Thrown errors:
+
+| Error | When |
+| --- | --- |
+| `InvalidUnitError` | Unknown unit, wrong category, or incompatible conversion |
+| `InvalidPresetError` | `usePreset()` gets a name that is not `SI`, `metric`, `imperial`, `us`, or `recipe` |
+| `TypeError` | A string/number argument has the wrong type |
+| `RangeError` | `precision` is negative |
+
+```ts
+import MultiUnitConverter, { InvalidUnitError } from 'multi-unit-converter';
+
+try {
+  muc.configure({ length: 'day' });
+} catch (error) {
+  if (error instanceof InvalidUnitError) {
+    // ...
+  }
 }
 ```
 
-### Length units
+## Supported categories
 
-```json
-{
- "millimeter": [
-  "millimeters",
-  "millimeter",
-  "mm",
-  "mms",
-  "millimetres",
-  "millimetre",
-  "millimetres",
-  "millimetre",
-  "millim"
- ],
- "centimeter": [
-  "centimeters",
-  "centimeter",
-  "cm",
-  "cms",
-  "centimetre",
-  "centimetres",
-  "centimetre"
- ],
- "inch": ["inches", "inch", "in", "\"", "''", "″", "″", "in."],
- "foot": ["feet", "foot", "ft", "'", "''", "′", "′", "ft."],
- "yard": ["yards", "yard", "yd", "yds", "y", "yd."],
- "meter": ["meters", "meter", "m", "metres", "metre", "met"],
- "kilometer": [
-  "kilometers",
-  "kilometer",
-  "km",
-  "kms",
-  "kilometre",
-  "kilometres",
-  "kilometre",
-  "kilo",
-  "kilos"
- ],
- "mile": ["miles", "mile", "mi", "mi.", "miles."],
- "lightyear": ["lightyears", "light years", "lightyear", "light year", "ly"]
-}
-```
+Length, mass, time, temperature, area, volume, liquid volume, current, pressure, energy, frequency, speed, acceleration, and density.
 
-### Mass units
+Aliases cover common spellings (`meters` / `metres` / `m`, `lbs` / `pounds`, `°C` / `celsius`, …). Conversion factors come from js-quantities. Text aliases live in `src/definitions.ts`.
 
-```json
-{
- "milligram": ["milligrams", "milligram", "milligramme", "milligrammes", "mg"],
- "gram": ["grams", "gram", "gramme", "grammes", "g"],
- "ounce": ["ounces", "ounce", "oz", "oz.", "ozs", "ozs."],
- "pound": ["pounds", "pound", "lb", "lb.", "lbs", "lbs."],
- "kilogram": [
-  "kilograms",
-  "kilogram",
-  "kilogramme",
-  "kilogrammes",
-  "kilo",
-  "kilos",
-  "kg"
- ],
- "tonne": ["tonnes", "tonne", "t"],
- "ton": ["tons", "ton", "tn"]
-}
-```
-
-### Liquid volume units
-
-```json
-{
- "mm3": ["milimeters cubed", "milimeter cubed", "mm3", "mm³"],
- "cm3": ["centimeters cubed", "centimeter cubed", "cm3", "cm³"],
- "m3": ["meters cubed", "meter cubed", "m3", "m³"],
- "ml": ["milliliters", "milliliter", "ml"],
- "l": ["liters", "liter", "l"],
- "fl_oz": ["fluid ounces", "fluid ounce", "fl ozs", "fl oz"],
- "cup": ["cups", "cup"],
- "gal": ["gallons", "gallon", "gal"]
-}
-```
-
-### Temperature units
-
-```json
-{
- "kelvin": ["kelvin", "k", "°k", "degk", "deg k", "K", "°K", "degK", "deg K"],
- "celsius": [
-  "celsius",
-  "c",
-  "°c",
-  "degc",
-  "deg c",
-  "C",
-  "°C",
-  "degC",
-  "deg C"
- ],
- "fahrenheit": [
-  "fahrenheit",
-  "f",
-  "°f",
-  "degf",
-  "deg f",
-  "F",
-  "°F",
-  "degF",
-  "deg F"
- ]
-}
-```
-
-### Electric current units
-
-```json
-{
- "milliampere": [
-  "milliamperes",
-  "milliampere",
-  "milliamp",
-  "milliamps",
-  "mA",
-  "ma"
- ],
- "ampere": ["amperes", "ampere", "amp", "amps", "A"],
- "kiloampere": [
-  "kiloamperes",
-  "kiloampere",
-  "kiloamper",
-  "kiloamps",
-  "kiloamp",
-  "kiloa",
-  "ka"
- ]
-}
-```
-
-### Pressue units
-
-```json
-{
- "pascal": ["pascals", "pascal", "Pa", "P"],
- "kilopascal": ["kilopascals", "kilopascal", "kPa", "kP"],
- "megapascal": ["megapascals", "megapascal", "MPa", "MP"],
- "atmosphere": ["atmosphere", "atmosphere", "atm", "atms"],
- "psi": ["pounds per square inch", "pound per square inch", "psis", "psi"],
- "bar": ["bars", "bar"]
-}
-```
-
-### Energy units
-
-```json
-{
- "joule": ["joules", "joule", "J"],
- "kilojoule": ["kilojoules", "kilojoule", "kJ"],
- "megajoule": ["megajoules", "megajoule", "mJ"],
- "kilowatthour": ["kilowatt-hours", "kilowatt-hour", "kwh"]
-}
-```
-
-### Frequency units
-
-```json
-{
- "hertz": ["hertz", "hz"],
- "kilohertz": ["kilohertz", "khz"],
- "megahertz": ["megahertz", "mhz"],
- "gigahertz": ["gigahertz", "ghz"]
-}
-```
-
-### Volume units
-
-```json
-{
- "millimetercubed": [
-  "millimeterscubed",
-  "millimetercubed",
-  "millimeters cubed",
-  "millimeter cubed",
-  "mm³",
-  "mm^3",
-  "mm3",
-  "mmcubed",
-  "mmcubic"
- ],
- "centimetercubed": [
-  "centimeterscubed",
-  "centimetercubed",
-  "centimeters cubed",
-  "centimeter cubed",
-  "centimeter^3",
-  "centimeter3",
-  "cm³",
-  "cm^3",
-  "cm3",
-  "cmcubed"
- ],
- "metercubed": [
-  "meterscubed",
-  "metercubed",
-  "meters cubed",
-  "meter cubed",
-  "m³",
-  "m^3",
-  "m3",
-  "mcubed",
-  "mcubic"
- ],
- "inchcubed": [
-  "inchescubed",
-  "inchescubed",
-  "inches cubed",
-  "inch cubed",
-  "in³",
-  "in^3",
-  "in3",
-  "incubed"
- ],
- "footcubed": [
-  "feetcubed",
-  "footcubed",
-  "feet cubed",
-  "foot cubed",
-  "ft³",
-  "ft^3",
-  "ft3",
-  "ftcubed"
- ],
- "yd3": [
-  "yardscubed",
-  "yardcubed",
-  "yards cubed",
-  "yard cubed",
-  "yd³",
-  "yd^3",
-  "yd3",
-  "ydcubed"
- ],
- "kilometercubed": [
-  "kilometerscubed",
-  "kilometercubed",
-  "kilometers cubed",
-  "kilometer cubed",
-  "km³",
-  "km^3",
-  "km3",
-  "kmcubed"
- ]
-}
-```
-
-### Area units
-
-```json
-{
- "millimetersquared": [
-  "millimeterssquared",
-  "millimetersquared",
-  "millimeters squared",
-  "millimeters quared",
-  "millimetersq",
-  "mm2",
-  "mm^2",
-  "mm²"
- ],
- "centimetersquared": [
-  "centimeterssquared",
-  "centimetersquared",
-  "centimeters squared",
-  "centimeter squared",
-  "centimetersq",
-  "cm2",
-  "cm^2",
-  "cm²"
- ],
- "metersquared": [
-  "meterssquared",
-  "metersquared",
-  "meters squared",
-  "meter squared",
-  "metersq",
-  "m2",
-  "m^2",
-  "m²"
- ],
- "kilometersquared": [
-  "kilometerssquared",
-  "kilometersquared",
-  "kilometers squared",
-  "kilometer squared",
-  "km²",
-  "km^2",
-  "km2"
- ],
- "inchsquared": [
-  "inchessquared",
-  "inchesquared",
-  "inches squared",
-  "inche squared",
-  "in²",
-  "in^2",
-  "in2"
- ],
- "footsquared": [
-  "feetsquared",
-  "footsquared",
-  "feet squared",
-  "foot squared",
-  "ft²",
-  "ft^2",
-  "ft2"
- ],
- "yardsquared": [
-  "yardssquared",
-  "yardsquared",
-  "yards squared",
-  "yard squared",
-  "yd²",
-  "yd^2",
-  "yd2"
- ],
- "acre": ["acres", "acre", "ac"],
- "hectare": ["hectares", "hectare", "ha"]
-}
-```
-
-### More units will be added in the future
+Temperatures in text are treated as **absolute** values (`30 °C` → `303 K`), not temperature differences.
 
 ## License
 
-This library is released under the MIT License. See LICENSE for more information.
+MIT. See [LICENSE](LICENSE).
 
 ## Contributing
 
-Contributions to this library are welcome! If you find a bug or have a feature request, please open an issue on the GitHub repository.
+Bug reports and pull requests are welcome: [github.com/ItsXrgon/multi-unit-converter](https://github.com/ItsXrgon/multi-unit-converter).
 
 ## Contact
 
-If you have any questions or concerns about this library, please feel free to contact me at <ali.koheil@gmail.com>
+ali.koheil@gmail.com
