@@ -3,13 +3,17 @@ name: Publish to npm and GitHub Packages
 on:
   push:
     branches:
-      - main  
+      - main
   release:
     types: [created]
 
 jobs:
   publish:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      id-token: write  # required for npm OIDC trusted publishing
 
     steps:
       - name: Checkout repository
@@ -27,11 +31,9 @@ jobs:
       - name: Build
         run: npm run build
 
-      # First publish to npm using the unscoped name
+      # Publish to npm using OIDC (no NPM_TOKEN needed)
       - name: Publish to npm
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public --provenance
 
       # Then set up for GitHub Packages with scoped name
       - name: Set up Node.js for GitHub Packages
